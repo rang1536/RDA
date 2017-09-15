@@ -9,7 +9,7 @@ $(document).ready(function() {
 	accordion_head.on('click', function(event) {
 	
 		// Disable header links
-		event.preventDefault();
+		//event.preventDefault();
 	
 		// Show and hide the tabs on click
 		if ($(this).attr('class') != 'active') {

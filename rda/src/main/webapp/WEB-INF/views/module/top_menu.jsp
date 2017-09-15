@@ -21,7 +21,12 @@
 <link rel="StyleSheet" href="<c:url value='resources/css/jquery-ui.css'/>" type="text/css">
 <link rel="StyleSheet" href="<c:url value='resources/css/navigation.css'/>" type="text/css">
 <link rel="StyleSheet" href="<c:url value='resources/css/location.css'/>" type="text/css">
-
+<style>
+.login .id ,.login .pw  {
+    width: 110px;
+    height: 28px;
+    }
+</style>
 <title>RDA</title>
 </head>
 <body bgcolor="#c3cbd8" marginwidth="0" marginheight="0" bottommargin="0" style="margin: 0" leftmargin="0" rightmargin="0" topmargin="0">
@@ -57,8 +62,8 @@
 			<ul class="menu">
 				<li style="border: none; background-color: #f2f2f2; width: 12%; height: 36px;"></li>
 				<li class="admin_middle_menu_tab"><a href="farmList">자료관리</a></li>
-				<li class="admin_middle_menu_tab"><a href="test2">기초통계</a></li>
-				<li class="admin_middle_menu_tab"><a href="test3">분변분석</a></li>
+				<li class="admin_middle_menu_tab"><a href="basicTempList">기초통계</a></li>
+				<li class="admin_middle_menu_tab"><a href="fecesmanageList">분변분석</a></li>
 				<li class="admin_middle_menu_tab"><a href="test4">질병예측</a></li>
 				<li class="admin_middle_menu_tab"><a href="test5">질병지도</a></li>
 				<li class="admin_middle_menu_tab"><a href="test6">커뮤니티</a></li>

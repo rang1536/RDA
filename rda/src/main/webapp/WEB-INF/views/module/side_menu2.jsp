@@ -6,13 +6,13 @@
 		<div style="margin: 0px; padding: 0px;">
 			<ul class="accordion">
 				<li class="files">
-					<a><img class="side_icon" src="<c:url value='resources/img/side_icon.png'/>">체온</a></li>
+					<a   href="basicTempList" ><img class="side_icon" src="<c:url value='resources/img/side_icon.png'/>">체온</a></li>
 				<li class="files">
-					<a><img class="side_icon" src="<c:url value='resources/img/side_icon.png'/>">활동량</a></li>
+					<a href="basicActiveList"><img class="side_icon" src="<c:url value='resources/img/side_icon.png'/>">활동량</a></li>
 				<li class="files">
-					<a><img class="side_icon" src="<c:url value='resources/img/side_icon.png'/>">혈액검사</a></li>
+					<a href=""><img class="side_icon" src="<c:url value='resources/img/side_icon.png'/>">혈액검사</a></li>
 				<li class="files">
-					<a><img class="side_icon" src="<c:url value='resources/img/side_icon.png'/>">설문조사</a></li>
+					<a href=""><img class="side_icon" src="<c:url value='resources/img/side_icon.png'/>">설문조사</a></li>
 			</ul>
 		</div>
 	</div>

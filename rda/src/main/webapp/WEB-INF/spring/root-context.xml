@@ -23,11 +23,34 @@
 		<property name="mapperLocations">
 			<list>
 				<value>classpath:com/kis/rda/farm/dao/FarmMapper.xml</value>
+				<value>classpath:com/kis/rda/farm/dao/QuMapper.xml</value>		
+				<value>classpath:com/kis/rda/farm/dao/EnvMapper.xml</value>		
+				<value>classpath:com/kis/rda/farm/dao/EntityMapper.xml</value>		
+				<value>classpath:com/kis/rda/farm/dao/BirMapper.xml</value>		
+				<value>classpath:com/kis/rda/farm/dao/MhMapper.xml</value>		
+				<value>classpath:com/kis/rda/farm/dao/FeseMapper.xml</value>		
+				<value>classpath:com/kis/rda/farm/dao/LabcheckMapper.xml</value>		
+				<value>classpath:com/kis/rda/farm/dao/SenseMapper.xml</value>	
+				<value>classpath:com/kis/rda/basic/dao/BasicMapper.xml</value>	
+					<value>classpath:com/kis/rda/feces/dao/DataanalyMapper.xml</value>	
+<!-- 				<value>classpath:com/kis/rda/basic/dao/TemperMapper.xml</value> -->
+<!-- 				<value>classpath:com/kis/rda/basic/dao/AvtiveMapper.xml</value> -->
+				<value>classpath:com/kis/rda/feces/dao/DatamanageMapper.xml</value>
+				<value>classpath:com/kis/rda/feces/dao/DataanalyMapper.xml</value>
+				
+							
 			</list>
 		</property>
 	</bean>
 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg index="0" ref="sqlSessionFactory" />
 	</bean>
+	
+   <!-- MultipartResolver 설정 -->
+<!--     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"> -->
+<!--         <property name="maxUploadSize" value="100000000" /> -->
+<!--         <property name="maxInMemorySize" value="100000000" /> -->
+<!--     </bean> -->
 
+ 
 </beans>

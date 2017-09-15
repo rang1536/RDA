@@ -6,9 +6,9 @@
 		<div style="margin: 0px; padding: 0px;">
 			<ul class="accordion">
 				<li class="files">
-					<a><img class="side_icon" src="<c:url value='resources/img/side_icon.png'/>">자료 관리</a></li>
+					<a href="fecesmanageList"><img class="side_icon" src="<c:url value='resources/img/side_icon.png'/>">자료 관리</a></li>
 				<li class="files">
-					<a><img class="side_icon" src="<c:url value='resources/img/side_icon.png'/>">자료 분석</a></li>
+					<a href="fecesrecogList"><img class="side_icon" src="<c:url value='resources/img/side_icon.png'/>">자료 분석</a></li>
 			</ul>
 		</div>
 	</div>
