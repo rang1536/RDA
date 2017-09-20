@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kis.rda.common.domain.Newfarm;
 import com.kis.rda.farm.dao.FarmDao;
 import com.kis.rda.farm.domain.Farm;
 import com.kis.rda.farm.domain.NewFarm;
@@ -96,4 +97,20 @@ public class FarmService {
 	public List<NewFarm> selectNewFarmExcelServ(){
 		return farmDao.selectNewFarmExcel();
 	}
+
+	public int ajaxnewfarmUpdateCtrl(Newfarm farm) {
+		return farmDao.ajaxnewfarmUpdateCtrl(farm);
+		}
+
+	public int ajaxnewfarmAdd(Newfarm farm) {
+		return farmDao.ajaxnewfarmAdd(farm);
+		}
+
+	public Newfarm selectnewFarmDetailServ(String farmId) {
+		return farmDao.selectnewFarmDetailServ(farmId);
+	}
+
+	public int ajaxnewfarmDelete(String farmId) {
+		return farmDao.ajaxnewfarmDelete(farmId);
+		}
 }

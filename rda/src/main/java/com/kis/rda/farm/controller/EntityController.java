@@ -9,9 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;				
 import org.springframework.web.bind.annotation.RequestMapping;				
 import org.springframework.web.bind.annotation.RequestMethod;				
-import org.springframework.web.bind.annotation.RequestParam;				
-				
-				
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.kis.rda.farm.domain.EntityList;
 import com.kis.rda.farm.service.EntityService;				
 				
 				
@@ -76,7 +76,8 @@ model.addAttribute("entity_id", entity_id);
 //model.addAttribute("searchValue", searchValue);	
 
 String farmNm = 	entityService.entityEntityUpdateSelectOne(farmId);
-
+EntityList entityEntity = (EntityList) entityService.ajaxenvEntitySelectOneBeforUpdate(entity_id);	
+model.addAttribute("entityEntity", entityEntity);	
 model.addAttribute("farmNm", farmNm);	
 return "data_management/entity/entityEntity_update";	
 }	

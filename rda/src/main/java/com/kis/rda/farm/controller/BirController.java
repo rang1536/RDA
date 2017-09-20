@@ -1,4 +1,5 @@
 package com.kis.rda.farm.controller;				
+import java.util.HashMap;
 import java.util.Map;				
 				
 import org.springframework.beans.factory.annotation.Autowired;				
@@ -9,9 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;				
 import org.springframework.web.bind.annotation.RequestMapping;				
 import org.springframework.web.bind.annotation.RequestMethod;				
-import org.springframework.web.bind.annotation.RequestParam;				
-				
-				
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.kis.rda.farm.domain.BirUpdate;
 import com.kis.rda.farm.service.BirService;				
 				
 				
@@ -93,7 +94,7 @@ return "data_management/bir/birEntity_list_detail";
 public String birEntityUpdate(Model model,	
 @RequestParam(value="pageNum", defaultValue="1") int pageNum,	
 @RequestParam(value="searchOption", defaultValue="none") String searchOption,	
-@RequestParam(value="searchValue", defaultValue="none") String searchValue, String farmId,String entity_id) {	
+@RequestParam(value="searchValue", defaultValue="none") String searchValue, String farmId,String entity_id, String  seqno) {	
 	model.addAttribute("farmId", farmId);
 //Map<String, Object> map = envService.selectFarmListServ(pageNum, searchOption, searchValue);	
 //model.addAttribute("farmList", map.get("farmList"));	
@@ -101,10 +102,19 @@ public String birEntityUpdate(Model model,
 //model.addAttribute("paging", map.get("paging"));	
 //model.addAttribute("searchOption", searchOption);	
 //model.addAttribute("searchValue", searchValue);	
-	
-String farmNm = 	birService.birEntityUpdateSelectOne(farmId);
+	 
+ BirUpdate  birentity = 	birService.birEntityUpdateSelectOne(seqno);
+ birentity.getCHECK_DATE();
+ String date[] = birentity.getCHECK_DATE().split("/");
+
+ System.out.println( date.length);
+ 
+//model.addAttribute("birentity", birentity);	
+ System.out.println(farmId);
+System.out.println(birentity.getENTITY_ID());
 model.addAttribute("entity_id", entity_id);	
-model.addAttribute("farmNm", farmNm);	
+model.addAttribute("birentity", birentity);	
+ 
 return "data_management/bir/birEntity_update";	
 }	
 //환경자료 > 관리리스트 > 추가 폼 열기	
@@ -114,7 +124,7 @@ return "data_management/bir/birEntity_update";
 public String envEntityInsert(Model model,	
 @RequestParam(value="pageNum", defaultValue="1") int pageNum,	
 @RequestParam(value="searchOption", defaultValue="none") String searchOption,	
-@RequestParam(value="searchValue", defaultValue="none") String searchValue, String farmId) {	
+@RequestParam(value="searchValue", defaultValue="none") String searchValue, String farmId, String entity_id) {	
 	
 //Map<String, Object> map = envService.selectFarmListServ(pageNum, searchOption, searchValue);	
 //model.addAttribute("farmList", map.get("farmList"));	
@@ -122,11 +132,11 @@ public String envEntityInsert(Model model,
 //model.addAttribute("paging", map.get("paging"));	
 //model.addAttribute("searchOption", searchOption);	
 //model.addAttribute("searchValue", searchValue);	
-	
-String entity_id = 	birService.birEntityInsertSelectOne(farmId);
+	model.addAttribute("old_entity_id", entity_id);
+ entity_id = 	birService.birEntityInsertSelectOne(farmId);
 	System.out.println(entity_id);
 model.addAttribute("farmId", farmId);	
-model.addAttribute("entity_id", entity_id);	
+//model.addAttribute("entity_id", entity_id);	
 return "data_management/bir/birEntity_insert";	
 }	
 	

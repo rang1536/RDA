@@ -11,7 +11,10 @@
    <result property="PRESCRIBE" column="PRESCRIBE"  javaType="java.lang.String" />									
    <result property="RECOVERY_DATE" column="RECOVERY_DATE"  javaType="java.lang.String" />									
    <result property="INPUTDATE" column="INPUTDATE"  javaType="java.lang.String" />									
-   <result property="UPDATEDATE" column="UPDATEDATE"  javaType="java.lang.String" />					 
+   <result property="UPDATEDATE" column="UPDATEDATE"  javaType="java.lang.String" />	
+  	   <result property="SEQNO" column="SEQNO"  javaType="java.lang.String" />
+  						
+   				 
    </resultMap>
    
 <select id="ajaxmhEntityListDetail" parameterType="com.kis.rda.farm.domain.MhListDetail" resultMap="mhListResultMap">
@@ -41,6 +44,7 @@ a.*
 
 <insert id="ajaxmhEntityInsertDo" parameterType="com.kis.rda.farm.domain.MhListDetail">
 INSERT INTO rda_test.MEDICALHISTORY(		
+SEQNO,
 	ENTITY_ID,	
 	<if test="CURE_DATE!= null">CURE_DATE,</if>	
 	<if test="OCCUR_DATE!= null">OCCUR_DATE,</if>	
@@ -50,6 +54,7 @@ INSERT INTO rda_test.MEDICALHISTORY(
 	INPUTDATE	
 	)	
 	VALUES(	
+	rda_test.SEQ_MEDICALHISTORY.nextval	,
 		#{ENTITY_ID}	,	
 	<if test="CURE_DATE!= null">#{CURE_DATE},</if>	
 	<if test="OCCUR_DATE!= null">#{OCCUR_DATE},</if>	
@@ -61,6 +66,33 @@ INSERT INTO rda_test.MEDICALHISTORY(
 
 
 </insert>
+
+
+<update id="ajaxmhEntityUpdatetDo" parameterType="com.kis.rda.farm.domain.MhListDetail"  >				
+ 	
+UPDATE rda_test.MEDICALHISTORY			
+SET			
+			
+<if test="CURE_DATE!= null">CURE_DATE=#{CURE_DATE},</if>			
+<if test="OCCUR_DATE!= null">OCCUR_DATE=#{OCCUR_DATE},</if>			
+<if test="DISEASE!= null">DISEASE=#{DISEASE},</if>			
+<if test="PRESCRIBE!= null">PRESCRIBE=#{PRESCRIBE},</if>			
+<if test="RECOVERY_DATE!= null">RECOVERY_DATE=#{RECOVERY_DATE},</if>		
+					
+UPDATEDATE = to_date(SYSDATE, 'YY-MM-DD HH24:MI:SS') 			 		
+WHERE 					
+SEQNO=#{SEQNO}					
+	
+</update>				
+ <delete id="ajaxmhEntityDeleteDo" parameterType="String">
+	DELETE FROM rda_test.MEDICALHISTORY 
+	WHERE 
+		SEQNO = #{seqno}
+</delete>
+ 
+
+
+
 
 <!-- 목장자료 - 기존 목장 COUNT -->
 <select id="selectFarmCount" parameterType="Map" resultType="int">

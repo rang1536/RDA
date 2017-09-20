@@ -34,17 +34,17 @@ public List<Environment> ajaxbirEntityList(Map<String, Object> map) {
 System.out.println("===================farmId=의 맵값============="+ map.get("farmId"));		
 return sqlSession.selectList("BirDao.ajaxbirEntityList", map);		
 }		
-public String birEntityUpdateSelectOne(String farmId) {		
-System.out.println("===================farmId=의 맵값============="+ farmId);		
-	return sqlSession.selectOne("BirDao.birEntityUpdateSelectOne",farmId);	
+public BirUpdate birEntityUpdateSelectOne(String seqno) {		
+System.out.println("===================farmId=의 맵값============="+ seqno);		
+	return sqlSession.selectOne("BirDao.birEntityUpdateSelectOne",seqno);	
 }		
 //public int ajaxbirEntityUpdatetDo(Environment environment) {		
 //		
 //return sqlSession.update("BirDao.ajaxbirEntityUpdatetDo",environment);		
 //}		
-public int ajaxbirEntityDeleteDo(BirUpdate environment) {		
+public int ajaxbirEntityDeleteDo(String seqno) {		
 	// TODO Auto-generated method stub	
-return sqlSession.delete("BirDao.ajaxbirEntityDeleteDo",environment);		
+return sqlSession.delete("BirDao.ajaxbirEntityDeleteDo",seqno);		
 }		
 //public int ajaxbirEntityInsertDo(EnvUpdate environment) {		
 //	// TODO Auto-generated method stub	
@@ -69,9 +69,9 @@ public List<EntityList> ajaxentityEntityList(EntityList entityEntityList) {
 public Map<String, Object> birEntitySelectOneBeforeUpdate(String entity_id) {
 	return sqlSession.selectOne("BirDao.birEntitySelectOneBeforeUpdate",entity_id);	
 }
-public List<EntityList> ajaxbirEntityListDetail(BirUpdate entityDetail) {
+public List<BirUpdate> ajaxbirEntityListDetail(BirUpdate entityDetail) {
 	System.out.println("===================farmId=의 맵값=========== dao수정=="+entityDetail.getENTITY_ID());	
-	String birEntityID = entityDetail.getENTITY_ID();
+
 	return sqlSession.selectList("BirDao.ajaxbirEntityListDetail", entityDetail);	
 }
 public String birEntityInsertSelectOne(String farmId) {

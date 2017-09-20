@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.kis.rda.common.domain.Newfarm;
 import com.kis.rda.farm.domain.Farm;
 import com.kis.rda.farm.domain.NewFarm;
 
@@ -46,12 +47,12 @@ public class FarmDao {
 	
 	//목장자료 - 기존 목장 UPDATE
 	public int updateFarm(Farm farm){
-		return sqlSession.insert("FarmDao.updateFarm", farm);
+		return sqlSession.update("FarmDao.updateFarm", farm);
 	}
 	
 	//목장자료 - 기존 목장 DELETE
 	public int deleteFarm(String farmId){
-		return sqlSession.insert("FarmDao.deleteFarm", farmId);
+		return sqlSession.delete("FarmDao.deleteFarm", farmId);
 	}
 	
 	
@@ -67,4 +68,20 @@ public class FarmDao {
 	public List<NewFarm> selectNewFarmExcel(){
 		return sqlSession.selectList("FarmDao.selectNewFarmExcel");
 	}
+	
+	public int ajaxnewfarmAdd(Newfarm farm) {
+		return sqlSession.insert("FarmDao.ajaxnewfarmAdd", farm);
+	 
+	}
+	public int ajaxnewfarmUpdateCtrl(Newfarm farm) {
+		return sqlSession.update("FarmDao.ajaxnewfarmUpdateCtrl", farm);
+	}
+	public int ajaxnewfarmDelete(String farmId) {
+		return sqlSession.delete("FarmDao.ajaxnewfarmDelete", farmId);
+	}
+	public Newfarm selectnewFarmDetailServ(String farmId) {
+		System.out.println( " FarmDao.selectnewFarmDetailServ==>"+farmId);
+		return sqlSession.selectOne("FarmDao.selectnewFarmDetailServ", farmId);
+	}
+	
 }

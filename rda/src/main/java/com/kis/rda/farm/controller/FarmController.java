@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.kis.rda.common.domain.Newfarm;
 import com.kis.rda.farm.domain.Farm;
 import com.kis.rda.farm.service.FarmService;
 
@@ -68,7 +69,10 @@ public class FarmController {
 	@RequestMapping(value = "/farmUpdate", method = RequestMethod.GET)
 	public String farmUpdateFormCtrl(Model model,
 			@RequestParam(value="farmId") String farmId) {
+		System.out.println(farmId);
 		Farm farm = farmService.selectFarmDetailServ(farmId);
+		farm.getFarmId();
+		
 		model.addAttribute("farm", farm);
 		return "data_management/farm/farm_update";
 	}
@@ -109,4 +113,19 @@ public class FarmController {
 		model.addAttribute("newId", newId);*/
 		return "data_management/new_farm/new_farm_input";
 	}
+	//목장자료 -  신규 목장 수정 FORM
+		@RequestMapping(value = "/newfarmUpdate", method = RequestMethod.GET)
+		public String  newfarmUpdateFormCtrl(Model model,
+				@RequestParam(value="farmId") String farmId) {
+			System.out.println(farmId);
+			 Newfarm farm = farmService.selectnewFarmDetailServ(farmId);
+	 
+			
+		 model.addAttribute("EntityList", farm);
+			System.out.println( " farm.getFARM_ID()===>"+farm.getFARM_NAME());
+			
+			
+			return "data_management/new_farm/new_farm_update";
+		}
+	
 }

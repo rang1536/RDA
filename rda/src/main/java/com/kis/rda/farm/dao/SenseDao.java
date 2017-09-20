@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;		
 import org.springframework.stereotype.Repository;
 
+import com.kis.rda.common.domain.Sense;
 import com.kis.rda.common.domain.TbSensetime;
 import com.kis.rda.farm.domain.Cbcentity;
 import com.kis.rda.farm.domain.Farm;		
@@ -45,6 +46,9 @@ public List<TbSenseEntityListDetail> ajaxsenseEntityListDetail(TbSenseEntityList
 public List<TbsenseStableList> ajaxsenseStableListDetail(TbsenseStableList entityDetail) {
 	return sqlSession.selectList("SenseDao.ajaxsenseStableListDetail", entityDetail);	
 }
+public int ajaxsenseStableEntityInsertDo(Sense entityInsert) {
+	return sqlSession.insert("SenseDao.ajaxsenseStableEntityInsertDo",entityInsert);			
+	}
 }		
 		
 		

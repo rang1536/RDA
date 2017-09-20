@@ -56,8 +56,8 @@
      					$.ajax({
      						url : "${pageContext.request.contextPath }/ajax/feseEntityInsertDo",
      						type : "POST",
-     						//data : quresearch,
-     						dataType : "POST",
+     						 data : quresearch,
+//      						dataType : "POST",
      						success : function(data) {
      							alert('성공적으로 입력하였습니다.');
      							
@@ -71,8 +71,7 @@
 //      							}
      						},
      				complete : function() {
-     					    	if (error == 0){
-     					       alert("성공했습니다!");}
+     					   
       					       window.close();
       					    }
  
@@ -80,6 +79,18 @@
      					});
      		}
      	}
+     	
+     	function insert1(){
+ 
+         document.regForm.submit(function(event){
+            alert("전송완료입니다.");
+             return true;   }
+              );
+       }
+    	function  winclose(){
+     	
+     	  window.close();
+    	}
 	</script> 
    
     		       
@@ -114,7 +125,9 @@
 </div>	
 <table class="table_003 w100p">
 <!-- <form id="regForm" name="regForm" method="post" style="margin-left: 10px; margin-right: 10px" action="/ajax/feseEntityInsertDo?entity_id=005107&amp;keyvalue=multipart" enctype="multipart/form-data"> -->
+<!-- <form id="regForm" name="regForm" method="post" style="margin-left: 10px; margin-right: 10px"   enctype="multipart/form-data"> -->
 <form id="regForm" name="regForm" method="post" style="margin-left: 10px; margin-right: 10px" action="${pageContext.request.contextPath }/ajax/feseEntityInsertDo" enctype="multipart/form-data">
+<%-- <form id="regForm" name="regForm" method="post" style="margin-left: 10px; margin-right: 10px" action="${pageContext.request.contextPath }/ajax/feseEntityInsertDoGET" enctype="multipart/form-data"> --%>
 
 	<tbody>
 		</tbody><colgroup>
@@ -168,9 +181,9 @@
 		<tr>
 			<td colspan="2" align="center">
 				<input type="hidden" id="mod" name="mod" value="add">
-				<input type="button" value="저장" onclick="insert()">
+				<input type="button" value="저장" onclick="insert1()">
 				<input type="reset" value="취소">
-				<input type="reset" value="돌아가기" onclick="history.back()">
+				<input type="reset" value="돌아가기" onclick="winclose()">
 			</td>
 		</tr>
 <!-- 	</tbody> -->

@@ -63,7 +63,12 @@ function insert(){
 						}else{
 							alert('입력에 실패하였습니다.');
 						}
-					}
+					} ,
+					complete : function() {
+						 window.close();  
+				    }
+
+
 				})
 	}
 }

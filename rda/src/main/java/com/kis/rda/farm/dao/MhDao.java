@@ -25,7 +25,7 @@ private SqlSessionTemplate sqlSession;
 public List<Farm> selectMhList(Map<String, Object> map){		
 	return sqlSession.selectList("MhDao.selectFarmList", map);	
 	}
-public List<EntityList> ajaxmhEntityListDetail(MhListDetail entityDetail) {
+public List<MhListDetail> ajaxmhEntityListDetail(MhListDetail entityDetail) {
 	System.out.println("===================farmId=의 맵값=========== dao수정=="+entityDetail.getENTITY_ID());	
 	String birEntityID = entityDetail.getENTITY_ID();
 	return sqlSession.selectList("MhDao.ajaxmhEntityListDetail", entityDetail);	
@@ -41,6 +41,13 @@ public int ajaxmhEntityInsertDo(MhListDetail entityInsert) {
 public MhListDetail mhEntitySelectOneBeforeUpdate(String entity_id) {
 	return sqlSession.selectOne("MhDao.mhEntitySelectOneBeforeUpdate",entity_id);	
 	}
+ 
+public int ajaxmhEntityUpdatetDo(MhListDetail entityUpdate) {
+	return sqlSession.update("MhDao.ajaxmhEntityUpdatetDo",entityUpdate);	
+}
+public int ajaxmhEntityDeleteDo(String seqno) {
+	return sqlSession.delete("MhDao.ajaxmhEntityDeleteDo",seqno);	 
+}
 }		
 		
 		

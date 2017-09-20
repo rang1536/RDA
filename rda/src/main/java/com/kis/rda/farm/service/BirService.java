@@ -45,10 +45,10 @@ public Map<String, Object> selectFarmListServ(int pageNum, String searchOption, 
 			
 
 
-public String birEntityUpdateSelectOne(String farmId) {			
+public BirUpdate birEntityUpdateSelectOne(String seqno) {			
 	Map<String, Object> map = new HashMap<String, Object>();		
-	map.put("farmId", farmId);		
-	String farmNm =    birDao.birEntityUpdateSelectOne(farmId);		
+	//map.put("farmId", seqno);		
+	BirUpdate farmNm =    birDao.birEntityUpdateSelectOne(seqno);		
 	return farmNm;		
 }			
 			
@@ -96,8 +96,8 @@ public int ajaxbirEntityUpdatetDo(BirUpdate entityUpdate) {
 
 
 
-public int ajaxbirEntityDeleteDo(BirUpdate environment) {
-	 int result = birDao.ajaxbirEntityDeleteDo(environment);		
+public int ajaxbirEntityDeleteDo(String string) {
+	 int result = birDao.ajaxbirEntityDeleteDo(string);		
  	return result;		
 }
 
@@ -105,7 +105,7 @@ public int ajaxbirEntityDeleteDo(BirUpdate environment) {
 
 public Map<String, Object> ajaxbirEntityListDetail(BirUpdate entityDetail) {
 	Map<String, Object> map = new HashMap<String, Object>();		
-	List<EntityList> ajaxentityEntityList = birDao.ajaxbirEntityListDetail(entityDetail);		
+	List<BirUpdate> ajaxentityEntityList = birDao.ajaxbirEntityListDetail(entityDetail);		
 	map.put("entityList",ajaxentityEntityList);		
 	return map;
 }

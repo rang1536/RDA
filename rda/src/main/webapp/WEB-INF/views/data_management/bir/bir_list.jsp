@@ -64,7 +64,7 @@
           bLengthChange: false,
           bAutoWidth: false,
           bStateSave: true,
-          buttons: ['excel'], 
+             buttons: ['excel','print'], 
           oLanguage : {
              sProcessing : "처리중...",
              sZeroRecords : "데이터가 없습니다.",
@@ -126,8 +126,8 @@
 		   	    	   
 		   	       //보기 버튼 만들기	
 		   	       // phone2에 지도보기버튼 추가
-		   	      	farmlist[i].phone2 =" 	<div align='center'><a href='farmUpdate?farmId=${list.farmId }''><input type='button' value='보기'></a></div>";
- 
+		   	      	//farmlist[i].phone2 =" 	<div align='center'><a href='farmUpdate?farmId=${list.farmId }''><input type='button' value='보기'></a></div>";
+ farmlist[i].phone2 =" 	<div align='center'> <input type='button' value='보기'> </div>";
 		            //수정 버튼만들기
 		   	    	  //phone3에 수정버튼 추가
 		   	    	  	     
@@ -210,9 +210,14 @@ return json.birList
 
  
 		
-</script>
+</script><style>
+      #content  .buttons-print {
+    margin-left: 7px !important;
+  border: 2px  solid #ccc !important;
+            }    
+</style>
  <div id="buttonWrap">
-			 <input  class="btn btn-default buttons-excel buttons-html5" type="button" value="인쇄" onClick="print(document.getElementById('amc_content_body').innerHTML)">
+<!-- 			 <input  class="btn btn-default buttons-excel buttons-html5" type="button" value="인쇄" onClick="print(document.getElementById('amc_content_body').innerHTML)"> -->
 			  
 <!-- 			 <input  class="btn btn-default buttons-excel buttons-html5"  type="button" value="추가" onclick="location.href='farmAdd'"> -->
 				  

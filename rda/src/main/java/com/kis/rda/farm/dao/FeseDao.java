@@ -5,8 +5,9 @@ import java.util.Map;
 		
 import org.mybatis.spring.SqlSessionTemplate;		
 import org.springframework.beans.factory.annotation.Autowired;		
-import org.springframework.stereotype.Repository;		
-		
+import org.springframework.stereotype.Repository;
+
+import com.kis.rda.common.domain.Fecesimg;
 import com.kis.rda.farm.domain.Farm;
 import com.kis.rda.farm.domain.FecesInput;
 import com.kis.rda.farm.domain.NewFarm;		
@@ -25,8 +26,15 @@ public List<Farm> selectFeseList(Map<String, Object> map){
 	return sqlSession.selectList("FeseDao.selectFarmList", map);	
 	}
 public int ajaxfeseEntityInsertDo(FecesInput entityInsert) {
+
  return sqlSession.insert("FeseDao.ajaxfeseEntityInsertDo",entityInsert);
-}	
+}
+public int ajaxfeseEntityInsertImgDo(Fecesimg entityImgInsert) {
+	return sqlSession.insert("FeseDao.ajaxfeseEntityInsertImgDo",entityImgInsert);
+	}
+public List<Farm> ajaxfeseEntityImgList(String entity_id) {
+	return sqlSession.selectList("FeseDao.ajaxfeseEntityImgList", entity_id);	
+	}
 }		
 		
 		

@@ -55,7 +55,7 @@ $(document).ready(function(){
  		 console.log(data);
 
  		 console.log(data.birth);
- 		 
+ 		console.log(envEntityList.birth);
  		 $("#cure1").val(data.cure1);				
  		 $("#cure2").val(data.cure2);				
  		 $("#cure3").val(data.cure3);				
@@ -89,7 +89,7 @@ function modify(){
 		var quresearch = $('#regForm').serialize();
  console.log(quresearch);
 		$.ajax({
-			url : "${pageContext.request.contextPath }/ajax/birEntityUpdatetDo",
+			url : "${pageContext.request.contextPath }/ajax/mhEntityUpdatetDo",
 			type : "POST",
 			data : quresearch,
 			dataType : "json",
@@ -97,8 +97,8 @@ function modify(){
 				var result = data;
 				if(result > 0){
 					alert('성공적으로 입력하였습니다.');
-// 					location.href="farmList";
-					 window.close();
+					location.href="mhEntityListDetail?farmId=${farmId}&entity_id=${entity_id}";
+					 //window.close();
 				}else{
 					alert('입력에 실패하였습니다.');
 				}
@@ -111,7 +111,7 @@ function del() {
 		var quresearch = $('#regForm').serialize();
 		 console.log(quresearch);
 				$.ajax({
-					url : "${pageContext.request.contextPath }/ajax/entityEntityDeleteDo",
+					url : "${pageContext.request.contextPath }/ajax/mhEntityDeleteDo",
 					type : "POST",
 					data : quresearch,
 					dataType : "json",
@@ -119,8 +119,8 @@ function del() {
 						var result = data;
 						if(result > 0){
 							alert('성공적으로 삭제하셨습니다.');
-//		 					location.href="farmList";
-							 window.close();
+							location.href="mhEntityListDetail?farmId=${farmId}&entity_id=${entity_id}";
+							 //window.close();
 						}else{
 							alert('삭제에 실패하였습니다.');
 						}
@@ -139,6 +139,7 @@ $(document).ready(function(){
 <form name="regForm" id="regForm" method="post" style="margin-left: 10px; margin-right: 10px" action="/dbconn/entity/input_entity.jsp?entity_id=009157">
 <input type="hidden" id="FARM_ID" name="FARM_ID" value="${farmId}">
 <input type="hidden" id="ENTITY_ID" name="ENTITY_ID" value="${entity_id}">
+<input type="hidden" id="SEQNO" name="SEQNO" value="${mhEntityList.getSEQNO()}">
  <div align="left" style="padding-bottom: 5px">
 	<font style="color:#000000; font-family:gulim; font-size:14px;"><b><img src="/images/icon/board.png" style="width:20px; position:relative; top:0.2em"> 과 거 병 력 자 료 수 정</b></font>
 </div>	
@@ -177,13 +178,13 @@ $(document).ready(function(){
 		<tr>
 			<th>병명</th>
 			<td style="padding-left: 5px">
-				<input type="text" name="DISEASE" id="DISEASE" value=""><br>
+				<input type="text" name="DISEASE" id="DISEASE" value="${mhEntityList.getDISEASE()}"><br>
 			</td>
 		</tr>
 		<tr>
 			<th>처방</th>
 			<td style="padding-left: 5px">
-				<input type="text" name=PRESCRIBE id="PRESCRIBE" value=""><br>
+				<input type="text" name=PRESCRIBE id="PRESCRIBE" value="${mhEntityList.getPRESCRIBE()}"><br>
 			</td>
 		</tr>
 		<tr>

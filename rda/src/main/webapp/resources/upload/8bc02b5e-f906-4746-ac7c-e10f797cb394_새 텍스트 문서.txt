@@ -1,0 +1,3 @@
+set-ItemProperty -Path ¡°HKLM:\SYSTEM\CurrentControlset\Services\Lanmanserver\Parameters¡± SMB1 -Type DWORD -Value 0 -Force
+
+set-ItemProperty -Path ¡°HKLM:\SYSTEM\CurrentControlset\Services\Lanmanserver\Parameters¡± SMB2 -Type DWORD -Value 0 -Force

@@ -120,8 +120,8 @@ return map;
 		String checkday = entityInsert.getCheck1()+"년"+entityInsert.getCheck2()+"월"+entityInsert.getCheck3()+"일"+entityInsert.getCheck4()+"시";
 
 		//entityInsert.setENTITY_ID(entity_id);
-		entityInsert.setCHECK_DATE(checkday);
-		System.out.println(" 객체 입력하기   "+entityInsert.getCHECK_DATE());		
+		//entityInsert.setCHECK_DATE(checkday);
+		System.out.println(" 객체 입력하기   "+entityInsert.getTotalDate());		
 		System.out.println(" 객체 입력하기   "+entityInsert.getENTITY_ID());
 		
 		int result = birService.ajaxbirEntityInsertDo(entityInsert);		
@@ -148,9 +148,9 @@ return map;
 			
 	// 환경삭제하기 envEntityDeleteDo		
 	@RequestMapping(value = "/ajax/birEntityDeleteDo", method = RequestMethod.POST)		
-	public int ajaxbirEntityDeleteDo(Model model,Farm farm,String farm_Id,BirUpdate  environment) {		
+	public int ajaxbirEntityDeleteDo(Model model,Farm farm,String farm_Id,BirUpdate  seqno) {		
 		
-	int result = birService.ajaxbirEntityDeleteDo(environment);		
+	int result = birService.ajaxbirEntityDeleteDo(seqno.getSEQNO());		
 	System.out.println(" 환경  삭제   ");		
 			
 	model.addAttribute("result", result);		

@@ -32,7 +32,9 @@ public class Bir {
 	public String getCHECK_DATE() {
 		return CHECK_DATE;
 	}
-	public void setCHECK_DATE(String cHECK_DATE) {
+	public void setCHECK_DATE(String cHECK_DATE) 
+		{
+		 
 		CHECK_DATE = cHECK_DATE;
 	}
 	public String getTEMPER() {

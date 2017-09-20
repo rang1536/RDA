@@ -171,6 +171,34 @@ return mhListDetail;
 }	
 
 
+//  수정하기			
+@RequestMapping(value = "/ajax/mhEntityUpdatetDo", method = RequestMethod.POST)		
+public int ajaxmhEntityUpdatetDo(Model model,Farm farm,String farm_Id,MhListDetail  entityUpdate) {		
+					
+ 
+//String checkday = entityUpdate.getCheck1()+"년"+entityUpdate.getCheck2()+"월"+entityUpdate.getCheck3()+"일"+entityUpdate.getCheck4()+"시";
+
+//entityUpdate.setCHECK_DATE(checkday);			
+int result = mhService.ajaxmhEntityUpdatetDo(entityUpdate);		
+		
+model.addAttribute("result", result);		
+		
+return result;		
+}		
+		
+//  삭제하기 envEntityDeleteDo		
+@RequestMapping(value = "/ajax/mhEntityDeleteDo", method = RequestMethod.POST)		
+public int ajaxmhEntityDeleteDo(Model model,Farm farm,String farm_Id,BirUpdate  seqno) {		
+	
+int result = mhService.ajaxmhEntityDeleteDo(seqno.getSEQNO());		
+ 
+		
+model.addAttribute("result", result);		
+		
+return result;		
+}		
+		
+
 }				
 				
 				

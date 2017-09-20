@@ -1,0 +1,52 @@
+DB목록
+
+
+
+////BestPoll////
+url = "jdbc:oracle:thin:@192.168.0.100:1521:kis";
+id = "bestpoll";
+pw = "kis#poll804";
+
+
+
+//ADMIN//
+
+url = "jdbc:oracle:thin:@192.168.0.100:1521:kis";
+id = "admin";
+pw = "sRc0488#";
+
+
+//kis_stat//
+
+url = "jdbc:oracle:thin:@192.168.0.100:1521:kis";
+id = "kis_stat";
+pw = "sRc0488";
+
+
+
+// infonara //
+
+url = "jdbc:oracle:thin:@192.168.0.100:1521:kis";
+id = "infonara";
+pw = "TaT73bb#";
+
+
+
+//bestpoll_ars//
+
+url = "jdbc:oracle:thin:@192.168.0.100:1521:kis";
+id = "bestpoll_ars";
+pw = "bp0488#ars";
+
+
+//VISION_RIS//
+
+url = "jdbc:oracle:thin:@192.168.0.100:1521:kis";
+id = "vision_ris";
+pw = "123123";
+
+
+
+자바 path
+
+C:\ProgramData\Oracle\Java\javapath;D:\app\kis\product\11.2.0\client_1;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Java\jdk1.7.0_45\bin;C:\Program Files\Java\jdk1.8.0_11\bin;C:\Users\kis\Downloads\apache-ant-1.9.4-bin\apache-ant-1.9.4;C:\Program Files\Apache Software Foundation\Tomcat 7.0\bin;C:\Oracle;C:\Windows\system;C:\Users\kis\Documents\adt-bundle-windows-x86_64-20140702\adt-bundle-windows-x86_64-20140702\sdk\platform-tools;C:\Program Files\NVIDIA Corporation\PhysX\Common;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\Program Files\TortoiseSVN\bin

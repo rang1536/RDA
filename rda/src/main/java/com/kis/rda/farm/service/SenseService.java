@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;							
 import org.springframework.stereotype.Service;
 
+import com.kis.rda.common.domain.Sense;
 import com.kis.rda.common.domain.TbSensetime;
 import com.kis.rda.farm.dao.SenseDao;
 import com.kis.rda.farm.domain.Cbcentity;
@@ -72,5 +73,10 @@ public Map<String, Object> ajaxsenseStableListDetail(TbsenseStableList entityDet
 	List<TbsenseStableList> ajaxList = senseDao.ajaxsenseStableListDetail(entityDetail);		
 	map.put("ajaxList",ajaxList);		
 	return map;				
-}							
+}
+public int ajaxsenseStableEntityInsertDo(Sense entityInsert) {
+	 int result = senseDao.ajaxsenseStableEntityInsertDo(entityInsert);		
+		return result;		
+	}
+	 					
 }						

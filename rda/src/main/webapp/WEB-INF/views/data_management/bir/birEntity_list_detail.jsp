@@ -67,7 +67,7 @@
 				          bLengthChange: false,
 				          bAutoWidth: false,
 				          bStateSave: true,
-				          buttons: ['excel'], 
+				             buttons: ['excel','print'], 
 				          oLanguage : {
 				             sProcessing : "처리중...",
 				             sZeroRecords : "데이터가 없습니다.",
@@ -99,6 +99,8 @@
 				    		   console.log(farmlist.length);  
 				            
 				    		   for(var i=0; i<farmlist.length; i++){
+				    			   farmlist[i].rnum=i+1;
+				    			   
 				    			   //핸드폰번호 조합하여 phone1에 넣게
 				    			   if(farmlist[i].phone1=="null"){ farmlist[i].phone1=""   }
 				    			   if(farmlist[i].phone2=="null"){ farmlist[i].phone2=""   }
@@ -133,7 +135,7 @@
 						   	       //보기 버튼 만들기	
 						   	       // phone2에 지도보기버튼 추가
 						   	    //  	farmlist[i].phone2 =" 	<div align='center'><a href='envEntityUpdate?farmId=${farmId }''><input type='button' value='수정'></a></div>";
-						   	    	      	farmlist[i].phone3 =" <div align='center'><a href='birEntityUpdate?farmId=${farmId}&entity_id="+farmlist[i].entity_ID+"'><input type='button' value='수정'></a></div>";
+						   	    	      	farmlist[i].phone3 =" <div align='center'><a href='birEntityUpdate?farmId=${farmId}&seqno="+farmlist[i].seqno+"&entity_id="+farmlist[i].entity_ID+"'><input type='button' value='수정'></a></div>";
 		   	    	  
 		   	    	     
 						            //수정 버튼만들기
@@ -218,11 +220,16 @@
 
 				 
 						
-				</script>
+				</script><style>
+      #content  .buttons-print {
+    margin-left: 7px !important;
+  border: 2px  solid #ccc !important;
+            }    
+</style>
 				 <div id="buttonWrap">
-							 <input  class="btn btn-default buttons-excel buttons-html5" type="button" value="인쇄" onClick="print(document.getElementById('payList').innerHTML)">
+<!-- 							 <input  class="btn btn-default buttons-excel buttons-html5" type="button" value="인쇄" onClick="print(document.getElementById('payList').innerHTML)"> -->
 							  
-			 			 <input  class="btn btn-default buttons-excel buttons-html5"  type="button" value="추가" onclick="location.href='birEntityInsert?farmId=${farmId }'"> 
+			 			 <input  class="btn btn-default buttons-excel buttons-html5"  type="button" value="추가" onclick="location.href='birEntityInsert?farmId=${farmId }&entity_id=${entity_id }'"> 
 								  
 				</div>	
 				<div id="content">

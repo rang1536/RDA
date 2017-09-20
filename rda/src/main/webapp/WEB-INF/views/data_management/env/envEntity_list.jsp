@@ -67,7 +67,7 @@
 				          bLengthChange: false,
 				          bAutoWidth: false,
 				          bStateSave: true,
-				          buttons: ['excel'], 
+				             buttons: ['excel','print'], 
 				          oLanguage : {
 				             sProcessing : "처리중...",
 				             sZeroRecords : "데이터가 없습니다.",
@@ -215,9 +215,14 @@
 
 				 
 						
-				</script>
+				</script><style>
+      #content  .buttons-print {
+    margin-left: 7px !important;
+  border: 2px  solid #ccc !important;
+            }    
+</style>
 				 <div id="buttonWrap">
-							 <input  class="btn btn-default buttons-excel buttons-html5" type="button" value="인쇄" onClick="print(document.getElementById('payList').innerHTML)">
+<!-- 							 <input  class="btn btn-default buttons-excel buttons-html5" type="button" value="인쇄" onClick="print(document.getElementById('payList').innerHTML)"> -->
 							  
 			 			 <input  class="btn btn-default buttons-excel buttons-html5"  type="button" value="추가" onclick="location.href='envEntityInsert?farmId=${farmId }'"> 
 								  

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;							
 							
 import com.kis.rda.farm.dao.MhDao;
+import com.kis.rda.farm.domain.BirUpdate;
 import com.kis.rda.farm.domain.EntityList;
 import com.kis.rda.farm.domain.Farm;
 import com.kis.rda.farm.domain.MhListDetail;
@@ -38,7 +39,7 @@ public Map<String, Object> selectFarmListServ(int pageNum, String searchOption, 
 }
 public Map<String, Object> ajaxmhEntityListDetail(MhListDetail entityDetail) {
 	Map<String, Object> map = new HashMap<String, Object>();		
-	List<EntityList> ajaxentityDetail = mhDao.ajaxmhEntityListDetail(entityDetail);		
+	List<MhListDetail> ajaxentityDetail = mhDao.ajaxmhEntityListDetail(entityDetail);		
 	map.put("entityList",ajaxentityDetail);		
 	return map;
 }
@@ -56,6 +57,14 @@ public MhListDetail mhEntitySelectOneBeforeUpdate(String entity_id) {
 	
 	return mhDao.mhEntitySelectOneBeforeUpdate(entity_id);	 
 	}
+public int ajaxmhEntityUpdatetDo(MhListDetail entityUpdate) {
+	 int result = mhDao.ajaxmhEntityUpdatetDo(entityUpdate);		
+		return result;		
+}
+public int ajaxmhEntityDeleteDo(String seqno) {
+	 int result = mhDao.ajaxmhEntityDeleteDo(seqno);		
+	return result;		
+}
 
 				
 }							

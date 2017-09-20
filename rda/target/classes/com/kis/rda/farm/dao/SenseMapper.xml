@@ -97,7 +97,30 @@ max(ACTION_VALUE) as TEMMAX
     </select>
 
 
+<insert id="ajaxsenseStableEntityInsertDo" parameterType="com.kis.rda.common.domain.Sense">
+INSERT INTO rda_test.MEDICALHISTORY(		
+SEQNO,
+	ENTITY_ID,	
+	<if test="CURE_DATE!= null">CURE_DATE,</if>	
+	<if test="OCCUR_DATE!= null">OCCUR_DATE,</if>	
+	<if test="DISEASE!= null">DISEASE,</if>	
+	<if test="PRESCRIBE!= null">PRESCRIBE,</if>	
+	<if test="RECOVERY_DATE!= null">RECOVERY_DATE,</if>	
+	INPUTDATE	
+	)	
+	VALUES(	
+	rda_test.SEQ_MEDICALHISTORY.nextval	,
+		#{ENTITY_ID}	,	
+	<if test="CURE_DATE!= null">#{CURE_DATE},</if>	
+	<if test="OCCUR_DATE!= null">#{OCCUR_DATE},</if>	
+	<if test="DISEASE!= null">#{DISEASE},</if>	
+	<if test="PRESCRIBE!= null">#{PRESCRIBE},</if>	
+	<if test="RECOVERY_DATE!= null">#{RECOVERY_DATE},</if>		
+		 to_date(SYSDATE, 'YY-MM-DD HH24:MI:SS') 
+	)	
 
+
+</insert>
 <!-- 목장자료 - 기존 목장 COUNT -->
 <select id="selectFarmCount" parameterType="Map" resultType="int">
 	SELECT

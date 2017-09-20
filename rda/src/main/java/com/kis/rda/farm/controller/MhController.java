@@ -100,7 +100,7 @@ return "data_management/mh/mhEntity_list";
 public String birEntityUpdate(Model model,	
 @RequestParam(value="pageNum", defaultValue="1") int pageNum,	
 @RequestParam(value="searchOption", defaultValue="none") String searchOption,	
-@RequestParam(value="searchValue", defaultValue="none") String searchValue, String farmId,String entity_id) {	
+@RequestParam(value="searchValue", defaultValue="none") String searchValue, String farmId,String entity_id,String seqno) {	
 	model.addAttribute("farmId", farmId);
 //Map<String, Object> map = envService.selectFarmListServ(pageNum, searchOption, searchValue);	
 //model.addAttribute("farmList", map.get("farmList"));	
@@ -183,12 +183,13 @@ mhListDetail.setRecov4(cure4);
 
 
 
-model.addAttribute("envEntityList", mhListDetail);		
-		
+model.addAttribute("mhEntityList", mhListDetail);		
+ 
 	
 //String farmNm = 	mhService.birEntityUpdateSelectOne(farmId);
 model.addAttribute("entity_id", entity_id);	
-model.addAttribute("farmId", farmId);	
+model.addAttribute("farmId", farmId);	 
+model.addAttribute("seqno", seqno);	
 return "data_management/mh/mhEntity_update";	
 }	
 //병력자료 >(자료) 관리 > (병력자료)보기 > 수정 > 수정

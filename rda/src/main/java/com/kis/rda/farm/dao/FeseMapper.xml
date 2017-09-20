@@ -3,10 +3,23 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="FeseDao">
+<resultMap id="fecesListResultMap" type="com.kis.rda.farm.domain.FecesImgList">
+   <result property="ENTITY_ID" column="ENTITY_ID"  javaType="java.lang.String" />									
+   <result property="FECES_OCCURDATE" column="FECES_OCCURDATE"  javaType="java.lang.String" />									
+   <result property="FECES_GATHERDATE" column="FECES_GATHERDATE"  javaType="java.lang.String" />									
+   <result property="ANTIBIOTICS" column="ANTIBIOTICS"  javaType="java.lang.String" />									
+   <result property="FEED" column="FEED"  javaType="java.lang.String" />									
+   <result property="FECES_IMAGE" column="FECES_IMAGE"  javaType="java.lang.String" />									
+   <result property="INPUTDATE" column="INPUTDATE"  javaType="java.lang.String" />									
+   <result property="UPDATEDATE" column="UPDATEDATE"  javaType="java.lang.String" />									
+   </resultMap>
+
+
 
 
 <insert id="ajaxfeseEntityInsertDo" parameterType="com.kis.rda.farm.domain.FecesInput">
 INSERT INTO rda_test.FECES(		
+SEQNO,	
 	ENTITY_ID,	
 	<if test="FECES_OCCURDATE!= null">FECES_OCCURDATE,</if>	
 	<if test="FECES_GATHERDATE!= null">FECES_GATHERDATE,</if>	
@@ -16,6 +29,7 @@ INSERT INTO rda_test.FECES(
 	INPUTDATE
 	)	
 	VALUES(	
+	  rda_test.SEQ_FECES.nextval	,	
 		 	#{ENTITY_ID},
 	<if test="FECES_OCCURDATE!= null">#{FECES_OCCURDATE},</if>	
 	<if test="FECES_GATHERDATE!= null">#{FECES_GATHERDATE},</if>	
@@ -27,6 +41,41 @@ INSERT INTO rda_test.FECES(
 	)	
 
 </insert>
+<insert id="ajaxfeseEntityInsertImgDo" parameterType="com.kis.rda.common.domain.Fecesimg">
+INSERT INTO rda_test.FECESIMG(						
+	SEQNO,					
+	<if test="ENTITY_ID!= null">ENTITY_ID,</if>					
+	<if test="GETIMGDATE!= null">GETIMGDATE,</if>					
+	<if test="ORIGINIMG!= null">ORIGINIMG,</if>					
+	<if test="ANALYIMG!= null">ANALYIMG,</if>		
+						
+	 GETIMGDATE
+					
+	)					
+	VALUES(			
+	rda_test.SEQ_FECESIMG.nextval	,				
+	<if test="ENTITY_ID!= null">#{ENTITY_ID},</if>					
+	<if test="GETIMGDATE!= null">#{GETIMGDATE},</if>					
+	<if test="ORIGINIMG!= null">#{ORIGINIMG},</if>					
+	<if test="ANALYIMG!= null">#{ANALYIMG},</if>			
+						
+		 to_date(SYSDATE, 'YY-MM-DD HH24:MI:SS') 				
+	)					
+						
+
+
+</insert>
+
+
+<select id="ajaxfeseEntityImgList" parameterType="Map" resultMap="fecesListResultMap">
+	select a.SEQNO, a.ENTITY_ID ,a.FECES_IMAGE,a.FECES_GATHERDATE,a.FECES_OCCURDATE,b.GENDER,a.FEED 
+from 
+RDA_TEST.FECES a left JOIN RDA_TEST.ENTITY b 
+on (a.ENTITY_ID = b.ENTITY_ID)
+
+where a.ENTITY_ID =#{entity_id}
+</select>
+
 
 <!-- 목장자료 - 기존 목장 COUNT -->
 <select id="selectFarmCount" parameterType="Map" resultType="int">

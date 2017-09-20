@@ -12,7 +12,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;				
 import org.springframework.web.bind.annotation.RestController;
 
+import com.kis.rda.common.domain.Sense;
 import com.kis.rda.farm.domain.Cbcentity;
+import com.kis.rda.farm.domain.EntityList;
+import com.kis.rda.farm.domain.Farm;
 import com.kis.rda.farm.domain.TbSenseEntityList;
 import com.kis.rda.farm.domain.TbSenseEntityListDetail;
 import com.kis.rda.farm.domain.TbsenseStableList;
@@ -154,7 +157,21 @@ model.addAttribute("entityEntityList", map.get("entityList"));
 			
 return map;			
 }	
-
+@RequestMapping(value = "/ajax/senseStableEntityInsertDo", method = RequestMethod.POST)		
+public int ajaxsenseStableEntityInsertDo(Model model,Farm farm,String farm_Id,Sense  entityInsert) {		
+		
+ 		
+//System.out.println(" 객체 입력하기   "+environment.getFARM_ID());		
+	 
+	 
+int result = senseService.ajaxsenseStableEntityInsertDo(entityInsert);		
+System.out.println(" 객체 입력하기   ");		
+		
+model.addAttribute("result", result);		
+		
+return result;		
+}		
+		
 
 }				
 				

@@ -19,6 +19,7 @@
    <result property="INPUTDATE" column="INPUTDATE"  javaType="java.lang.String" />
    <result property="UPDATEDATE" column="UPDATEDATE"  javaType="java.lang.String" />
    <result property="CASENUM" column="CASENUM"  javaType="java.lang.String" />
+   
      </resultMap>
 
 
@@ -36,31 +37,21 @@
    <result property="DEHYDRATION" column="DEHYDRATION"  javaType="java.lang.String" />								
    <result property="INPUTDATE" column="INPUTDATE"  javaType="java.lang.String" />								
    <result property="UPDATEDATE" column="UPDATEDATE"  javaType="java.lang.String" />								
-								
+		   <result property="SEQNO" column="SEQNO"  javaType="java.lang.String" />							
   </resultMap>
 
 <select id="ajaxbirEntityListDetail" parameterType="com.kis.rda.farm.domain.BirUpdate" resultMap="BirListResultMap">
-SELECT rownum as rnum,
-a.ENTITY_ID,
-a.CHECK_DATE,
-a.TEMPER,
-a.HEARTRATE,
-a.BREATHRATE,
-a.MEDICINE,
-a.DIARRHEA,
-a.FECES_STATE,
-a.FECES_COLOR,
-a.FECES_BLOOD,
-a.DEHYDRATION
+SELECT 
+*
  FROM RDA_TEST.BIR  a 
  WHERE ENTITY_ID = #{ENTITY_ID}	
 
 </select>
- <select id="birEntityUpdateSelectOne" parameterType="String" resultType="String">
+ <select id="birEntityUpdateSelectOne" parameterType="String"  resultMap="BirListResultMap">
 	SELECT 
-	a. FNAME
+	*
 	FROM 
-		RDA_TEST.FARM a WHERE   FARM_ID=  #{farmId}
+		RDA_TEST.BIR  a WHERE   SEQNO=  #{entity_id}
 </select>
  <select id="birEntityInsertSelectOne" parameterType="String" resultType="String">
 	select (#{farm_id})|| CASE
@@ -90,13 +81,14 @@ UPDATE rda_test.BIR
 					
 UPDATEDATE = to_date(SYSDATE, 'YY-MM-DD HH24:MI:SS') 			 		
 WHERE 					
-ENTITY_ID=#{ENTITY_ID}					
+SEQNO=#{SEQNO}					
 	
 </update>				
  
  <insert id="ajaxbirEntityInsertDo" parameterType="com.kis.rda.farm.domain.BirUpdate">
  
  INSERT INTO rda_test.BIR(		
+SEQNO,
 	ENTITY_ID,	
 	<if test="CHECK_DATE!= null">CHECK_DATE,</if>	
 	<if test="TEMPER!= null">TEMPER,</if>	
@@ -111,7 +103,15 @@ ENTITY_ID=#{ENTITY_ID}
 	
 	INPUTDATE)	
 	VALUES(	
-     #{ENTITY_ID},
+	 rda_test.SEQ_BIR.nextval	,
+   (select (#{farm_id})|| CASE
+        WHEN LPAD((max(substr(entity_id,4,6))+1),3,'0') is null THEN '001'   
+        ELSE LPAD((max(substr(entity_id,4,6))+1),3,'0')                                                    
+    END 
+	from 
+	 rda_test.bir
+    where
+     substr(entity_id,0,3)=#{farm_id}),
 	<if test="CHECK_DATE!= null">#{CHECK_DATE},</if>	
 	<if test="TEMPER!= null">#{TEMPER},</if>	
 	<if test="HEARTRATE!= null">#{HEARTRATE},</if>	
@@ -150,6 +150,14 @@ substr(CASENUM,6,5)	 as CASENUM
   substr(entity_id,1,3) =#{farm_id} order by entity_id
 
 </select>
+ 
+ 
+ <delete id="ajaxbirEntityDeleteDo" parameterType="String">
+	DELETE FROM rda_test.BIR 
+	WHERE 
+		SEQNO = #{seqno}
+</delete>
+ 
  
 <!-- 목장자료 - 기존 목장 COUNT -->
 <select id="selectFarmCount" parameterType="Map" resultType="int">

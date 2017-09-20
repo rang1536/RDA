@@ -39,6 +39,7 @@
      		
 			if(confirm("등록하시겠습니까?")) {
 				$('#regForm').submit();
+			     location.href="entityEntityList?farmId=${farmId}&entity_id=${entity_id}";
 			}
 		}
 	</script> 

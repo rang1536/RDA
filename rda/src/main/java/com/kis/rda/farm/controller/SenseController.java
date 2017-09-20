@@ -139,6 +139,25 @@ return "data_management/sensestable/chart_env";
 	}		
 // 현황 리스트
 
+
+
+@RequestMapping(value = "/senseStableEntityInsert", method = RequestMethod.GET)				
+public String senseStableEntityInsert(Model model,				
+@RequestParam(value="pageNum", defaultValue="1") int pageNum,				
+@RequestParam(value="searchOption", defaultValue="none") String searchOption,				
+@RequestParam(value="searchValue", defaultValue="none") String searchValue,String sense_nodeId,String sense_cuId,String sensecuid,String sensenodeid) {				
+Map<String, Object> map = senseService.selectFarmListServ(pageNum, searchOption, searchValue);	
+ 
+model.addAttribute("sensecuid", sensecuid);				
+model.addAttribute("sensenodeid", sensenodeid);		
+//model.addAttribute("farmList", map.get("farmList"));				
+//model.addAttribute("totalCount", map.get("totalCount"));				
+//model.addAttribute("paging", map.get("paging"));				
+//model.addAttribute("searchOption", searchOption);				
+//model.addAttribute("searchValue", searchValue);				
+return "data_management/sensestable/senseStableEntity_insert";				
+	}		
+
 // 개체자료 리스트
 
 // 축사 자료 리스트( 센스가 있는 ?? 목장리스트)

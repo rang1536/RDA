@@ -47,34 +47,84 @@ tr.bottom_button td{
 <script type="text/javascript">
 //리스트 가져와 뿌리기
 $(document).ready(function(){
-	 
-			$.ajax({
-				url : "${pageContext.request.contextPath }/ajax/entityEntitySelectOneDo?entity_id=${entity_id}",
-				type : "POST",
-				success : function(data) {
- 		 console.log(data);
+	
+	var ENTITY_ID="${entityEntity.getENTITY_ID()}";
+	var BREEDING="${entityEntity.getBREEDING()}";
+	var VARIETY="${entityEntity.getVARIETY()}";
+	var GENDER="${entityEntity.getGENDER()}";
+	var BIRTH="${entityEntity.getBIRTH()}";
+	var BIRTH_WEIGHT="${entityEntity.getBIRTH_WEIGHT()}";
+	var COLOSTRUM="${entityEntity.getCOLOSTRUM()}";
+	var VACCINE="${entityEntity.getVACCINE()}";
+	var BIRTH_NUMBER="${entityEntity.getBIRTH_NUMBER()}";
+	var BIRTH_CASE="${entityEntity.getBIRTH_CASE()}";
+	var INPUTDATE="${entityEntity.getINPUTDATE()}";
+	var UPDATEDATE="${entityEntity.getUPDATEDATE()}";
+	var CASENUM="${entityEntity.getCASENUM()}";
+	 console.log(ENTITY_ID);
+	 console.log(BREEDING);
+	 console.log(VARIETY);
+	 console.log(GENDER);
+	 console.log(BIRTH);
+	 console.log(BIRTH_WEIGHT);
+	 console.log(COLOSTRUM);
+	 console.log(VACCINE);
+	 console.log(BIRTH_NUMBER);
+	 console.log(BIRTH_CASE);
+	 console.log(INPUTDATE);
+	 console.log(UPDATEDATE);
+	 console.log(CASENUM);
+	// $('input:radio[name=ENTITY_ID]:input[value=' +ENTITY_ID+ ']').attr("checked", true);
+	 $('input:radio[name=BREEDING]:input[value=' +BREEDING+ ']').attr("checked", true);
+	 $('input:radio[name=VARIETY]:input[value=' +VARIETY+ ']').attr("checked", true);
+	 $('input:radio[name=GENDER]:input[value=' +GENDER+ ']').attr("checked", true);
+	// $('input:radio[name=BIRTH]:input[value=' +BIRTH+ ']').attr("checked", true);
+	//$('input:radio[name=BIRTH_WEIGHT]:input[value=' +BIRTH_WEIGHT+ ']').attr("checked", true);
+	 $('input:radio[name=COLOSTRUM]:input[value=' +COLOSTRUM+ ']').attr("checked", true);
+	 $('input:radio[name=VACCINE]:input[value=' +VACCINE+ ']').attr("checked", true);
+	 $('input:radio[name=BIRTH_NUMBER]:input[value=' +BIRTH_NUMBER+ ']').attr("checked", true);
+	 $('input:radio[name=BIRTH_CASE]:input[value=' +BIRTH_CASE+ ']').attr("checked", true);
+// 	 $('input:radio[name=INPUTDATE]:input[value=' +INPUTDATE+ ']').attr("checked", true);
+// 	 $('input:radio[name=UPDATEDATE]:input[value=' +UPDATEDATE+ ']').attr("checked", true);
+// 	 $('input:radio[name=CASENUM]:input[value=' +CASENUM+ ']').attr("checked", true);
 
- 		 console.log(data.birth);
+	 
+// 			$.ajax({
+// 				url : "${pageContext.request.contextPath }/ajax/entityEntitySelectOneDo?entity_id=${entity_id}",
+// 				type : "POST",
+// 				success : function(data) {
+//  		 console.log(data);
+
+//  		 console.log(data.birth);
  		 
- 		 $("#BIRTH1").val(data.birth1);				
- 		 $("#BIRTH2").val(data.birth2);				
- 		 $("#BIRTH3").val(data.birth3);				
- 		 $("#BIRTH4").val(data.birth4);		
- 		 $("#BIRTH_WEIGHT").val(data.birth_WEIGHT);	
+//  		 $("#BIRTH1").val(data.birth1);				
+//  		 $("#BIRTH2").val(data.birth2);				
+//  		 $("#BIRTH3").val(data.birth3);				
+//  		 $("#BIRTH4").val(data.birth4);		
+//  		 $("#BIRTH_WEIGHT").val(data.birth_WEIGHT);	
  		 
- 		 $("#BREEDING").val(data.breeding);				
- 		 $("#VARIETY").val(data.variety);				
- 		 $("#GENDER").val(data.gender);				
+//  		 $("#BREEDING").val(data.breeding);				
+//  		 $("#VARIETY").val(data.variety);				
+//  		 $("#GENDER").val(data.gender);				
  						
  					
- 		 $("#COLOSTRUM").val(data.colostrum);				
- 		 $("#VACCINE").val(data.vaccine);				
- 		 $("#BIRTH_NUMBER").val(data.birth_NUMBER);				
- 		 $("#BIRTH_CASE").val(data.birth_CASE);				
+//  		 $("#COLOSTRUM").val(data.colostrum);				
+//  		 $("#VACCINE").val(data.vaccine);				
+//  		 $("#BIRTH_NUMBER").val(data.birth_NUMBER);				
+//  		 $("#BIRTH_CASE").val(data.birth_CASE);				
 
  		      
-				}
-			})
+ 		 
+ 		 
+ 		 
+ 		 
+ 		 
+ 		 
+ 		 
+ 		 
+ 		 
+// 				}
+// 			})
 	
 	
 	
@@ -98,8 +148,8 @@ function modify(){
 				var result = data;
 				if(result > 0){
 					alert('성공적으로 입력하였습니다.');
-// 					location.href="farmList";
-					 window.close();
+					 location.href="entityEntityList?farmId=${farmId}&entity_id=${entity_id}";
+					// window.close();
 				}else{
 					alert('입력에 실패하였습니다.');
 				}

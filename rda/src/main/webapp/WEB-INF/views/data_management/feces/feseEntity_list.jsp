@@ -62,12 +62,12 @@
 				          serverSide: false,
 				          searching: true,
 				          //lengthMenu : [ [ 3, 5, 10, -1 ], [ 3, 5, 10, "All" ] ],
-				          pageLength: 10,
+				          pageLength: 15,
 				          bPaginate: true,
 				          bLengthChange: false,
 				          bAutoWidth: false,
 				          bStateSave: true,
-				          buttons: ['excel'], 
+				          buttons: ['excel','print'], 
 				          oLanguage : {
 				             sProcessing : "처리중...",
 				             sZeroRecords : "데이터가 없습니다.",
@@ -132,7 +132,7 @@
 						   	    	   
 						   	       //보기 버튼 만들기	
 						   	       // phone2에 지도보기버튼 추가
-						   	         	farmlist[i].phone2 =" 	<div align='center'><a href='fecesEntityImg?farmId=${farmId }''><input type='button' value='보기'></a></div>";
+						   	         	farmlist[i].phone2 =" 	<div align='center'><a href='feseEntityImgList?entity_id="+encodeURI(farmlist[i].entity_ID)+"''><input type='button' value='보기'></a></div>";
 						   	    	   // 	farmlist[i].phone3 =" <div align='center'><a href='fecesEntityInsert?farmId=${farmId}&entity_id="+farmlist[i].entity_ID+"'><input  type='button' onclick=\"window.open('feces_input.jsp?entity_id=005107','분변 추가','top=100px, left=200px, height=500px, width=500px');\" value='추가'></a></div>";
 						   	    	     farmlist[i].phone3 =" <div align='center'><input type='button' onclick=\"window.open('fecesEntityInsert?entity_id="+encodeURI(farmlist[i].entity_ID)+"','설문조사','top=100px, left=200px, height=500px, width=500px');\" value='추가'></div>";
 
@@ -220,9 +220,14 @@
 
 				 
 						
-				</script>
+				</script><style>
+      #content  .buttons-print {
+    margin-left: 7px !important;
+  border: 2px  solid #ccc !important;
+            }    
+</style>
 				 <div id="buttonWrap">
-							 <input  class="btn btn-default buttons-excel buttons-html5" type="button" value="인쇄" onClick="print(document.getElementById('payList').innerHTML)">
+<!-- 							 <input  class="btn btn-default buttons-excel buttons-html5" type="button" value="인쇄" onClick="print(document.getElementById('payList').innerHTML)"> -->
 							  
 <%-- 			 			 <input  class="btn btn-default buttons-excel buttons-html5"  type="button" value="추가" onclick="location.href='birEntityInsert?farmId=${farmId }'">  --%>
 								  

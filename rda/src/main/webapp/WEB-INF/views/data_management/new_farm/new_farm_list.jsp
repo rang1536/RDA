@@ -64,7 +64,7 @@
           bLengthChange: false,
           bAutoWidth: false,
           bStateSave: true,
-          buttons: ['excel'], 
+             buttons: ['excel','print'], 
           oLanguage : {
              sProcessing : "처리중...",
              sZeroRecords : "데이터가 없습니다.",
@@ -93,6 +93,8 @@
     		   console.log(farmlist.length);  
             
     		   for(var i=0; i<farmlist.length; i++){
+    			   farmlist[i].rnum = i+1;
+    			   
     			   //핸드폰번호 조합하여 phone1에 넣게
     			   if(farmlist[i].phone1=="null"){ farmlist[i].phone1=""   }
     			   if(farmlist[i].phone2=="null"){ farmlist[i].phone2=""   }
@@ -106,7 +108,7 @@
  		   	        	farmlist[i].phone1 = farmlist[i].phone1+"-" +farmlist[i].phone2+"-" +farmlist[i].phone3 ;
  
 		   	             
-		   	             
+ 		   	        farmlist[i].address =  farmlist[i].address+ " "+ farmlist[i].address1;
 		   	     
 		   	    	   
 		   	       //일반번호 조합하여 hp1에 넣기
@@ -126,12 +128,12 @@
 		   	    	   
 		   	       //보기 버튼 만들기	
 		   	       // phone2에 지도보기버튼 추가
-		   	      	farmlist[i].phone2 =" 	<div align='center'><a href='farmUpdate?farmId=${list.farmId }''><input type='button' value='보기'></a></div>";
-		   	    	   
+		   	    //  	farmlist[i].phone2 =" 	<div align='center'><a href='farmUpdate?farmId=${list.farmId }''><input type='button' value='보기'></a></div>";
+		   	 	farmlist[i].phone2 =" 	<div align='center'> <input type='button' value='보기'> </div>";
 		            //수정 버튼만들기
 		   	    	  //phone3에 수정버튼 추가
 		   	    	  
-		   	    	      	farmlist[i].phone3 =" <div align='center'><a href='farmUpdate?farmId=${list.farmId }''><input type='button' value='수정'></a></div>";
+		   	    	      	farmlist[i].phone3 =" <div align='center'><a href='newfarmUpdate?farmId="+  farmlist[i].farm_ID+"''><input type='button' value='수정'></a></div>";
 		   	    	  
 		   	    	  
 		   	    	   
@@ -179,8 +181,8 @@ return json.farmList
   },            
   columns : [
       {data: "rnum", sClass:"counNo"},
-      {data: "farmId"},
-      {data: "fname"},
+      {data: "farm_ID"},
+      {data: "farm_NAME"},
       {data: "name"},
       {data: "hp1"},
       {data: "phone1"},      
@@ -210,11 +212,16 @@ return json.farmList
 
  
 		
-</script>
+</script><style>
+      #content  .buttons-print {
+    margin-left: 7px !important;
+  border: 2px  solid #ccc !important;
+            }    
+</style>
  <div id="buttonWrap">
-			 <input  class="btn btn-default buttons-excel buttons-html5" type="button" value="인쇄" onClick="print(document.getElementById('amc_content_body').innerHTML)">
+<!-- 			 <input  class="btn btn-default buttons-excel buttons-html5" type="button" value="인쇄" onClick="print(document.getElementById('amc_content_body').innerHTML)"> -->
 			  
-			 <input  class="btn btn-default buttons-excel buttons-html5"  type="button" value="추가" onclick="location.href='farmAdd'">
+			 <input  class="btn btn-default buttons-excel buttons-html5"  type="button" value="추가" onclick="location.href='newFarmAdd'">
 				  
 </div>	
 	<div id="content">
@@ -222,17 +229,17 @@ return json.farmList
                    <colgroup>
                        <col width="70px">
                         <col width="70px">
-                            <col width="150px">
-                              <col width="150px">
+                            <col width="100px">
+                              <col width="100px">
                
-                        <col width="100px">
-                        <col width="100px">
-                        <col width="100px">
-                            <col width="70px">
-                        <col width="70px">
-                        <col width="70px">
-                            <col width="70px">
-                        <col width="70px">
+                        <col width="90px">
+                        <col width="90px">
+                        <col width="150px">
+                            <col width="60px">
+                        <col width="60px">
+                        <col width="60px">
+                            <col width="60px">
+                        <col width="60px">
                     </colgroup>
                     <thead>
                      <tr>

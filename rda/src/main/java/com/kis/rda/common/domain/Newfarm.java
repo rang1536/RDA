@@ -36,6 +36,34 @@ public class Newfarm {
 	private String UPDATEDATE;
 	private String CU_NUM;
 	private String SEQNO;
+	
+	public String getADDRESS1() {
+		return ADDRESS1;
+	}
+
+	public void setADDRESS1(String aDDRESS1) {
+		ADDRESS1 = aDDRESS1;
+	}
+
+	public String getADDRESS2() {
+		return ADDRESS2;
+	}
+
+	public void setADDRESS2(String aDDRESS2) {
+		ADDRESS2 = aDDRESS2;
+	}
+
+	public String getADDRESS3() {
+		return ADDRESS3;
+	}
+
+	public void setADDRESS3(String aDDRESS3) {
+		ADDRESS3 = aDDRESS3;
+	}
+
+	private	String	ADDRESS1	;
+	private	String	ADDRESS2	;
+	private	String	ADDRESS3	;
 
 	public String getSEQNO() {
 		return SEQNO;

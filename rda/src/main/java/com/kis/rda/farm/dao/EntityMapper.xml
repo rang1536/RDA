@@ -137,6 +137,7 @@ SELECT  rownum as rnum,a.FARM_ID
 <!--   개체자료 추가 -->
 <insert id="ajaxentityEntityInsertDo" parameterType="com.kis.rda.farm.domain.EntityList">
 INSERT INTO rda_test.ENTITY(		
+SEQNO,
 	ENTITY_ID,	
 	<if test="BREEDING!= null">BREEDING,</if>	
 	<if test="VARIETY!= null">VARIETY,</if>	
@@ -151,7 +152,7 @@ INSERT INTO rda_test.ENTITY(
 	INPUTDATE
 	)	
 	VALUES(	
-		
+		rda_test.SEQ_ENTITY.nextval	,
 (select (#{farm_id})||(nvl(max(substr(entity_id,4,6)),0)+1 )from  rda_test.entity
 where substr(entity_id,0,3)=#{farm_id}),	
 	<if test="BREEDING!= null">#{BREEDING},</if>	

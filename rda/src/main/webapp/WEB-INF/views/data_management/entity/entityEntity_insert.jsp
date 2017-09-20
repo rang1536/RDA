@@ -58,8 +58,8 @@ function insert(){
 						var result = data;
 						if(result > 0){
 							alert('성공적으로 입력하였습니다.');
-//		 					location.href="farmList";
-							 window.close();
+							location.href="entityEntityList?farmId=${farmId}&entity_id=${entity_id}";
+							 //window.close();
 						}else{
 							alert('입력에 실패하였습니다.');
 						}
@@ -107,8 +107,8 @@ function del() {
 						var result = data;
 						if(result > 0){
 							alert('성공적으로 삭제하셨습니다.');
-//		 					location.href="farmList";
-							 window.close();
+							location.href="entityEntityList?farmId=${farmId}&entity_id=${entity_id}";
+							 //window.close();
 						}else{
 							alert('삭제에 실패하였습니다.');
 						}
