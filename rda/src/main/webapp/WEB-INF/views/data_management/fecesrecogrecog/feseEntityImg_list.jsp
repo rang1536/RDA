@@ -62,12 +62,12 @@
 				          serverSide: false,
 				          searching: true,
 				          //lengthMenu : [ [ 3, 5, 10, -1 ], [ 3, 5, 10, "All" ] ],
-				          pageLength: 10,
+				          pageLength:3,
 				          bPaginate: true,
 				          bLengthChange: false,
 				          bAutoWidth: false,
-				          bStateSave: true,
-				             buttons: ['excel','print'], 
+				          bStateSave: false,
+				          buttons: ['excel','print'], 
 				          oLanguage : {
 				             sProcessing : "처리중...",
 				             sZeroRecords : "데이터가 없습니다.",
@@ -85,9 +85,8 @@
 				       },
 				    ajax : {
 				   
-				      "url":"${pageContext.request.contextPath }/ajax/birEntityList?farm_id=${farmId}",
-				      "type":"POST",
-				      "data" : { FARM_ID :  "${farmId}" },
+				      "url":"${pageContext.request.contextPath }/ajax/feseEntityImgList?entity_id=${entity_id}",
+				      "type":"POST",				     
 				      "dataSrc": function(json){
 				    	   console.log("======");  
 				    	   console.log(json);
@@ -99,6 +98,9 @@
 				    		   console.log(farmlist.length);  
 				            
 				    		   for(var i=0; i<farmlist.length; i++){
+				    			   
+				    			   farmlist[i].rnum=i+1;
+				    			   
 				    			   //핸드폰번호 조합하여 phone1에 넣게
 				    			   if(farmlist[i].phone1=="null"){ farmlist[i].phone1=""   }
 				    			   if(farmlist[i].phone2=="null"){ farmlist[i].phone2=""   }
@@ -112,7 +114,7 @@
 				 		   	        	farmlist[i].phone1 = farmlist[i].phone1+"-" +farmlist[i].phone2+"-" +farmlist[i].phone3 ;
 				 
 						   	             
-						   	             
+				 		   	        farmlist[i].feces_IMAGE = "<img src='resources/upload/"+  farmlist[i].feces_IMAGE+"' style='width:200px; '> ";
 						   	     
 						   	    	   
 						   	       //일반번호 조합하여 hp1에 넣기
@@ -132,9 +134,9 @@
 						   	    	   
 						   	       //보기 버튼 만들기	
 						   	       // phone2에 지도보기버튼 추가
-						   	         	farmlist[i].phone2 =" 	<div align='center'><a href='fecesEntityImg?farmId=${farmId }&entity_id="+farmlist[i].entity_ID+"'><input type='button' value='보기'></a></div>";
+						   	         	farmlist[i].phone2 =" 	<div align='center'><a href='fecesEntityImg?farmId=${farmId }''><input type='button' value='보기'></a></div>";
 						   	    	   // 	farmlist[i].phone3 =" <div align='center'><a href='fecesEntityInsert?farmId=${farmId}&entity_id="+farmlist[i].entity_ID+"'><input  type='button' onclick=\"window.open('feces_input.jsp?entity_id=005107','분변 추가','top=100px, left=200px, height=500px, width=500px');\" value='추가'></a></div>";
-						   	    	     farmlist[i].phone3 =" <div align='center'><input type='button' onclick=\"window.open('fecesEntityInsert?entity_id="+encodeURI(farmlist[i].entity_ID)+"','설문조사','top=100px, left=200px, height=500px, width=500px');\" value='추가'></div>";
+						   	    	  //   farmlist[i].phone3 =" <div align='center'><input type='button' onclick=\"window.open('fecesEntityInsert?entity_id="+encodeURI(farmlist[i].entity_ID)+"','설문조사','top=100px, left=200px, height=500px, width=500px');\" value='추가'></div>";
 
 // 						   	    	     <input onclick="window.open('feces_input.jsp?entity_id=005107','분변 추가','top=100px, left=200px, height=500px, width=500px');" type="button" value="추가">
 						            //수정 버튼만들기
@@ -188,18 +190,12 @@
 				  },            
 				  columns : [
 					   {data: "rnum", sClass:"counNo"},
-					      {data: "entity_ID"},
-					      {data: "breeding"},
-					      {data: "variety"},
-					      {data: "gender"},
-					      {data: "birth"},      
-					      {data: "birth_WEIGHT"},
-					      {data: "colostrum"},
-					      {data: "vaccine"},
-					      {data: "birth_NUMBER"},
-					      {data: "birth_CASE"},
-					      {data: "phone2"},
-					      {data: "phone3"}
+					      {data: "feces_IMAGE"},
+					      {data: "feces_GATHERDATE"},
+					      {data: "feces_OCCURDATE"},
+					      {data: "disease"},		
+					      {data: "gender"},	
+					      {data: "feed"}
 				      
 				  ],
 				         initComplete : function() {
@@ -226,6 +222,7 @@
   border: 2px  solid #ccc !important;
             }    
 </style>
+			
 				 <div id="buttonWrap">
 <!-- 							 <input  class="btn btn-default buttons-excel buttons-html5" type="button" value="인쇄" onClick="print(document.getElementById('payList').innerHTML)"> -->
 							  
@@ -236,19 +233,13 @@
 	<table id="payList">
                    <colgroup>
                         <col width="70px">
-                        <col width="70px">
+                        <col width="150px">
                             <col width="70px">
                               <col width="100px">
-               
+                         <col width="100px">
                         <col width="100px">
                         <col width="150px">
-                        <col width="100px">
-                            <col width="70px">
-                        <col width="70px">
-                        <col width="70px">
-                      <col width="70px">
-                        <col width="90px">
-                           <col width="70px">
+                    
                     </colgroup>
                     <thead>
                      <tr>
@@ -256,41 +247,24 @@
                              NO
                          </th>
                          <th>
-                             관리번호
+                             분변이미지
                          </th>
                          <th>
-                            사육형태
+                            채취일시
                          </th>
                          <th>
-                             품종
+                             발병일시 
                          </th>
                          <th>
-                             성별
+                             병명 
                          </th>
                          
                             <th>
-                             출생일
+                             성별 
                          </th>
-                         <th>
-                             생시체중(kg)
-                         </th>
-                         <th>
-                             초유섭취
-                         </th>
-                          <th>
-                             백신 접종(로타코로나,BVD)
-                         </th>
-                          <th>
-                              모우 산차
-                         </th>
-                            <th>
-                             수정방법
-                         </th>
-                          <th>
-                               분변이미지
-                         </th>
-                         <th>
-                               추가
+                     
+                  <th>
+                             사료 
                          </th>
                         </tr>
                     </thead>

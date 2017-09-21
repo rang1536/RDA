@@ -41,7 +41,7 @@ return map;
 
 
 @RequestMapping(value = "/ajax/mhEntityListDetail", method = RequestMethod.POST)			
-public Map<String,Object> ajaxbirEntityListDetail(Model model,			
+public Map<String,Object> ajaxmhEntityListDetail(Model model,			
 	@RequestParam(value="pageNum", defaultValue="1") int pageNum,		
 	@RequestParam(value="searchOption", defaultValue="none") String searchOption,		
 	@RequestParam(value="searchValue", defaultValue="none") String searchValue,MhListDetail  entityDetail) {		

@@ -132,7 +132,7 @@
 						   	    	   
 						   	       //보기 버튼 만들기	
 						   	       // phone2에 지도보기버튼 추가
-						   	         	farmlist[i].phone2 =" 	<div align='center'><a href='fecesEntityImg?farmId=${farmId }''><input type='button' value='보기'></a></div>";
+						   	         	farmlist[i].phone2 =" 	<div align='center'><a href='fecesEntityImg?farmId=${farmId }&entity_id="+farmlist[i].entity_ID+"'><input type='button' value='보기'></a></div>";
 						      	     	farmlist[i].phone3 =" <div align='center'><a href='feserecogrecogEntityListDetail?entity_id="+farmlist[i].entity_ID+"'><input type='button' value='분석'></a></div>";
 						   	         	
 						   	         	// 	farmlist[i].phone3 =" <div align='center'><a href='fecesEntityInsert?farmId=${farmId}&entity_id="+farmlist[i].entity_ID+"'><input  type='button' onclick=\"window.open('feces_input.jsp?entity_id=005107','분변 추가','top=100px, left=200px, height=500px, width=500px');\" value='추가'></a></div>";

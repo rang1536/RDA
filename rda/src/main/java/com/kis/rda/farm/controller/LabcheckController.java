@@ -29,19 +29,19 @@ private LabcheckService labcheckService;
 				
 				 
 				
-@RequestMapping(value = "/labcheckList", method = RequestMethod.GET)				
-public String labcheckList(Model model,				
-@RequestParam(value="pageNum", defaultValue="1") int pageNum,				
-@RequestParam(value="searchOption", defaultValue="none") String searchOption,				
-@RequestParam(value="searchValue", defaultValue="none") String searchValue) {				
-Map<String, Object> map = labcheckService.selectFarmListServ(pageNum, searchOption, searchValue);				
-model.addAttribute("farmList", map.get("farmList"));				
-model.addAttribute("totalCount", map.get("totalCount"));				
-model.addAttribute("paging", map.get("paging"));				
-model.addAttribute("searchOption", searchOption);				
-model.addAttribute("searchValue", searchValue);				
-return "data_management/farm/farm_list";				
-	}		
+//@RequestMapping(value = "/labcheckList", method = RequestMethod.GET)				
+//public String labcheckList(Model model,				
+//@RequestParam(value="pageNum", defaultValue="1") int pageNum,				
+//@RequestParam(value="searchOption", defaultValue="none") String searchOption,				
+//@RequestParam(value="searchValue", defaultValue="none") String searchValue) {				
+//Map<String, Object> map = labcheckService.selectFarmListServ(pageNum, searchOption, searchValue);				
+//model.addAttribute("farmList", map.get("farmList"));				
+//model.addAttribute("totalCount", map.get("totalCount"));				
+//model.addAttribute("paging", map.get("paging"));				
+//model.addAttribute("searchOption", searchOption);				
+//model.addAttribute("searchValue", searchValue);				
+//return "data_management/farm/farm_list";				
+//	}		
 
 //=================== [  CBC  ] =======================================================================
 

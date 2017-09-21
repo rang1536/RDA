@@ -121,7 +121,7 @@ return "data_management/bir/birEntity_update";
  	
 	
 @RequestMapping(value = "/birEntityInsert", method = RequestMethod.GET)	
-public String envEntityInsert(Model model,	
+public String birEntityInsert(Model model,	
 @RequestParam(value="pageNum", defaultValue="1") int pageNum,	
 @RequestParam(value="searchOption", defaultValue="none") String searchOption,	
 @RequestParam(value="searchValue", defaultValue="none") String searchValue, String farmId, String entity_id) {	

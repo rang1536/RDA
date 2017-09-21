@@ -7,6 +7,50 @@ public class Fecesimg {
 	private String ANALYIMG;
 	private String SEQNO;
 
+	
+	
+	private String	 totalDate;			
+	private String	 ydate;			
+	private String	 mdate;			
+	private String	 ddate;			
+	private String	 	tdate;		
+					
+					
+		public String getTotalDate() {			
+		totalDate=	ydate+"/"+mdate+"/"+ddate+"/"+tdate;		
+		return totalDate;			
+	}				
+	public void setTotalDate(String totalDate) {				
+		this.totalDate = totalDate;			
+	}				
+	public String getYdate() {				
+		return ydate;			
+	}				
+	public void setYdate(String ydate) {				
+		this.ydate = ydate;			
+	}				
+	public String getMdate() {				
+		return mdate;			
+	}				
+	public void setMdate(String mdate) {				
+		this.mdate = mdate;			
+	}				
+	public String getDdate() {				
+		return ddate;			
+	}				
+	public void setDdate(String ddate) {				
+		this.ddate = ddate;			
+	}				
+	public String getTdate() {				
+		return tdate;			
+	}				
+	public void setTdate(String tdate) {				
+		this.tdate = tdate;			
+		}			
+
+	
+	
+	
 	public String getSEQNO() {
 		return SEQNO;
 	}

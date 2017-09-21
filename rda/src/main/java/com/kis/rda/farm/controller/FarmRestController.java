@@ -29,21 +29,21 @@ public class FarmRestController {
 
 	//목장자료 - 기존 목장 추가
 	@RequestMapping(value = "/farmAdd", method = RequestMethod.POST)
-	public int farmAddCtrl(Farm farm) {
+	public int farmAdd(Farm farm) {
 		int result = farmService.insertFarmServ(farm);
 		return result;
 	}
 	
 	//목장자료 - 기존 목장 수정
 	@RequestMapping(value = "/farmUpdate", method = RequestMethod.POST)
-	public int farmUpdateCtrl(Farm farm) {
+	public int farmUpdate(Farm farm) {
 		int result = farmService.updateFarmServ(farm);
 		return result;
 	}
 	
 	//목장자료 - 기존 목장 삭제
 	@RequestMapping(value = "/farmDelete", method = RequestMethod.POST)
-	public int farmDeleteCtrl(
+	public int farmDelete(
 			@RequestParam(value="farmId") String farmId) {
 		int result = farmService.deleteFarmServ(farmId);
 		return result;
@@ -184,7 +184,7 @@ public class FarmRestController {
 		}
 		//목장자료 - 신규 목장 삭제
 		@RequestMapping(value = "/ajax/newfarmDelete", method = RequestMethod.POST)
-		public int newfarmDeleteCtrl(
+		public int ajaxnewfarmDelete(
 				@RequestParam(value="farmId") String farmId) {
 			int result = farmService.ajaxnewfarmDelete(farmId);
 			return result;

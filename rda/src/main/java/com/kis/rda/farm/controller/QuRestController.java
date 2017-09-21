@@ -19,8 +19,7 @@ import com.kis.rda.farm.service.QuService;
 				
 @RestController				
 public class QuRestController {				
-@Autowired
-private FarmService farmService;
+ 
 				
 @Autowired				
 private QuService quService;				
@@ -64,15 +63,13 @@ return map;
 
 //목장자료 - 기존 목장 수정
 	@RequestMapping(value = "/ajax/input_qu", method = RequestMethod.POST)
-	public int farmUpdateCtrl(Model model,Farm farm,String sfarm,QuResearch quresearch) {
+	public int ajaxinput_qu(Model model,Farm farm,String sfarm,QuResearch quresearch) {
 		//int result = farmService.updateFarmServ(farm);
-		System.out.println("목장 수정"+farm);
-		System.out.println("목장 수정"+sfarm);
-		System.out.println("목장 수정"+quresearch.getQ1());
-		quresearch.getQ1();
+  
+		quresearch.setQ_DATE(quresearch.getTotalDate());
 		int result = quService.quresearchInput(quresearch);
-		 
-		System.out.println("목장 수정"+result);
+		
+		System.out.println("확인"+quresearch.getQ_DATE());		
 		return result;
 	}
 	

@@ -47,7 +47,7 @@ function input_qu() {
 			&& f.Q19.value >= 1 && f.Q20.value >= 1 && f.Q21.value >= 1
 			&& f.Q22.value >= 1 && f.Q23.value >= 1 && f.Q24.value >= 1
 			&& f.Q25.value >= 1 && f.Q26.value >= 1 && f.Q27.value >= 1 
-			&& f.Q_DATE1.value >= 1 && f.Q_DATE2.value >= 1 && f.Q_DATE3.value >= 1
+			&& f.ydate.value >= 1 && f.mdate.value >= 1 && f.ddate.value >= 1
 			&& f.NAME.value != "") {}else {
 				alert("설문표를 다 작성해주시기 바랍니다");
  				return false;
@@ -90,7 +90,7 @@ function input_qu() {
 				&& f.Q19.value >= 1 && f.Q20.value >= 1 && f.Q21.value >= 1
 				&& f.Q22.value >= 1 && f.Q23.value >= 1 && f.Q24.value >= 1
 				&& f.Q25.value >= 1 && f.Q26.value >= 1 && f.Q27.value >= 1 
-				&& f.Q_DATE1.value >= 1 && f.Q_DATE2.value >= 1 && f.Q_DATE3.value >= 1
+				&& f.ydate.value >= 1 && f.mdate.value >= 1 && f.ddate.value >= 1
 				&& f.NAME.value != "") {
 			if (confirm("등록하시겠습니까?")) {
 				$('#regForm').submit();
@@ -178,17 +178,90 @@ function input_qu() {
                      <div align="right">
 					<td class="tg-hgcj" align="right">점검일</td>
 					<td style="padding-left: 5px" align="right">
-					<input name="Q_DATE1"
-						id="Q_DATE1"
-						onKeyUp="if ( isNaN(this.value) ) { alert('숫자만 입력가능합니다.'); this.value=''; } else { if(this.value > 9999) { this.value = this.value.substring(0,4); } }"
-						type="text" maxlength="4" style='width: 50px;' />년 <input
-						name="Q_DATE2" id="Q_DATE2"
-						onKeyUp="if ( isNaN(this.value) ) { alert('숫자만 입력가능합니다.'); this.value=''; } else { if(this.value > 12) { alert('1~12 사이의 숫자로 입력바랍니다.'); } }"
-						type="text" maxlength="2" style='width: 50px;' />월 <input
-						name="Q_DATE3" id="Q_DATE3"
-						onKeyUp="if ( isNaN(this.value) ) { alert('숫자만 입력가능합니다.'); this.value=''; } else { if(this.value > 31) { alert('1~32 사이의 숫자로 입력바랍니다.'); } }"
-						type="text" maxlength="2" style='width: 50px;' />일</td>
-					<td class="tg-hgcj" align="right">점검자</td>
+<!-- 					<input name="Q_DATE1" -->
+<!-- 						id="Q_DATE1" -->
+<!-- 						onKeyUp="if ( isNaN(this.value) ) { alert('숫자만 입력가능합니다.'); this.value=''; } else { if(this.value > 9999) { this.value = this.value.substring(0,4); } }" -->
+<!-- 						type="text" maxlength="4" style='width: 50px;' />년 <input -->
+<!-- 						name="Q_DATE2" id="Q_DATE2" -->
+<!-- 						onKeyUp="if ( isNaN(this.value) ) { alert('숫자만 입력가능합니다.'); this.value=''; } else { if(this.value > 12) { alert('1~12 사이의 숫자로 입력바랍니다.'); } }" -->
+<!-- 						type="text" maxlength="2" style='width: 50px;' />월 <input -->
+<!-- 						name="Q_DATE3" id="Q_DATE3" -->
+<!-- 						onKeyUp="if ( isNaN(this.value) ) { alert('숫자만 입력가능합니다.'); this.value=''; } else { if(this.value > 31) { alert('1~32 사이의 숫자로 입력바랍니다.'); } }" -->
+<!-- 						type="text" maxlength="2" style='width: 50px;' />일 -->
+	<select name="ydate" id="ydate">
+    <option value="" selected="selected">년도선택</option>
+    <option value="2017">2017년</option>
+    <option value="2018">2018년</option>
+    <option value="2019">2019년</option>
+    <option value="2020">2020년</option>
+    <option value="2021">2021년</option>
+    <option value="2022">2022년</option>
+    <option value="2023">2023년</option>
+    <option value="2024">2024년</option>
+    <option value="2025">2025년</option>
+    <option value="2026">2026년</option>
+    <option value="2027">2027년</option>
+    <option value="2028">2028년</option>
+    <option value="2029">2029년</option>
+    <option value="2030">2030년</option>
+</select>					
+						
+<select name="mdate" id="mdate">
+    <option value="" selected="selected">월 선택</option>
+    <option value="01">01월</option>
+    <option value="02">02월</option>
+    <option value="03">03월</option>
+    <option value="04">04월</option>
+    <option value="05">05월</option>
+    <option value="06">06월</option>
+    <option value="07">07월</option>
+    <option value="08">08월</option>
+    <option value="09">09월</option>
+    <option value="10">10월</option>
+    <option value="11">11월</option>
+    <option value="12">12월</option>
+</select>
+<select name="ddate" id="ddate">
+    <option value="" selected="selected">일 선택</option>
+    <option value="01">01일</option>
+    <option value="02">02일</option>
+    <option value="03">03일</option>
+    <option value="04">04일</option>
+    <option value="05">05일</option>
+    <option value="06">06일</option>
+    <option value="07">07일</option>
+    <option value="08">08일</option>
+    <option value="09">09일</option>
+    <option value="10">10일</option>
+    <option value="11">11일</option>
+    <option value="12">12일</option>
+    <option value="13">13일</option>
+    <option value="14">14일</option>
+    <option value="15">15일</option>
+    <option value="16">16일</option>
+    <option value="17">17일</option>
+    <option value="18">18일</option>
+    <option value="19">19일</option>
+    <option value="20">20일</option>
+    <option value="21">21일</option>
+    <option value="22">22일</option>
+    <option value="23">23일</option>
+    <option value="24">24일</option>
+    <option value="25">25일</option>
+    <option value="26">26일</option>
+    <option value="27">27일</option>
+    <option value="28">28일</option>
+    <option value="29">29일</option>
+    <option value="30">30일</option>
+    <option value="31">31일</option>
+</select>
+ 
+						
+						
+						</td>
+					<td class="tg-hgcj" align="right">점검자
+					
+					</td>
 					<td style="padding-left: 5px" align="right"><input type="text" name="NAME"
 						id="NAME"></td>
 						</div>

@@ -23,21 +23,21 @@ public class FarmController {
 	@Autowired
 	private FarmService farmService;
 	
-	//목장자료 - 기존 목장 LIST
-	@RequestMapping(value = "/farmList_old", method = RequestMethod.GET)
-	public String farmListCtrl_old(Model model,
-			@RequestParam(value="pageNum", defaultValue="1") int pageNum,
-			@RequestParam(value="searchOption", defaultValue="none") String searchOption,
-			@RequestParam(value="searchValue", defaultValue="none") String searchValue) {
-		Map<String, Object> map = farmService.selectFarmListServ(pageNum, searchOption, searchValue);
-		model.addAttribute("farmList", map.get("farmList"));
-		model.addAttribute("totalCount", map.get("totalCount"));
-		model.addAttribute("paging", map.get("paging"));
-		model.addAttribute("searchOption", searchOption);
-		model.addAttribute("searchValue", searchValue);
-		return "data_management/farm/farm_list";
-	}
-	
+//	//목장자료 - 기존 목장 LIST
+//	@RequestMapping(value = "/farmList_old", method = RequestMethod.GET)
+//	public String farmListCtrl_old(Model model,
+//			@RequestParam(value="pageNum", defaultValue="1") int pageNum,
+//			@RequestParam(value="searchOption", defaultValue="none") String searchOption,
+//			@RequestParam(value="searchValue", defaultValue="none") String searchValue) {
+//		Map<String, Object> map = farmService.selectFarmListServ(pageNum, searchOption, searchValue);
+//		model.addAttribute("farmList", map.get("farmList"));
+//		model.addAttribute("totalCount", map.get("totalCount"));
+//		model.addAttribute("paging", map.get("paging"));
+//		model.addAttribute("searchOption", searchOption);
+//		model.addAttribute("searchValue", searchValue);
+//		return "data_management/farm/farm_list";
+//	}
+//	
 	
 	//목장자료 - 기존 목장 LIST
 		@RequestMapping(value = "/farmList", method = RequestMethod.GET)

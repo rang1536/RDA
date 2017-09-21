@@ -44,7 +44,7 @@ return "data_management/mh/mh_list";
 
 //병력자료 >(자료) 관리 > (병력자료)보기 
 @RequestMapping(value = "/mhEntityListDetail", method = RequestMethod.GET)	
-public String birEntityListDetail(Model model,	
+public String mhEntityListDetail(Model model,	
 @RequestParam(value="pageNum", defaultValue="1") int pageNum,	
 @RequestParam(value="searchOption", defaultValue="none") String searchOption,	
 @RequestParam(value="searchValue", defaultValue="none") String searchValue, String farmId, String entity_id ) {	
@@ -61,7 +61,7 @@ return "data_management/mh/mhEntity_list_detail";
 //  추가
 
 @RequestMapping(value = "/mhEntityInsert", method = RequestMethod.GET)	
-public String envEntityInsert(Model model,	
+public String mhEntityInsert(Model model,	
 @RequestParam(value="pageNum", defaultValue="1") int pageNum,	
 @RequestParam(value="searchOption", defaultValue="none") String searchOption,	
 @RequestParam(value="searchValue", defaultValue="none") String searchValue, String farmId, String entity_id) {	

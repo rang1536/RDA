@@ -26,20 +26,20 @@ private DataanalyService dataanalyService;
 				
 				
 				
-				
-@RequestMapping(value = "/dataanalyList", method = RequestMethod.GET)				
-public String dataanalyList(Model model,				
-@RequestParam(value="pageNum", defaultValue="1") int pageNum,				
-@RequestParam(value="searchOption", defaultValue="none") String searchOption,				
-@RequestParam(value="searchValue", defaultValue="none") String searchValue) {				
-Map<String, Object> map = dataanalyService.selectFarmListServ(pageNum, searchOption, searchValue);				
-model.addAttribute("farmList", map.get("farmList"));				
-model.addAttribute("totalCount", map.get("totalCount"));				
-model.addAttribute("paging", map.get("paging"));				
-model.addAttribute("searchOption", searchOption);				
-model.addAttribute("searchValue", searchValue);				
-return "data_management/farm/farm_list";				
-	}			
+//				
+//@RequestMapping(value = "/dataanalyList", method = RequestMethod.GET)				
+//public String dataanalyList(Model model,				
+//@RequestParam(value="pageNum", defaultValue="1") int pageNum,				
+//@RequestParam(value="searchOption", defaultValue="none") String searchOption,				
+//@RequestParam(value="searchValue", defaultValue="none") String searchValue) {				
+//Map<String, Object> map = dataanalyService.selectFarmListServ(pageNum, searchOption, searchValue);				
+//model.addAttribute("farmList", map.get("farmList"));				
+//model.addAttribute("totalCount", map.get("totalCount"));				
+//model.addAttribute("paging", map.get("paging"));				
+//model.addAttribute("searchOption", searchOption);				
+//model.addAttribute("searchValue", searchValue);				
+//return "data_management/farm/farm_list";				
+//	}			
 
 
 
@@ -70,35 +70,35 @@ public String fecesrecogList(Model model,
  model.addAttribute("searchValue", searchValue);				
 return "data_management/fecesrecogrecog/feserecog_list";				
 }	
-
-@RequestMapping(value = "/feserecogmngList", method = RequestMethod.GET)		
-public String feserecogmngList(Model model,		
-@RequestParam(value="pageNum", defaultValue="1") int pageNum,		
-@RequestParam(value="searchOption", defaultValue="none") String searchOption,		
-@RequestParam(value="searchValue", defaultValue="none") String searchValue, String farmId ) {		
-//Map<String, Object> map = envService.selectFarmListServ(pageNum, searchOption, searchValue);		
-		
-		
-model.addAttribute("farmId", farmId);		
-//model.addAttribute("paging", map.get("paging"));		
-//model.addAttribute("searchOption", searchOption);		
-//model.addAttribute("searchValue", searchValue);		
-return "data_management/fecesrecogmng/feserecogmngEntity_list";		
-}		
-@RequestMapping(value = "/feserecogrecogList", method = RequestMethod.GET)		
-public String feserecogrecogList(Model model,		
-@RequestParam(value="pageNum", defaultValue="1") int pageNum,		
-@RequestParam(value="searchOption", defaultValue="none") String searchOption,		
-@RequestParam(value="searchValue", defaultValue="none") String searchValue, String farmId ) {		
-//Map<String, Object> map = envService.selectFarmListServ(pageNum, searchOption, searchValue);		
-		
-		
-model.addAttribute("farmId", farmId);		
-//model.addAttribute("paging", map.get("paging"));		
-//model.addAttribute("searchOption", searchOption);		
-//model.addAttribute("searchValue", searchValue);		
-return "data_management/fecesrecogrecog/feserecogEntity_list";		
-}	
+//
+//@RequestMapping(value = "/feserecogmngList", method = RequestMethod.GET)		
+//public String feserecogmngList(Model model,		
+//@RequestParam(value="pageNum", defaultValue="1") int pageNum,		
+//@RequestParam(value="searchOption", defaultValue="none") String searchOption,		
+//@RequestParam(value="searchValue", defaultValue="none") String searchValue, String farmId ) {		
+////Map<String, Object> map = envService.selectFarmListServ(pageNum, searchOption, searchValue);		
+//		
+//		
+//model.addAttribute("farmId", farmId);		
+////model.addAttribute("paging", map.get("paging"));		
+////model.addAttribute("searchOption", searchOption);		
+////model.addAttribute("searchValue", searchValue);		
+//return "data_management/fecesrecogmng/feserecogmngEntity_list";		
+//}		
+//@RequestMapping(value = "/feserecogrecogList", method = RequestMethod.GET)		
+//public String feserecogrecogList(Model model,		
+//@RequestParam(value="pageNum", defaultValue="1") int pageNum,		
+//@RequestParam(value="searchOption", defaultValue="none") String searchOption,		
+//@RequestParam(value="searchValue", defaultValue="none") String searchValue, String farmId ) {		
+////Map<String, Object> map = envService.selectFarmListServ(pageNum, searchOption, searchValue);		
+//		
+//		
+//model.addAttribute("farmId", farmId);		
+////model.addAttribute("paging", map.get("paging"));		
+////model.addAttribute("searchOption", searchOption);		
+////model.addAttribute("searchValue", searchValue);		
+//return "data_management/fecesrecogrecog/feserecogEntity_list";		
+//}	
 
 
 @RequestMapping(value = "/feserecogmngEntityList", method = RequestMethod.GET)		
@@ -161,6 +161,22 @@ model.addAttribute("farmId", farmId);
 return "data_management/fecesrecogrecog/feserecogEntity_list_detail";		
 }	
 
+
+ 
+@RequestMapping(value = "/fecesEntityImg", method = RequestMethod.GET)		
+public String fecesEntityImg(Model model,		
+@RequestParam(value="pageNum", defaultValue="1") int pageNum,		
+@RequestParam(value="searchOption", defaultValue="none") String searchOption,		
+@RequestParam(value="searchValue", defaultValue="none") String searchValue, String farmId, String entity_id ) {		
+//Map<String, Object> map = envService.selectFarmListServ(pageNum, searchOption, searchValue);	
+		
+model.addAttribute("entity_id", entity_id);				
+model.addAttribute("farmId", farmId);		
+//model.addAttribute("paging", map.get("paging"));		
+//model.addAttribute("searchOption", searchOption);		
+//model.addAttribute("searchValue", searchValue);		
+return "data_management/fecesrecogrecog/feseEntityImg_list";		
+}	
 
 
 }				

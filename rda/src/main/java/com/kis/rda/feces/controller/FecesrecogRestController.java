@@ -20,21 +20,21 @@ public class FecesrecogRestController {
 				
 @Autowired				
 private DataanalyService dataanalyService;				
-@RequestMapping(value = "/ajax/dataanalyList", method = RequestMethod.POST)				
-public Map<String,Object> ajaxdataanalyList(Model model,				
-	@RequestParam(value="pageNum", defaultValue="1") int pageNum,			
-	@RequestParam(value="searchOption", defaultValue="none") String searchOption,			
-	@RequestParam(value="searchValue", defaultValue="none") String searchValue) {			
-Map<String, Object> map = dataanalyService.selectFarmListServ(pageNum, searchOption, searchValue);				
-model.addAttribute("farmList", map.get("farmList"));				
-model.addAttribute("totalCount", map.get("totalCount"));				
-model.addAttribute("paging", map.get("paging"));				
-model.addAttribute("searchOption", searchOption);				
-model.addAttribute("searchValue", searchValue);				
-				
-				
-return map;				
-}				
+//@RequestMapping(value = "/ajax/dataanalyList", method = RequestMethod.POST)				
+//public Map<String,Object> ajaxdataanalyList(Model model,				
+//	@RequestParam(value="pageNum", defaultValue="1") int pageNum,			
+//	@RequestParam(value="searchOption", defaultValue="none") String searchOption,			
+//	@RequestParam(value="searchValue", defaultValue="none") String searchValue) {			
+//Map<String, Object> map = dataanalyService.selectFarmListServ(pageNum, searchOption, searchValue);				
+//model.addAttribute("farmList", map.get("farmList"));				
+//model.addAttribute("totalCount", map.get("totalCount"));				
+//model.addAttribute("paging", map.get("paging"));				
+//model.addAttribute("searchOption", searchOption);				
+//model.addAttribute("searchValue", searchValue);				
+//				
+//				
+//return map;				
+//}				
 }				
 				
 				

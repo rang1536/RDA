@@ -72,7 +72,7 @@ return "data_management/senseentity/senseEntity_list_detail";
 
 
 @RequestMapping(value = "/senseEntityChart", method = RequestMethod.GET)				
-public String senseChart(Model model,				
+public String senseEntityChart(Model model,				
 @RequestParam(value="pageNum", defaultValue="1") int pageNum,				
 @RequestParam(value="searchOption", defaultValue="none") String searchOption,				
 @RequestParam(value="searchValue", defaultValue="none") String searchValue,String sense_nodeId,String sense_cuId) {				
@@ -89,7 +89,7 @@ return "data_management/senseentity/chart_22";
 	}		
 //===============================축사================================================		
 @RequestMapping(value = "/senseStableList", method = RequestMethod.GET)				
-public String senseList(Model model,				
+public String senseStableList(Model model,				
 @RequestParam(value="pageNum", defaultValue="1") int pageNum,				
 @RequestParam(value="searchOption", defaultValue="none") String searchOption,				
 @RequestParam(value="searchValue", defaultValue="none") String searchValue) {				

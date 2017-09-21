@@ -74,7 +74,7 @@ SELECT  rownum as rnum,a.FARM_ID
 <!--  환경 추가 -->
 <insert id="ajaxenvEntityInsertDo" parameterType="com.kis.rda.common.domain.Environment">
 	INSERT INTO rda_test.ENVIRONMENT (
-         
+         SEQNO,
 				farm_id ,
 			 
 			<if test="CLEAN != null">
@@ -96,6 +96,7 @@ SELECT  rownum as rnum,a.FARM_ID
 		INPUTDATE
 	) 
 	VALUES(
+	rda_test.SEQ_ENVIRONMENT.nextval	,
 		     #{FARM_ID},
 			<if test="CLEAN != null">
 				 #{CLEAN},

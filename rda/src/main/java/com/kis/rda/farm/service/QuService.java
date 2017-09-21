@@ -42,14 +42,14 @@ public Map<String, Object> selectFarmListServ(int pageNum, String searchOption, 
 }
 public int quresearchInput(QuResearch quresearch) {
  
-	System.out.println("목장 수정"+quresearch.getQ_DATE1());
-	System.out.println("목장 수정"+quresearch.getQ_DATE2());
-	System.out.println("목장 수정"+quresearch.getQ_DATE3());
-	String qdate1 = quresearch.getQ_DATE1();
-	String qdate2 = quresearch.getQ_DATE2();
-	String qdate3 = quresearch.getQ_DATE3();
-	String q_DATE = qdate1+"년"+qdate2+"월"+qdate3+"일";
-	quresearch.setQ_DATE(q_DATE);
+//	System.out.println("목장 수정"+quresearch.getQ_DATE1());
+//	System.out.println("목장 수정"+quresearch.getQ_DATE2());
+//	System.out.println("목장 수정"+quresearch.getQ_DATE3());
+//	String qdate1 = quresearch.getQ_DATE1();
+//	String qdate2 = quresearch.getQ_DATE2();
+//	String qdate3 = quresearch.getQ_DATE3();
+//	String q_DATE = qdate1+"년"+qdate2+"월"+qdate3+"일";
+//	quresearch.setQ_DATE(q_DATE);
 	return quDao.quresearchInput(quresearch);
 	
 }							

@@ -25,22 +25,22 @@ private BasicService basicService;
 		
 		
 		
-@RequestMapping(value = "/temperList", method = RequestMethod.GET)		
-public String temperList(Model model,		
-@RequestParam(value="pageNum", defaultValue="1") int pageNum,		
-@RequestParam(value="searchOption", defaultValue="none") String searchOption,		
-@RequestParam(value="searchValue", defaultValue="none") String searchValue) {		
-Map<String, Object> map = basicService.selectFarmListServ(pageNum, searchOption, searchValue);		
-model.addAttribute("farmList", map.get("farmList"));		
-model.addAttribute("totalCount", map.get("totalCount"));		
-model.addAttribute("paging", map.get("paging"));		
-model.addAttribute("searchOption", searchOption);		
-model.addAttribute("searchValue", searchValue);		
-return "data_management/farm/farm_list";		
-	}	
+//@RequestMapping(value = "/temperList", method = RequestMethod.GET)		
+//public String temperList(Model model,		
+//@RequestParam(value="pageNum", defaultValue="1") int pageNum,		
+//@RequestParam(value="searchOption", defaultValue="none") String searchOption,		
+//@RequestParam(value="searchValue", defaultValue="none") String searchValue) {		
+//Map<String, Object> map = basicService.selectFarmListServ(pageNum, searchOption, searchValue);		
+//model.addAttribute("farmList", map.get("farmList"));		
+//model.addAttribute("totalCount", map.get("totalCount"));		
+//model.addAttribute("paging", map.get("paging"));		
+//model.addAttribute("searchOption", searchOption);		
+//model.addAttribute("searchValue", searchValue);		
+//return "data_management/farm/farm_list";		
+//}	
 
 @RequestMapping(value = "/basicTempList", method = RequestMethod.GET)				
-public String fecesTempList(Model model,				
+public String basicTempList(Model model,				
 @RequestParam(value="pageNum", defaultValue="1") int pageNum,				
 @RequestParam(value="searchOption", defaultValue="none") String searchOption,				
 @RequestParam(value="searchValue", defaultValue="none") String searchValue) {				
@@ -90,7 +90,7 @@ return "data_management/basictemp/chart_3";
 
 //============================================================
 @RequestMapping(value = "/basicActiveList", method = RequestMethod.GET)				
-public String fecesActiveList(Model model,				
+public String basicActiveList(Model model,				
 @RequestParam(value="pageNum", defaultValue="1") int pageNum,				
 @RequestParam(value="searchOption", defaultValue="none") String searchOption,				
 @RequestParam(value="searchValue", defaultValue="none") String searchValue) {				

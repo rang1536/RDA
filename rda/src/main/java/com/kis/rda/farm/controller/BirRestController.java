@@ -24,7 +24,7 @@ public class BirRestController {
 @Autowired				
 private BirService birService;				
 @RequestMapping(value = "/ajax/birList", method = RequestMethod.POST)				
-public Map<String,Object> ajaxbirListl(Model model,				
+public Map<String,Object>ajaxbirList(Model model,				
 	@RequestParam(value="pageNum", defaultValue="1") int pageNum,			
 	@RequestParam(value="searchOption", defaultValue="none") String searchOption,			
 	@RequestParam(value="searchValue", defaultValue="none") String searchValue) {			

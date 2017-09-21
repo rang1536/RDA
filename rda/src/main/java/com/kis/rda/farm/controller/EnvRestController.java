@@ -66,9 +66,10 @@ return map;
 	 
 //		System.out.println(" 환경 입력하기   "+environment.getFARM_ID());
  		
-		String eNV_GATHERDATE= environment.getEnv_date1()+"년"+environment.getEnv_res2()+"월"+environment.getEnv_res3()+"일"+environment.getEnv_res4()+"시";
-		environment.setENV_GATHERDATE(eNV_GATHERDATE);	
-	 
+//		String eNV_GATHERDATE= environment.getEnv_date1()+"년"+environment.getEnv_res2()+"월"+environment.getEnv_res3()+"일"+environment.getEnv_res4()+"시";
+//		environment.setENV_GATHERDATE(eNV_GATHERDATE);	
+ 
+	 environment.setENV_GATHERDATE( environment.getTotalDate());
 		int result = envService.ajaxenvEntityInsertDo(environment);
 		System.out.println(" 환경 입력하기   ");
 	 

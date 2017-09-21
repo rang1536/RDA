@@ -17,13 +17,13 @@ public class DatamanageDao {
 @Autowired		
 private SqlSessionTemplate sqlSession;		
 		
-		
-	public int selectDatamanageCount(Map<String, Object> map){	
-		return sqlSession.selectOne("DatamanageDao.selectFarmCount", map);
-	}	
-public List<Feces> selectDatamanageList(Map<String, Object> map){		
-	return sqlSession.selectList("DatamanageDao.selectFarmList", map);	
-	}	
+//		
+//	public int selectDatamanageCount(Map<String, Object> map){	
+//		return sqlSession.selectOne("DatamanageDao.selectFarmCount", map);
+//	}	
+//public List<Feces> selectDatamanageList(Map<String, Object> map){		
+//	return sqlSession.selectList("DatamanageDao.selectFarmList", map);	
+//	}	
 }		
 		
 		

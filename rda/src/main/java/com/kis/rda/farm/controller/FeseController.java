@@ -51,7 +51,7 @@ return "data_management/feces/fese_list";
 
 //병력자료 >(자료) 관리 
 @RequestMapping(value = "/feseEntityList", method = RequestMethod.GET)		
-public String mhEntityList(Model model,		
+public String feseEntityList(Model model,		
 @RequestParam(value="pageNum", defaultValue="1") int pageNum,		
 @RequestParam(value="searchOption", defaultValue="none") String searchOption,		
 @RequestParam(value="searchValue", defaultValue="none") String searchValue, String farmId ) {		
@@ -69,7 +69,7 @@ return "data_management/feces/feseEntity_list";
 
 
 @RequestMapping(value = "/fecesEntityInsert", method = RequestMethod.GET)	
-public String envEntityInsert(Model model,	
+public String fecesEntityInsert(Model model,	
 @RequestParam(value="pageNum", defaultValue="1") int pageNum,	
 @RequestParam(value="searchOption", defaultValue="none") String searchOption,	
 @RequestParam(value="searchValue", defaultValue="none") String searchValue, String farmId, String entity_id) {	
@@ -110,7 +110,7 @@ return "data_management/feces/feseEntityImg_list";
 // 분변 이미지 입력 후 보기 페이지로이동
 
 @RequestMapping(value = "/ajax/feseEntityInsertDoGET", method = RequestMethod.POST)		
-public String ajaxfeseEntityInsertDo(Model model,Farm farm,String farm_Id,FecesInput  entityInsert,MultipartHttpServletRequest request,MultipartFile file,String entity_id, Fecesimg entityImgInsert) throws IllegalStateException, IOException {		
+public String  feseEntityInsertDo(Model model,Farm farm,String farm_Id,FecesInput  entityInsert,MultipartHttpServletRequest request,MultipartFile file,String entity_id, Fecesimg entityImgInsert) throws IllegalStateException, IOException {		
 		
 	//MultipartFile file = request.getFile("uploadfile");
 	
