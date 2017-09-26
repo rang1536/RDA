@@ -140,8 +140,8 @@ $(document).ready(function(){
 		<tbody><tr>
 			<th>관리번호</th>
 			<td style="padding-left: 5px">
-            	<input type="hidden" name="ENTITY_ID" id="ENTITY_ID" value="${entity_id}">
-            	<input type="text" name="casenum" id="casenum" disabled="disabled" value="자동생성" style="background-color: #e2e2e2;"><br>
+            	<input type="hidden" name="ENTITY_ID" id="ENTITY_ID" value="${old_entity_id}">
+            	<input type="text" name="casenum" id="casenum" disabled="disabled" value="${old_entity_id}" style="background-color: #e2e2e2;"><br>
             </td>
         </tr>
 		<tr>

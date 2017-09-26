@@ -104,14 +104,15 @@ SEQNO,
 	INPUTDATE)	
 	VALUES(	
 	 rda_test.SEQ_BIR.nextval	,
-   (select (#{farm_id})|| CASE
-        WHEN LPAD((max(substr(entity_id,4,6))+1),3,'0') is null THEN '001'   
-        ELSE LPAD((max(substr(entity_id,4,6))+1),3,'0')                                                    
-    END 
-	from 
-	 rda_test.bir
-    where
-     substr(entity_id,0,3)=#{farm_id}),
+	 #{ENTITY_ID},
+<!--    (select (#{farm_id})|| CASE -->
+<!--         WHEN LPAD((max(substr(entity_id,4,6))+1),3,'0') is null THEN '001'    -->
+<!--         ELSE LPAD((max(substr(entity_id,4,6))+1),3,'0')                                                     -->
+<!--     END  -->
+<!-- 	from  -->
+<!-- 	 rda_test.bir -->
+<!--     where -->
+<!--      substr(entity_id,0,3)=#{farm_id}), -->
 	<if test="CHECK_DATE!= null">#{CHECK_DATE},</if>	
 	<if test="TEMPER!= null">#{TEMPER},</if>	
 	<if test="HEARTRATE!= null">#{HEARTRATE},</if>	

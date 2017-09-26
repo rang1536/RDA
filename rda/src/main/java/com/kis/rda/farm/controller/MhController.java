@@ -110,77 +110,77 @@ public String birEntityUpdate(Model model,
 //model.addAttribute("searchValue", searchValue);	
 	
 	
-
-MhListDetail mhListDetail= mhService.mhEntitySelectOneBeforeUpdate(entity_id);		
+	MhListDetail mhListDetail= mhService.mhEntitySelectOneBeforeUpdate(seqno);		
+//MhListDetail mhListDetail= mhService.mhEntitySelectOneBeforeUpdate(entity_id);		
 //System.out.println("목장   mhEntityUpdateSelectOne"+map.get("envList").toString());		
  		
 //날짜 자르기...
 
-String cure=mhListDetail.getCURE_DATE();
-int idx = cure.indexOf("년"); 
-String cure1 = cure.substring(0, idx); //년
-String cure11 = cure.substring(idx+1);
-
-int idx1 = cure11.indexOf("월");
-String cure2 = cure11.substring(0,idx1); //월
-
-String cure12 = cure11.substring(idx1+1);
-int idx2 = cure12.indexOf("일");
-String cure3 = cure12.substring(0,idx2); //일
-
-String cure13 = cure12.substring(idx2+1);
-int idx3 = cure13.indexOf("시");
-String cure4 = cure13.substring(0,idx3); //시
-
-mhListDetail.setCure1(cure1);
-mhListDetail.setCure2(cure2);
-mhListDetail.setCure3(cure3);
-mhListDetail.setCure4(cure4);
-//날짜 자르기...
-
- cure=mhListDetail.getOCCUR_DATE();
- idx = cure.indexOf("년"); 
- cure1 = cure.substring(0, idx); //년
- cure11 = cure.substring(idx+1);
-
- idx1 = cure11.indexOf("월");
- cure2 = cure11.substring(0,idx1); //월
-
- cure12 = cure11.substring(idx1+1);
- idx2 = cure12.indexOf("일");
- cure3 = cure12.substring(0,idx2); //일
-
- cure13 = cure12.substring(idx2+1);
- idx3 = cure13.indexOf("시");
- cure4 = cure13.substring(0,idx3); //시
-
-mhListDetail.setOccur1(cure1);
-mhListDetail.setOccur2(cure2);
-mhListDetail.setOccur3(cure3);
-mhListDetail.setOccur4(cure4);
-
-
-cure=mhListDetail.getRECOVERY_DATE();
- idx = cure.indexOf("년"); 
- cure1 = cure.substring(0, idx); //년
- cure11 = cure.substring(idx+1);
-
- idx1 = cure11.indexOf("월");
- cure2 = cure11.substring(0,idx1); //월
-
- cure12 = cure11.substring(idx1+1);
- idx2 = cure12.indexOf("일");
- cure3 = cure12.substring(0,idx2); //일
-
- cure13 = cure12.substring(idx2+1);
- idx3 = cure13.indexOf("시");
- cure4 = cure13.substring(0,idx3); //시
-
-mhListDetail.setRecov1(cure1);
-mhListDetail.setRecov2(cure2);
-mhListDetail.setRecov3(cure3);
-mhListDetail.setRecov4(cure4);
-
+//String cure=mhListDetail.getCURE_DATE();
+//int idx = cure.indexOf("년"); 
+//String cure1 = cure.substring(0, idx); //년
+//String cure11 = cure.substring(idx+1);
+//
+//int idx1 = cure11.indexOf("월");
+//String cure2 = cure11.substring(0,idx1); //월
+//
+//String cure12 = cure11.substring(idx1+1);
+//int idx2 = cure12.indexOf("일");
+//String cure3 = cure12.substring(0,idx2); //일
+//
+//String cure13 = cure12.substring(idx2+1);
+//int idx3 = cure13.indexOf("시");
+//String cure4 = cure13.substring(0,idx3); //시
+//
+//mhListDetail.setCure1(cure1);
+//mhListDetail.setCure2(cure2);
+//mhListDetail.setCure3(cure3);
+//mhListDetail.setCure4(cure4);
+////날짜 자르기...
+//
+// cure=mhListDetail.getOCCUR_DATE();
+// idx = cure.indexOf("년"); 
+// cure1 = cure.substring(0, idx); //년
+// cure11 = cure.substring(idx+1);
+//
+// idx1 = cure11.indexOf("월");
+// cure2 = cure11.substring(0,idx1); //월
+//
+// cure12 = cure11.substring(idx1+1);
+// idx2 = cure12.indexOf("일");
+// cure3 = cure12.substring(0,idx2); //일
+//
+// cure13 = cure12.substring(idx2+1);
+// idx3 = cure13.indexOf("시");
+// cure4 = cure13.substring(0,idx3); //시
+//
+//mhListDetail.setOccur1(cure1);
+//mhListDetail.setOccur2(cure2);
+//mhListDetail.setOccur3(cure3);
+//mhListDetail.setOccur4(cure4);
+//
+//
+//cure=mhListDetail.getRECOVERY_DATE();
+// idx = cure.indexOf("년"); 
+// cure1 = cure.substring(0, idx); //년
+// cure11 = cure.substring(idx+1);
+//
+// idx1 = cure11.indexOf("월");
+// cure2 = cure11.substring(0,idx1); //월
+//
+// cure12 = cure11.substring(idx1+1);
+// idx2 = cure12.indexOf("일");
+// cure3 = cure12.substring(0,idx2); //일
+//
+// cure13 = cure12.substring(idx2+1);
+// idx3 = cure13.indexOf("시");
+// cure4 = cure13.substring(0,idx3); //시
+//
+//mhListDetail.setRecov1(cure1);
+//mhListDetail.setRecov2(cure2);
+//mhListDetail.setRecov3(cure3);
+//mhListDetail.setRecov4(cure4);
+//
 
 
 model.addAttribute("mhEntityList", mhListDetail);		

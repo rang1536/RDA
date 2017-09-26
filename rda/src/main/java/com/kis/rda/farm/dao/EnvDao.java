@@ -30,9 +30,9 @@ public List<Environment> ajaxenvEntityList(Map<String, Object> map) {
 
 	return sqlSession.selectList("EnvDao.ajaxenvEntityList", map);
 }
-public String envEntityUpdateSelectOne(String farmId) {
-
-		return sqlSession.selectOne("EnvDao.envEntityUpdateSelectOne",farmId);
+public Environment envEntityUpdateSelectOne(String seqno) {
+	System.out.println(seqno);
+		return sqlSession.selectOne("EnvDao.envEntityUpdateSelectOne",seqno);
  	}
 public int ajaxenvEntityUpdateDo(Environment environment) {
  

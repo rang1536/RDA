@@ -19,7 +19,31 @@ public class Fecesimg {
 		public String getTotalDate() {			
 		totalDate=	ydate+"/"+mdate+"/"+ddate+"/"+tdate;		
 		return totalDate;			
-	}				
+	}			
+		public void setGETIMGDATE(String gETIMGDATE) {
+			String[] date = gETIMGDATE.split("/");
+//			ydate=array[0];
+//				mdate=array[1];
+//				ddate=array[2];
+//				tdate=array[3];
+			 if(date.length==1) {
+					setYdate(date[0]);
+			 }else if (date.length==2) {
+				 setYdate(date[0]);
+					setMdate(date[1]);
+			 }else if (date.length==3) {
+				 setYdate(date[0]);
+					setMdate(date[1]);
+					setDdate(date[2]);
+			 }else if (date.length==4) {
+					setYdate(date[0]);
+					setMdate(date[1]);
+					setDdate(date[2]);
+					setTdate(date[3]);
+			 }
+			
+			GETIMGDATE = gETIMGDATE;
+		}
 	public void setTotalDate(String totalDate) {				
 		this.totalDate = totalDate;			
 	}				
@@ -71,9 +95,9 @@ public class Fecesimg {
 		return GETIMGDATE;
 	}
 
-	public void setGETIMGDATE(String gETIMGDATE) {
-		GETIMGDATE = gETIMGDATE;
-	}
+//	public void setGETIMGDATE(String gETIMGDATE) {
+//		GETIMGDATE = gETIMGDATE;
+//	}
 
 	public String getORIGINIMG() {
 		return ORIGINIMG;

@@ -27,11 +27,42 @@ public class Istat {
 	private String	 ddate;			
 	private String	 	tdate;		
 					
-					
+	private String	 view_totalGathDate;					
+	public String getView_totalGathDate() {	
+		view_totalGathDate=	ydate+"년"+mdate+"월"+ddate+"일"+tdate+"시";	
+		return view_totalGathDate;	
+	}				
 		public String getTotalDate() {			
 		totalDate=	ydate+"/"+mdate+"/"+ddate+"/"+tdate;		
 		return totalDate;			
 	}				
+		
+		public void setISTAT_GATHERDATE(String iSTAT_GATHERDATE) {
+
+			String[] date = iSTAT_GATHERDATE.split("/");
+//			ydate=array[0];
+//				mdate=array[1];
+//				ddate=array[2];
+//				tdate=array[3];
+			 if(date.length==1) {
+					setYdate(date[0]);
+			 }else if (date.length==2) {
+				 setYdate(date[0]);
+					setMdate(date[1]);
+			 }else if (date.length==3) {
+				 setYdate(date[0]);
+					setMdate(date[1]);
+					setDdate(date[2]);
+			 }else if (date.length==4) {
+					setYdate(date[0]);
+					setMdate(date[1]);
+					setDdate(date[2]);
+					setTdate(date[3]);
+			 }
+			
+			ISTAT_GATHERDATE = iSTAT_GATHERDATE;
+		}
+
 	public void setTotalDate(String totalDate) {				
 		this.totalDate = totalDate;			
 	}				
@@ -80,9 +111,9 @@ public class Istat {
 		return ISTAT_GATHERDATE;
 	}
 
-	public void setISTAT_GATHERDATE(String iSTAT_GATHERDATE) {
-		ISTAT_GATHERDATE = iSTAT_GATHERDATE;
-	}
+//	public void setISTAT_GATHERDATE(String iSTAT_GATHERDATE) {
+//		ISTAT_GATHERDATE = iSTAT_GATHERDATE;
+//	}
 
 	public String getNA() {
 		return NA;

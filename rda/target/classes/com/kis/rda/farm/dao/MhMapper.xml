@@ -12,8 +12,8 @@
    <result property="RECOVERY_DATE" column="RECOVERY_DATE"  javaType="java.lang.String" />									
    <result property="INPUTDATE" column="INPUTDATE"  javaType="java.lang.String" />									
    <result property="UPDATEDATE" column="UPDATEDATE"  javaType="java.lang.String" />	
-  	   <result property="SEQNO" column="SEQNO"  javaType="java.lang.String" />
-  						
+ <result property="SEQNO" column="SEQNO"  javaType="java.lang.String" />
+ 					
    				 
    </resultMap>
    
@@ -28,7 +28,7 @@ a.*
 SELECT rownum as rnum,
 a.*
  FROM RDA_TEST.MEDICALHISTORY  a 
- WHERE ENTITY_ID = #{ENTITY_ID}	
+ WHERE SEQNO = #{SEQNO}	
 </select>
 
  <select id="mhEntityInsertSelectOne" parameterType="String" resultType="String">

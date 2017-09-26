@@ -48,14 +48,61 @@ tr.bottom_button td{
 //리스트 가져와 뿌리기
 $(document).ready(function(){
 	 
-			$.ajax({
-				url : "${pageContext.request.contextPath }/ajax/envEntitySelectOneDo?farm_id=${farmId}",
-				type : "POST",
-				success : function(data) {
-					 console.log(data);
+	var FARM_ID="${EntityList.getFARM_ID()}";
+	var ENV_GATHERDATE="${EntityList.getENV_GATHERDATE()}";
+	var CLEAN="${EntityList.getCLEAN()}";
+	var WTC="${EntityList.getWTC()}";
+	var WSQ="${EntityList.getWSQ()}";
+	var FQ="${EntityList.getFQ()}";
+	var INPUTDATE="${EntityList.getINPUTDATE()}";
+	var UPDATEDATE="${EntityList.getUPDATEDATE()}";
+	var SEQNO="${EntityList.getSEQNO()}";
+	var Ydate="${EntityList.getYdate()}";
+	var Mdate="${EntityList.getMdate()}";
+	var Ddate="${EntityList.getDdate()}";
+	var Tdate="${EntityList.getTdate()}";
 
-				}
-			})
+	 console.log(FARM_ID);
+	 console.log(ENV_GATHERDATE);
+	 console.log(CLEAN);
+	 console.log(WTC);
+	 console.log(WSQ);
+	 console.log(FQ);
+	 console.log(INPUTDATE);
+	 console.log(UPDATEDATE);
+	 console.log(SEQNO);
+	 console.log(Ydate);
+	 console.log(Mdate);
+	 console.log(Ddate);
+	 console.log(Tdate);
+
+// 	 $('input:radio[name=FARM_ID]:input[value=' +FARM_ID+ ']').attr("checked", true);
+// 	 $('input:radio[name=ENV_GATHERDATE]:input[value=' +ENV_GATHERDATE+ ']').attr("checked", true);
+	 $('input:radio[name=CLEAN]:input[value=' +CLEAN+ ']').attr("checked", true);
+	 $('input:radio[name=WTC]:input[value=' +WTC+ ']').attr("checked", true);
+	 $('input:radio[name=WSQ]:input[value=' +WSQ+ ']').attr("checked", true);
+	 $('input:radio[name=FQ]:input[value=' +FQ+ ']').attr("checked", true);
+	// $('input:radio[name=INPUTDATE]:input[value=' +INPUTDATE+ ']').attr("checked", true);
+	// $('input:radio[name=UPDATEDATE]:input[value=' +UPDATEDATE+ ']').attr("checked", true);
+	// $('input:radio[name=SEQNO]:input[value=' +SEQNO+ ']').attr("checked", true);
+// 	 $('input:radio[name=Ydate]:input[value=' +Ydate+ ']').attr("checked", true);
+// 	 $('input:radio[name=Mdate]:input[value=' +Mdate+ ']').attr("checked", true);
+// 	 $('input:radio[name=Ddate]:input[value=' +Ddate+ ']').attr("checked", true);
+// 	 $('input:radio[name=Tdate]:input[value=' +Tdate+ ']').attr("checked", true);
+
+	$('#ydate option[value=' +Ydate+ ']').attr('selected', 'selected');
+	$('#mdate option[value=' +Mdate+ ']').attr('selected', 'selected');
+	$('#ddate option[value=' +Ddate+ ']').attr('selected', 'selected');
+	$('#tdate option[value=' +Tdate+ ']').attr('selected', 'selected');
+	
+// 			$.ajax({
+// 				url : "${pageContext.request.contextPath }/ajax/envEntitySelectOneDo?farm_id=${farmId}",
+// 				type : "POST",
+// 				success : function(data) {
+// 					 console.log(data);
+
+// 				}
+// 			})
 	
 	
 	

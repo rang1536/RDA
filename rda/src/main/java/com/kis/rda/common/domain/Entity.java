@@ -16,6 +16,81 @@ public class Entity {
 	private String CASENUM;
 	private String SEQNO;
 
+	
+	private String	 totalDate;			
+	private String	 ydate;			
+	private String	 mdate;			
+	private String	 ddate;			
+	private String	 	tdate;		
+ 
+	private String	 view_totalBirDate;					
+	public String getView_totalBirDate() {	
+		view_totalBirDate=	ydate+"년"+mdate+"월"+ddate+"일"+tdate+"시";	
+		return view_totalBirDate;	
+	}			
+		public String getTotalDate() {			
+		totalDate=	ydate+"/"+mdate+"/"+ddate+"/"+tdate;		
+		return totalDate;			
+	}			
+		
+		public void setBIRTH(String bIRTH) {
+	
+ 
+			String[] date = bIRTH.split("/");
+//			ydate=array[0];
+//				mdate=array[1];
+//				ddate=array[2];
+//				tdate=array[3];
+			 if(date.length==1) {
+					setYdate(date[0]);
+			 }else if (date.length==2) {
+				 setYdate(date[0]);
+					setMdate(date[1]);
+			 }else if (date.length==3) {
+				 setYdate(date[0]);
+					setMdate(date[1]);
+					setDdate(date[2]);
+			 }else if (date.length==4) {
+					setYdate(date[0]);
+					setMdate(date[1]);
+					setDdate(date[2]);
+					setTdate(date[3]);
+			 }
+				BIRTH = bIRTH;
+		}
+		
+	public void setTotalDate(String totalDate) {				
+		this.totalDate = totalDate;			
+	}				
+	public String getYdate() {				
+		return ydate;			
+	}				
+	public void setYdate(String ydate) {				
+		this.ydate = ydate;			
+	}				
+	public String getMdate() {				
+		return mdate;			
+	}				
+	public void setMdate(String mdate) {				
+		this.mdate = mdate;			
+	}				
+	public String getDdate() {				
+		return ddate;			
+	}				
+	public void setDdate(String ddate) {				
+		this.ddate = ddate;			
+	}				
+	public String getTdate() {				
+		return tdate;			
+	}				
+	public void setTdate(String tdate) {				
+		this.tdate = tdate;			
+		}			
+
+	
+	
+	
+	
 	public String getSEQNO() {
 		return SEQNO;
 	}
@@ -60,9 +135,9 @@ public class Entity {
 		return BIRTH;
 	}
 
-	public void setBIRTH(String bIRTH) {
-		BIRTH = bIRTH;
-	}
+//	public void setBIRTH(String bIRTH) {
+//		BIRTH = bIRTH;
+//	}
 
 	public String getBIRTH_WEIGHT() {
 		return BIRTH_WEIGHT;

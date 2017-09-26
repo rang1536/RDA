@@ -188,7 +188,7 @@
 				  columns : [
 					   {data: "rnum", sClass:"counNo"},
 					      {data: "entity_ID"},
-					      {data: "bio_GATHERDATE"},
+					      {data: "view_totalGathDate"},
 					      {data: "total_PROTEIN"},
 					      {data: "glucose"},
 					      {data: "na"},      

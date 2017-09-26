@@ -47,7 +47,18 @@ tr.bottom_button td{
 <script type="text/javascript">
 //리스트 가져와 뿌리기
 $(document).ready(function(){
-	
+	var Ydate="${EntityList.getYdate()}";
+	var Mdate="${EntityList.getMdate()}";
+	var Ddate="${EntityList.getDdate()}";
+	var Tdate="${EntityList.getTdate()}";
+	 console.log(Ydate);
+	 console.log(Mdate);
+	 console.log(Ddate);
+	 console.log(Tdate);
+		$('#ydate option[value=' +Ydate+ ']').attr('selected', 'selected');
+		$('#mdate option[value=' +Mdate+ ']').attr('selected', 'selected');
+		$('#ddate option[value=' +Ddate+ ']').attr('selected', 'selected');
+		$('#tdate option[value=' +Tdate+ ']').attr('selected', 'selected');
 // 			$.ajax({
 // 				url : "${pageContext.request.contextPath }/ajax/mhEntityUpdateSelectOne?entity_id=${entity_id}",
 // 				type : "POST",
@@ -82,7 +93,15 @@ $(document).ready(function(){
 
 
 function modify(){
-	   
+	var ydate =	$("#ydate option:selected").val();
+ 	var mdate = $("#mdate option:selected").val();
+ 	var ddate =$("#ddate option:selected").val();
+   var tdate =$("#tdate option:selected").val();
+	if (ydate=="" ){	alert("년도를 입력해주세요");	return false}	
+	if (mdate=="" ){	alert("월을 입력해주세요");	return false}
+	if (ddate=="" ){	alert("일을 입력해주세요");	return false}
+	if (tdate=="" ){	alert("시간을 입력해주세요");	return false}
+	
 	
 	if(confirm("수정하시겠습니까?")) {
 		  
@@ -97,8 +116,8 @@ function modify(){
 				var result = data;
 				if(result > 0){
 					alert('성공적으로 입력하였습니다.');
-// 					location.href="farmList";
-					 window.close();
+					location.href="biochemicalEntityListDetail?farmId=${farmId}&entity_id=${entity_id}";
+				//	 window.close();
 				}else{
 					alert('입력에 실패하였습니다.');
 				}

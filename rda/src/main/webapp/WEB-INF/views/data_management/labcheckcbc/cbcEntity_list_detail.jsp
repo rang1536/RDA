@@ -188,7 +188,7 @@
 				  columns : [
 					   {data: "rnum", sClass:"counNo"},
 					      {data: "entity_ID"},
-					      {data: "cbc_GATHERDATE"},
+					      {data: "view_totalGathDate"},
 					      {data: "rbc"},
 					      {data: "ne2"},
 					      {data: "ly2"},      
@@ -240,24 +240,24 @@
 	<table id="payList">
                    <colgroup>
                         <col width="70px">
-                        <col width="100px">
+                        <col width="70px">
                             <col width="100px">
-                              <col width="100px">
-                   <col width="70px">
-                        <col width="70px">
-                        <col width="70px">
+                              <col width="80px">
+                   <col width="60px">
+                        <col width="60px">
+                        <col width="60px">
                       
-                            <col width="70px">
-                        <col width="70px">
-                        <col width="70px">
-                      <col width="70px">
-                        <col width="70px">
-                      <col width="70px">
-                        <col width="70px">
-                        <col width="70px">
-                      <col width="70px">
-                        <col width="100px">
-                        <col width="70px">
+                            <col width="60px">
+                        <col width="60px">
+                        <col width="60px">
+                      <col width="60px">
+                        <col width="60px">
+                      <col width="60px">
+                        <col width="60px">
+                        <col width="60px">
+                      <col width="60px">
+                        <col width="80px">
+                        <col width="60px">
                     </colgroup>
                     <thead>
                      <tr>
