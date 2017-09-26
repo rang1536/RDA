@@ -116,6 +116,22 @@ public class FarmService {
 		return farmDao.ajaxnewfarmDelete(farmId);
 	}
 	
+	
+	public String getFarmDo(int num) {
+		String farmDo = null;
+		if(num == 1) farmDo="전체";
+		else if(num == 2) farmDo="경기";
+		else if(num == 3) farmDo="강원";
+		else if(num == 4) farmDo="경북";
+		else if(num == 5) farmDo="경남";
+		else if(num == 6) farmDo="충북";
+		else if(num == 7) farmDo="충남";
+		else if(num == 8) farmDo="전북";
+		else if(num == 9) farmDo="전남";
+		else if(num == 10) farmDo="제주";
+		
+		return farmDo;
+	}
 	// 구글맵 마킹테스트
 	public List<FarmMap> readFarmMapAllServ(String farmDo){
 		Map<String, Object> params = new HashMap<String,Object>();

@@ -4,10 +4,10 @@
 <!DOCTYPE>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>구글맵 목장 마커</title>
-
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.js"></script>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>구글맵 목장 마커</title>
+	
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.js"></script>
 
 	<style type="text/css">
 		html, body { width:100%; height:100%;  margin:0px; padding:0px; overflow:hidden; }
@@ -16,6 +16,12 @@
 		a:visited  {color:black;text-decoration:none} 
 		a:active   {color:black;text-decoration:none} 
 		a:hover    {color:black;text-decoration:none}
+		
+		.topButton{
+			height:30px;
+			padding:2px;
+			font-weight:bold;
+		}
 	</style>
 	<script type="text/javascript">
 
@@ -24,33 +30,45 @@
 				$( window ).resize(function() {  // 창크기수정시 크기 다시설정
 				$("#map").height($(window).height());
 			});
+			
+			var farmDo = '${farmDo}';
+			$('.topButton').css('background-color','#ddd');
+			$('input[value="'+farmDo+'"]').css('background-color','white');
 		});
+		
+		function markerMap(farmDo){
+			location.href = 'mapFarmView?farmDo='+farmDo;
+		}
 	</script>
 
 
 </head>
 <body>
 <c:import url="../module/top_menu.jsp"></c:import>
-<c:import url="../module/side_data_management.jsp"></c:import>
+<c:import url="../module/side_menu2.jsp"></c:import>
 
 	
-<div style="width:100%;height:30px;">
-	<input type="button" value="경기" onclick="add_marker(35.8241587,127.1480505,'경기')"/>
-	<input type="button" value="강원" onclick="add_marker(35.8241587,127.1480505,'강원')"/>
-	<input type="button" value="경북" onclick="add_marker(35.8241587,127.1480505,'경북')"/>
-	<input type="button" value="경남" onclick="add_marker(35.8241587,127.1480505,'경남')"/>
-	<input type="button" value="충북" onclick="add_marker(35.8241587,127.1480505,'충북')"/>
-	<input type="button" value="충남" onclick="add_marker(35.8241587,127.1480505,'충남')"/>
-	<input type="button" value="전북" onclick="add_marker(35.8241587,127.1480505,'강원')"/>
-	<input type="button" value="전남" onclick="add_marker(35.8241587,127.1480505,'전남')"/>
-	<input type="button" value="제주" onclick="add_marker(35.8241587,127.1480505,'제주')"/>
+<div style="width:100%;height:40px;">
+	<input type="button" value="전체" class="topButton" style="background-color:white;" onclick="markerMap(1)"/>
+	<input type="button" value="경기" class="topButton" onclick="markerMap(2)"/>
+	<input type="button" value="강원" class="topButton" onclick="markerMap(3)"/>
+	<input type="button" value="경북" class="topButton" onclick="markerMap(4)"/>
+	<input type="button" value="경남" class="topButton" onclick="markerMap(5)"/>
+	<input type="button" value="충북" class="topButton" onclick="markerMap(6)"/>
+	<input type="button" value="충남" class="topButton" onclick="markerMap(7)"/>
+	<input type="button" value="전북" class="topButton" onclick="markerMap(8)"/>
+	<input type="button" value="전남" class="topButton" onclick="markerMap(9)"/>
+	<input type="button" value="제주" class="topButton" onclick="markerMap(10)"/>
 </div>	
-<div id="map" style="width:100%;"></div>
+
+<div id="map" style="width:100%;">
+</div>
+
     <script>
     var lat = 35.8241587;
     var lng = 127.1480505;
-    var zoom = 10;
-    var local = "전북";
+    var zoom = 8;
+    var local = '${farmDo}';
     
     //var marker;
     var markers = new Array();
@@ -130,6 +148,7 @@
 	}
 
     </script>
+    
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsic8Yvohe0ojR_ghiC2su6ja9JnZC7eI&callback=initMap" async defer></script>
  
   

@@ -132,10 +132,10 @@ public class FarmController {
 
 	//목장자료 - 목장현황지도
 	@RequestMapping(value = "/mapFarmView", method = RequestMethod.GET)
-	public String mapViewCtrl(Model model) {
-		/*List<FarmMap> farmList = farmService.readFarmMapAllServ();
-		
-		model.addAttribute("farmList", farmList);*/
+	public String mapViewCtrl(Model model,
+			@RequestParam(value="farmDo", defaultValue="1")int num) {
+		String farmDo = farmService.getFarmDo(num);
+		model.addAttribute("farmDo", farmDo);
 		
 		return "map/google_map_farm";
 	}

@@ -68,7 +68,7 @@ public class BasicRestController {
 	}	
 
 	@RequestMapping(value = "/markerMap", method = RequestMethod.POST)
-	public List<FarmMap> markerMapCtrl(@RequestParam(value="farmDo") String farmDo) {
+	public List<FarmMap> markerMapCtrl(@RequestParam(value="farmDo", defaultValue="전체") String farmDo) {
 		System.out.println("지역확인 : "+farmDo);
 		List<FarmMap> farmList = farmService.readFarmMapAllServ(farmDo);
 		/*System.out.println(farmList);*/
