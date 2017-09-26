@@ -72,7 +72,7 @@ public class FarmController {
 	@RequestMapping(value = "/farmUpdate", method = RequestMethod.GET)
 	public String farmUpdateFormCtrl(Model model,
 			@RequestParam(value="farmId") String farmId) {
-		System.out.println(farmId);
+//		System.out.println(farmId);
 		Farm farm = farmService.selectFarmDetailServ(farmId);
 		farm.getFarmId();
 		

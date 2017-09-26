@@ -23,8 +23,16 @@
          
 <!--         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css" > -->
 <link rel="StyleSheet" href="<c:url value='resources/css/datatable.css'/>" type="text/css">
-<link rel="StyleSheet" href="<c:url value='resources/css/datatableUse.css'/>" type="text/css"> 
-
+ <link rel="StyleSheet" href="<c:url value='resources/css/datatableUse.css'/>" type="text/css">
+<style>
+ div div div#content {
+	
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+	
+}
+</style>
 <script>
 	$(document).ready(function(){
 	    $("#searchValue").keydown(function (key) {
@@ -82,12 +90,14 @@
        },
     ajax : {
    
-      "url":"${pageContext.request.contextPath }/ajax/farmList",
+      "url":"${pageContext.request.contextPath }/ajax/envList",
       "type":"POST",
       "dataSrc": function(json){
-    	   console.log("======");  console.log(json.farmList);
-    	   var farmlist = json.farmList;
-    	   if (json.farmList != 'null') {
+    	   console.log("======");  
+    	   console.log(json);
+    	   console.log(json.envList);
+    	   var farmlist = json.envList;
+    	   if (json.envList != 'null') {
     		   
     		   console.log("===ok==");  
     		   console.log(farmlist.length);  
@@ -126,12 +136,12 @@
 		   	    	   
 		   	       //보기 버튼 만들기	
 		   	       // phone2에 지도보기버튼 추가
-		   	      	farmlist[i].phone2 =" 	<div align='center'><a href='farmUpdate?farmId=${list.farmId }''><input type='button' value='보기'></a></div>";
-		   	    	   
+		   	   //   	farmlist[i].phone2 =" 	<div align='center'><a href='farmUpdate?farmId=${list.farmId }''><input type='button' value='보기'></a></div>";
+		   	  	farmlist[i].phone2 =" 	<div align='center'> <input type='button' value='보기'> </div>";
 		            //수정 버튼만들기
 		   	    	  //phone3에 수정버튼 추가
 		   	    	  
-		   	    	    	farmlist[i].phone3 =" <div align='center'><a href='immuneEntityList?farmId="+farmlist[i].farmId+"'><input type='button' value='관리'></a></div>";
+		   	    	      	farmlist[i].phone3 =" <div align='center'><a href='entityEntityList?farmId="+farmlist[i].farmId+"'><input type='button' value='관리'></a></div>";
 		   	    	  
 		   	    	  
 		   	    	   
@@ -174,7 +184,7 @@
          
 //          return json;
 //          }
-return json.farmList
+return farmlist
       }
   },            
   columns : [
@@ -217,15 +227,15 @@ return json.farmList
             }    
 </style>
  <div id="buttonWrap">
-<!-- 			 <input  class="btn btn-default buttons-excel buttons-html5" type="button" value="인쇄" onClick="print(document.getElementById('amc_content_body').innerHTML)"> -->
+<!-- 			 <input  class="btn btn-default buttons-excel buttons-html5" type="button" value="인쇄" onClick="print(document.getElementById('payList').innerHTML)"> -->
 			  
-  <!-- 			 <input  class="btn btn-default buttons-excel buttons-html5"  type="button" value="추가" onclick="location.href='farmAdd'"> --> 
+<!-- 			 <input  class="btn btn-default buttons-excel buttons-html5"  type="button" value="추가" onclick="location.href='farmAdd'"> -->
 				  
 </div>	
 	<div id="content">
 	<table id="payList">
                    <colgroup>
-                      <col width="70px">
+                        <col width="70px">
                         <col width="70px">
                             <col width="150px">
                               <col width="150px">

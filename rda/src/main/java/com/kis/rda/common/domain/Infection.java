@@ -25,11 +25,41 @@ public class Infection {
 	private String	 ddate;			
 	private String	 	tdate;		
 					
-					
+	private String	 view_totalGathDate;					
+	public String getView_totalGathDate() {	
+		view_totalGathDate=	ydate+"년"+mdate+"월"+ddate+"일"+tdate+"시";	
+		return view_totalGathDate;	
+	}				
 		public String getTotalDate() {			
 		totalDate=	ydate+"/"+mdate+"/"+ddate+"/"+tdate;		
 		return totalDate;			
 	}				
+		
+		public void setINFECTION_GATHERDATE(String iNFECTION_GATHERDATE) {
+			String[] date = iNFECTION_GATHERDATE.split("/");
+//			ydate=array[0];
+//				mdate=array[1];
+//				ddate=array[2];
+//				tdate=array[3];
+			 if(date.length==1) {
+					setYdate(date[0]);
+			 }else if (date.length==2) {
+				 setYdate(date[0]);
+					setMdate(date[1]);
+			 }else if (date.length==3) {
+				 setYdate(date[0]);
+					setMdate(date[1]);
+					setDdate(date[2]);
+			 }else if (date.length==4) {
+					setYdate(date[0]);
+					setMdate(date[1]);
+					setDdate(date[2]);
+					setTdate(date[3]);
+			 }
+			
+			
+			INFECTION_GATHERDATE = iNFECTION_GATHERDATE;
+		}	
 	public void setTotalDate(String totalDate) {				
 		this.totalDate = totalDate;			
 	}				
@@ -78,9 +108,9 @@ public class Infection {
 		return INFECTION_GATHERDATE;
 	}
 
-	public void setINFECTION_GATHERDATE(String iNFECTION_GATHERDATE) {
-		INFECTION_GATHERDATE = iNFECTION_GATHERDATE;
-	}
+//	public void setINFECTION_GATHERDATE(String iNFECTION_GATHERDATE) {
+//		INFECTION_GATHERDATE = iNFECTION_GATHERDATE;
+//	}
 
 	public String getECOLI() {
 		return ECOLI;

@@ -96,10 +96,12 @@ public void ajaxfeseEntityInsertDo(Model model,Farm farm,String farm_Id,FecesInp
 	
 	
 	
-	String gather = entityInsert.getFECES_GATHERDATE1()+"년"+entityInsert.getFECES_GATHERDATE2()+"월"+entityInsert.getFECES_GATHERDATE3()+"일"+entityInsert.getFECES_GATHERDATE4()+"시";
-	String occur = entityInsert.getFECES_OCCURDATE1()+"년"+entityInsert.getFECES_OCCURDATE2()+"월"+entityInsert.getFECES_OCCURDATE3()+"일"+entityInsert.getFECES_OCCURDATE4()+"시";
-	 
-
+//	String gather = entityInsert.getFECES_GATHERDATE1()+"년"+entityInsert.getFECES_GATHERDATE2()+"월"+entityInsert.getFECES_GATHERDATE3()+"일"+entityInsert.getFECES_GATHERDATE4()+"시";
+//	String occur = entityInsert.getFECES_OCCURDATE1()+"년"+entityInsert.getFECES_OCCURDATE2()+"월"+entityInsert.getFECES_OCCURDATE3()+"일"+entityInsert.getFECES_OCCURDATE4()+"시";
+//	 
+     String occur = entityInsert.getTotalDate();
+     String gather = entityInsert.getTotalDate1();
+    		 
 	entityInsert.setFECES_GATHERDATE(gather);
 	entityInsert.setFECES_OCCURDATE(occur);
 

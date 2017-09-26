@@ -188,7 +188,7 @@
 				  columns : [
 					   {data: "rnum", sClass:"counNo"},
 					      {data: "entity_ID"},
-					      {data: "phos_GATHERDATE"},
+					      {data: "view_totalGathDate"},
 					      {data: "phos"},
 					      {data: "equipment"},
 					      {data: "inputdate"},      

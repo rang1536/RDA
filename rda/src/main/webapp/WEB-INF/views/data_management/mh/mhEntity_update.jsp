@@ -47,33 +47,84 @@ tr.bottom_button td{
 <script type="text/javascript">
 //리스트 가져와 뿌리기
 $(document).ready(function(){
-	
-			$.ajax({
-				url : "${pageContext.request.contextPath }/ajax/mhEntityUpdateSelectOne?entity_id=${entity_id}",
-				type : "POST",
-				success : function(data) {
- 		 console.log(data);
+	var ENTITY_ID="${mhEntityList.getENTITY_ID()}";
+	var CURE_DATE="${mhEntityList.getCURE_DATE()}";
+	var OCCUR_DATE="${mhEntityList.getOCCUR_DATE()}";
+	var DISEASE="${mhEntityList.getDISEASE()}";
+	var PRESCRIBE="${mhEntityList.getPRESCRIBE()}";
+	var RECOVERY_DATE="${mhEntityList.getRECOVERY_DATE()}";
+	var INPUTDATE="${mhEntityList.getINPUTDATE()}";
+	var UPDATEDATE="${mhEntityList.getUPDATEDATE()}";
+	var SEQNO="${mhEntityList.getSEQNO()}";
+	var Ydate="${mhEntityList.getYdate()}";
+	var Mdate="${mhEntityList.getMdate()}";
+	var Ddate="${mhEntityList.getDdate()}";
+	var Tdate="${mhEntityList.getTdate()}";
+	var Ydate1="${mhEntityList.getYdate1()}";
+	var Mdate1="${mhEntityList.getMdate1()}";
+	var Ddate1="${mhEntityList.getDdate1()}";
+	var Tdate1="${mhEntityList.getTdate1()}";
+	var Ydate2="${mhEntityList.getYdate2()}";
+	var Mdate2="${mhEntityList.getMdate2()}";
+	var Ddate2="${mhEntityList.getDdate2()}";
+	var Tdate2="${mhEntityList.getTdate2()}";
+	 console.log(ENTITY_ID);
+	 console.log(CURE_DATE);
+	 console.log(OCCUR_DATE);
+	 console.log(DISEASE);
+	 console.log(PRESCRIBE);
+	 console.log(RECOVERY_DATE);
+	 console.log(INPUTDATE);
+	 console.log(UPDATEDATE);
+	 console.log(SEQNO);
+	 console.log(Ydate);
+	 console.log(Mdate);
+	 console.log(Ddate);
+	 console.log(Tdate);
+	 console.log(Ydate1);
+	 console.log(Mdate1);
+	 console.log(Ddate1);
+	 console.log(Tdate1);
+	 console.log(Ydate2);
+	 
+		$('#ydate option[value=' +Ydate+ ']').attr('selected', 'selected');
+		$('#mdate option[value=' +Mdate+ ']').attr('selected', 'selected');
+		$('#ddate option[value=' +Ddate+ ']').attr('selected', 'selected');
+		$('#tdate option[value=' +Tdate+ ']').attr('selected', 'selected');
+		$('#ydate1 option[value=' +Ydate1+ ']').attr('selected', 'selected');
+		$('#mdate1 option[value=' +Mdate1+ ']').attr('selected', 'selected');
+		$('#ddate1 option[value=' +Ddate1+ ']').attr('selected', 'selected');
+		$('#tdate1 option[value=' +Tdate1+ ']').attr('selected', 'selected');
+		$('#ydate2 option[value=' +Ydate2+ ']').attr('selected', 'selected');
+		$('#mdate2 option[value=' +Mdate2+ ']').attr('selected', 'selected');
+		$('#ddate2 option[value=' +Ddate2+ ']').attr('selected', 'selected');
+		$('#tdate2 option[value=' +Tdate2+ ']').attr('selected', 'selected');
+// 			$.ajax({
+// 				url : "${pageContext.request.contextPath }/ajax/mhEntityUpdateSelectOne?entity_id=${entity_id}",
+// 				type : "POST",
+// 				success : function(data) {
+//  		 console.log(data);
 
- 		 console.log(data.birth);
- 		console.log(envEntityList.birth);
- 		 $("#cure1").val(data.cure1);				
- 		 $("#cure2").val(data.cure2);				
- 		 $("#cure3").val(data.cure3);				
- 		 $("#cure4").val(data.cure4);		
- 		 $("#occur1").val(data.occur1);				
- 		 $("#occur2").val(data.occur2);		 
- 		 $("#occur3").val(data.occur3);				
- 		 $("#occur4").val(data.occur4);		
- 		 $("#DISEASE").val(data.disease);	 
- 		 $("#PRESCRIBE").val(data.prescribe);				
- 		 $("#recov1").val(data.recov1);				
- 		 $("#recov2").val(data.recov2);		 
- 		 $("#recov3").val(data.recov3);				
- 		 $("#recov4").val(data.recov4);			
+//  		 console.log(data.birth);
+//  		console.log(envEntityList.birth);
+//  		 $("#cure1").val(data.cure1);				
+//  		 $("#cure2").val(data.cure2);				
+//  		 $("#cure3").val(data.cure3);				
+//  		 $("#cure4").val(data.cure4);		
+//  		 $("#occur1").val(data.occur1);				
+//  		 $("#occur2").val(data.occur2);		 
+//  		 $("#occur3").val(data.occur3);				
+//  		 $("#occur4").val(data.occur4);		
+//  		 $("#DISEASE").val(data.disease);	 
+//  		 $("#PRESCRIBE").val(data.prescribe);				
+//  		 $("#recov1").val(data.recov1);				
+//  		 $("#recov2").val(data.recov2);		 
+//  		 $("#recov3").val(data.recov3);				
+//  		 $("#recov4").val(data.recov4);			
  
  		      
-				}
-			})
+// 				}
+// 			})
 	
 	
 	
@@ -82,7 +133,30 @@ $(document).ready(function(){
 
 
 function modify(){
-	   
+	var ydate =	$("#ydate option:selected").val();
+ 	var mdate = $("#mdate option:selected").val();
+ 	var ddate =$("#ddate option:selected").val();
+   var tdate =$("#tdate option:selected").val();
+	if (ydate=="" ){	alert("년도를 입력해주세요");	return false}	
+	if (mdate=="" ){	alert("월을 입력해주세요");	return false}
+	if (ddate=="" ){	alert("일을 입력해주세요");	return false}
+	if (tdate=="" ){	alert("시간을 입력해주세요");	return false}
+    var ydate1 =	$("#ydate1 option:selected").val();
+	var mdate1 = $("#mdate1 option:selected").val();
+	var ddate1 =$("#ddate1 option:selected").val();
+   var tdate1 =$("#tdate1 option:selected").val();
+	if (ydate1=="" ){	alert("년도를 입력해주세요");	return false}	
+	if (mdate1=="" ){	alert("월을 입력해주세요");	return false}
+	if (ddate1=="" ){	alert("일을 입력해주세요");	return false}
+	if (tdate1=="" ){	alert("시간을 입력해주세요");	return false}
+	var ydate2 =	$("#ydate2 option:selected").val();
+	 var mdate2 = $("#mdate2 option:selected").val();
+	 var ddate2 =$("#ddate2 option:selected").val();
+	var tdate2 =$("#tdate2 option:selected").val();
+	if (ydate2=="" ){	alert("년도를 입력해주세요");	return false}	
+	if (mdate2=="" ){	alert("월을 입력해주세요");	return false}
+	if (ddate2=="" ){	alert("일을 입력해주세요");	return false}
+	if (tdate2=="" ){	alert("시간을 입력해주세요");	return false}
 	
 	if(confirm("수정하시겠습니까?")) {
 		  
@@ -267,7 +341,7 @@ $(document).ready(function(){
 <!--             	<input name="occur2" id="occur2" onkeyup="if ( isNaN(this.value) ) { alert('숫자만 입력가능합니다.'); this.value=''; } else { if(this.value > 12) { alert('1~12 사이의 숫자로 입력바랍니다.'); } }" value="" type="text" maxlength="2" style="width:50px; text-align: right;">월 -->
 <!--             	<input name="occur3" id="occur3" onkeyup="if ( isNaN(this.value) ) { alert('숫자만 입력가능합니다.'); this.value=''; } else { if(this.value > 31) { alert('1~32 사이의 숫자로 입력바랍니다.'); } }" value="" type="text" maxlength="2" style="width:50px; text-align: right;">일 -->
 <!--             	<input name="occur4" id="occur4" onkeyup="if ( isNaN(this.value) ) { alert('숫자만 입력가능합니다.'); this.value=''; } else { if(this.value > 24) { alert('1~24 사이의 숫자로 입력바랍니다.'); } }" value="" type="text" maxlength="2" style="width:50px; text-align: right;">시 -->
-			<select name="ydate" id="ydate">
+			<select name="ydate1" id="ydate1">
     <option value="" selected="selected">년도선택</option>
     <option value="2017">2017년</option>
     <option value="2018">2018년</option>
@@ -284,7 +358,7 @@ $(document).ready(function(){
     <option value="2029">2029년</option>
     <option value="2030">2030년</option>
 </select>
-<select name="mdate" id="mdate">
+<select name="mdate1" id="mdate1">
     <option value="" selected="selected">월 선택</option>
     <option value="01">01월</option>
     <option value="02">02월</option>
@@ -299,7 +373,7 @@ $(document).ready(function(){
     <option value="11">11월</option>
     <option value="12">12월</option>
 </select>
-<select name="ddate" id="ddate">
+<select name="ddate1" id="ddate1">
     <option value="" selected="selected">일 선택</option>
     <option value="01">01일</option>
     <option value="02">02일</option>
@@ -333,7 +407,7 @@ $(document).ready(function(){
     <option value="30">30일</option>
     <option value="31">31일</option>
 </select>
-<select name="tdate" id="tdate">
+<select name="tdate1" id="tdate1">
     <option value="" selected="selected">시 선택</option>
     <option value="01">01시</option>
     <option value="02">02시</option>
@@ -382,7 +456,7 @@ $(document).ready(function(){
 <!--             	<input name="recov2" id="recov2" onkeyup="if ( isNaN(this.value) ) { alert('숫자만 입력가능합니다.'); this.value=''; } else { if(this.value > 12) { alert('1~12 사이의 숫자로 입력바랍니다.'); } }" value="" type="text" maxlength="2" style="width:50px; text-align: right;">월 -->
 <!--             	<input name="recov3" id="recov3" onkeyup="if ( isNaN(this.value) ) { alert('숫자만 입력가능합니다.'); this.value=''; } else { if(this.value > 31) { alert('1~32 사이의 숫자로 입력바랍니다.'); } }" value="" type="text" maxlength="2" style="width:50px; text-align: right;">일 -->
 <!--             	<input name="recov4" id="recov4" onkeyup="if ( isNaN(this.value) ) { alert('숫자만 입력가능합니다.'); this.value=''; } else { if(this.value > 24) { alert('1~24 사이의 숫자로 입력바랍니다.'); } }" value="" type="text" maxlength="2" style="width:50px; text-align: right;">시 -->
-			<select name="ydate" id="ydate">
+			<select name="ydate2" id="ydate2">
     <option value="" selected="selected">년도선택</option>
     <option value="2017">2017년</option>
     <option value="2018">2018년</option>
@@ -399,7 +473,7 @@ $(document).ready(function(){
     <option value="2029">2029년</option>
     <option value="2030">2030년</option>
 </select>
-<select name="mdate" id="mdate">
+<select name="mdate2" id="mdate2">
     <option value="" selected="selected">월 선택</option>
     <option value="01">01월</option>
     <option value="02">02월</option>
@@ -414,7 +488,7 @@ $(document).ready(function(){
     <option value="11">11월</option>
     <option value="12">12월</option>
 </select>
-<select name="ddate" id="ddate">
+<select name="ddate2" id="ddate2">
     <option value="" selected="selected">일 선택</option>
     <option value="01">01일</option>
     <option value="02">02일</option>
@@ -448,7 +522,7 @@ $(document).ready(function(){
     <option value="30">30일</option>
     <option value="31">31일</option>
 </select>
-<select name="tdate" id="tdate">
+<select name="tdate2" id="tdate2">
     <option value="" selected="selected">시 선택</option>
     <option value="01">01시</option>
     <option value="02">02시</option>

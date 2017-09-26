@@ -47,7 +47,15 @@ tr.bottom_button td{
 <script type="text/javascript">
 //리스트 가져와 뿌리기
 $(document).ready(function(){
-	
+	var Ydate="${EntityList.getYdate()}";
+	var Mdate="${EntityList.getMdate()}";
+	var Ddate="${EntityList.getDdate()}";
+	var Tdate="${EntityList.getTdate()}";
+ 
+		$('#ydate option[value=' +Ydate+ ']').attr('selected', 'selected');
+		$('#mdate option[value=' +Mdate+ ']').attr('selected', 'selected');
+		$('#ddate option[value=' +Ddate+ ']').attr('selected', 'selected');
+		$('#tdate option[value=' +Tdate+ ']').attr('selected', 'selected');
 // 			$.ajax({
 // 				url : "${pageContext.request.contextPath }/ajax/mhEntityUpdateSelectOne?entity_id=${entity_id}",
 // 				type : "POST",
@@ -83,6 +91,15 @@ $(document).ready(function(){
 
 function modify(){
 	   
+	  
+	var ydate =	$("#ydate option:selected").val();
+ 	var mdate = $("#mdate option:selected").val();
+ 	var ddate =$("#ddate option:selected").val();
+   var tdate =$("#tdate option:selected").val();
+	if (ydate=="" ){	alert("년도를 입력해주세요");	return false}	
+	if (mdate=="" ){	alert("월을 입력해주세요");	return false}
+	if (ddate=="" ){	alert("일을 입력해주세요");	return false}
+	if (tdate=="" ){	alert("시간을 입력해주세요");	return false}
 	
 	if(confirm("수정하시겠습니까?")) {
 		  
@@ -265,6 +282,12 @@ $(document).ready(function(){
 			<th>PHOS</th>
 			<td style="padding-left: 5px">
 				<input type="text" name="PHOS" id="PHOS" onkeyup="if ( isNaN(this.value) ) { alert('숫자만 입력가능합니다.'); this.value=''; } else { if(this.value > 999) { this.value = this.value.substring(0,4); } }" value="${EntityList.getPHOS()}">&gt;&nbsp;&nbsp;미정<br>
+			</td>
+		</tr		>
+		<tr>
+			<th>측정 장비</th>
+			<td style="padding-left: 5px">
+				<input style="  text-align: right;" type="text" name="EQUIPMENT" id="EQUIPMENT" value="${EntityList.getEQUIPMENT()}"><br>
 			</td>
 		</tr>
 		<tr>

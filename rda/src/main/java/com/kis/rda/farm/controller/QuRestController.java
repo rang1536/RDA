@@ -67,6 +67,7 @@ return map;
 		//int result = farmService.updateFarmServ(farm);
   
 		quresearch.setQ_DATE(quresearch.getTotalDate());
+		
 		int result = quService.quresearchInput(quresearch);
 		
 		System.out.println("확인"+quresearch.getQ_DATE());		

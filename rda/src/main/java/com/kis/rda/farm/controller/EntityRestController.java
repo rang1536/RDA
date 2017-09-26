@@ -68,12 +68,14 @@ public int ajaxentityEntityInsertDo(Model model,Farm farm,String farm_Id,EntityL
 		
  		
 //System.out.println(" 객체 입력하기   "+environment.getFARM_ID());		
-	String entity_id = entityInsert.getFarm_id()+entityInsert.getENTITY_ID();	
-	String birth = entityInsert.getBIRTH1()+"년"+entityInsert.getBIRTH2()+"월"+entityInsert.getBIRTH3()+"일"+entityInsert.getBIRTH4()+"시";
-
-	entityInsert.setENTITY_ID(entity_id);
-	entityInsert.setBIRTH(birth);
-	System.out.println(" 객체 입력하기   "+entityInsert.getFarm_id());		
+//	String entity_id = entityInsert.getFarm_id()+entityInsert.getENTITY_ID();	
+//	String birth = entityInsert.getBIRTH1()+"년"+entityInsert.getBIRTH2()+"월"+entityInsert.getBIRTH3()+"일"+entityInsert.getBIRTH4()+"시";
+//
+//	entityInsert.setENTITY_ID(entity_id);
+//	entityInsert.setBIRTH(birth);
+	System.out.println(" 객체 입력하기   "+entityInsert.getTotalDate());		
+	String totaldate = entityInsert.getTotalDate();
+	entityInsert.setBIRTH(totaldate);
 int result = entityService.ajaxentityEntityInsertDo(entityInsert);		
 System.out.println(" 객체 입력하기   ");		
 		

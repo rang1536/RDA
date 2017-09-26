@@ -46,7 +46,7 @@ public Map<String, Object> ajaxenvEntityList(String farmId) {
 	 
 	//System.out.println("목장 tostring    11"+envList.get(0).getINPUTDATE());
 	//System.out.println("목장 tostring   "+envList.toString());
-	
+	 
 	map.put("envList",envList);	
  
  
@@ -54,10 +54,11 @@ public Map<String, Object> ajaxenvEntityList(String farmId) {
 	return map;
 }
 
-public String envEntityUpdateSelectOne(String farmId) {
+public Environment envEntityUpdateSelectOne(String seqno) {
 	Map<String, Object> map = new HashMap<String, Object>();		
-	map.put("farmId", farmId);	
-	String farmNm =     envDao.envEntityUpdateSelectOne(farmId);
+	map.put("farmId", seqno);	
+	Environment farmNm =     envDao.envEntityUpdateSelectOne(seqno);
+	//System.out.println("getSEQNO getSEQNO   "+farmNm.getSEQNO());
 	return farmNm;
 }
 

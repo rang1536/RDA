@@ -99,6 +99,24 @@
 				    		   console.log(farmlist.length);  
 				            
 				    		   for(var i=0; i<farmlist.length; i++){
+				    		 
+				    			    // 축사 청결상태  
+				    			  if(farmlist[i].clean=="1"){ farmlist[i].clean="매우불량"}
+				    			  else   if(farmlist[i].clean=="2"){ farmlist[i].clean="불량"}
+				    			  else   if(farmlist[i].clean=="3"){ farmlist[i].clean="보통"}
+				    			  else   if(farmlist[i].clean=="4"){ farmlist[i].clean="양호"}
+				    			  else   if(farmlist[i].clean=="4"){ farmlist[i].clean="매우 양호"}
+				    			  // 급수조 청결상태  
+				    			  if(farmlist[i].wtc=="1"){ farmlist[i].wtc="매우불량"}
+				    			  else   if(farmlist[i].wtc=="2"){ farmlist[i].wtc="불량"}
+				    			  else   if(farmlist[i].wtc=="3"){ farmlist[i].wtc="보통"}
+				    			  else   if(farmlist[i].wtc=="4"){ farmlist[i].wtc="양호"}
+				    			  else   if(farmlist[i].wtc=="4"){ farmlist[i].wtc="매우 양호"}
+								
+				    			  
+				    			  
+				    			  
+				    			  
 				    			   //핸드폰번호 조합하여 phone1에 넣게
 				    			   if(farmlist[i].phone1=="null"){ farmlist[i].phone1=""   }
 				    			   if(farmlist[i].phone2=="null"){ farmlist[i].phone2=""   }
@@ -132,7 +150,7 @@
 						   	    	   
 						   	       //보기 버튼 만들기	
 						   	       // phone2에 지도보기버튼 추가
-						   	      	farmlist[i].phone2 =" 	<div align='center'><a href='envEntityUpdate?farmId=${farmId }''><input type='button' value='수정'></a></div>";
+						   	      	farmlist[i].phone2 =" 	<div align='center'><a href='envEntityUpdate?farmId=${farmId }&seqno="+farmlist[i].seqno+"'><input type='button' value='수정'></a></div>";
 						   	    	   
 						            //수정 버튼만들기
 						   	    	  //phone3에 수정버튼 추가
@@ -189,11 +207,10 @@
 				      {data: "env_GATHERDATE"},
 				      {data: "clean"},
 				      {data: "wtc"},
-				      {data: "wtc"},      
-				      {data: "address"},
+				      {data: "wsq"},      
+				      {data: "fq"},
 				      {data: "inputdate"},
-				      {data: "updatedate"},
-				 
+				      {data: "updatedate"},				 
 				      {data: "phone2"}
 				      
 				  ],

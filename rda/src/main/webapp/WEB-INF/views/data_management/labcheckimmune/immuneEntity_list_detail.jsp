@@ -188,7 +188,7 @@
 				  columns : [
 					   {data: "rnum", sClass:"counNo"},
 					      {data: "entity_ID"},
-					      {data: "immune_GATHERDATE"},
+					      {data: "view_totalGathDate"},
 					      {data: "equipment"},
 					      {data: "inputdate"},
 					      {data: "updatedate"},      

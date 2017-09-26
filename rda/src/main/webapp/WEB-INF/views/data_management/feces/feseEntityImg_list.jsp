@@ -191,8 +191,8 @@
 				  columns : [
 					   {data: "rnum", sClass:"counNo"},
 					      {data: "feces_IMAGE"},
-					      {data: "feces_GATHERDATE"},
-					      {data: "feces_OCCURDATE"},
+					      {data: "view_totalGathDate"},
+					      {data: "view_totalOccDate1"},
 					      {data: "disease"},		
 					      {data: "gender"},	
 					      {data: "feed"}
@@ -234,7 +234,7 @@
                    <colgroup>
                         <col width="70px">
                         <col width="150px">
-                            <col width="70px">
+                            <col width="100px">
                               <col width="100px">
                          <col width="100px">
                         <col width="100px">

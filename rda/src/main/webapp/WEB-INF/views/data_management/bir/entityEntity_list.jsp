@@ -193,7 +193,7 @@ return json.entityList
       {data: "breeding"},
       {data: "variety"},
       {data: "gender"},
-      {data: "birth"},      
+      {data: "view_totalBirDate"},      
       {data: "birth_WEIGHT"},
       {data: "colostrum"},
       {data: "vaccine"},

@@ -12,6 +12,8 @@
 	import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kis.rda.common.domain.Environment;
+import com.kis.rda.farm.domain.EnvUpdate;
+import com.kis.rda.farm.domain.Farm;
 import com.kis.rda.farm.service.EnvService;				
 					
 					
@@ -64,7 +66,7 @@ import com.kis.rda.farm.service.EnvService;
 	public String entityEnvUpdate(Model model,				
 	@RequestParam(value="pageNum", defaultValue="1") int pageNum,				
 	@RequestParam(value="searchOption", defaultValue="none") String searchOption,				
-	@RequestParam(value="searchValue", defaultValue="none") String searchValue, String farmId) {		
+	@RequestParam(value="searchValue", defaultValue="none") String searchValue, String farmId, String seqno,EnvUpdate  environment) {		
 		model.addAttribute("farmId", farmId);		
 	//Map<String, Object> map = envService.selectFarmListServ(pageNum, searchOption, searchValue);				
 	//model.addAttribute("farmList", map.get("farmList"));				
@@ -72,10 +74,16 @@ import com.kis.rda.farm.service.EnvService;
 	//model.addAttribute("paging", map.get("paging"));				
 	//model.addAttribute("searchOption", searchOption);				
 	//model.addAttribute("searchValue", searchValue);	
+	 
+	//String farmNm = 	envService.envEntityUpdateSelectOne(farmId);
+		Environment EntityList = 	envService.envEntityUpdateSelectOne(seqno);
 		
-	String farmNm = 	envService.envEntityUpdateSelectOne(farmId);
+		 System.out.println(EntityList.getYdate());
+		 System.out.println(EntityList.getMdate());
+		 System.out.println(EntityList.getDdate());
+		 System.out.println(EntityList.getTdate());
 
-	model.addAttribute("farmNm", farmNm);	
+	model.addAttribute("EntityList", EntityList);	
 	return "data_management/env/envEntity_update";				
 	}	
 		//환경자료 > 관리리스트 > 추가 폼 열기
@@ -94,10 +102,10 @@ import com.kis.rda.farm.service.EnvService;
 	//model.addAttribute("searchOption", searchOption);				
 	//model.addAttribute("searchValue", searchValue);	
 			
-		String farmNm = 	envService.envEntityUpdateSelectOne(farmId);
+		//String farmNm = 	envService.envEntityUpdateSelectOne(farmId);
 	
 		model.addAttribute("farmId", farmId);		
-		model.addAttribute("farmNm", farmNm);	
+		//model.addAttribute("farmNm", farmNm);	
 	return "data_management/env/envEntity_insert";				
 	}	
 	

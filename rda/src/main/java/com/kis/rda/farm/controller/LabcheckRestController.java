@@ -83,6 +83,7 @@ public int ajaxcbcEntityInsertDo(Model model,Farm farm,String farm_Id,Cbcentity 
 	//System.out.println(" 객체 입력하기   "+entityInsert.getCHECK_DATE());		
 	//System.out.println(" 객체 입력하기   "+entityInsert.getENTITY_ID());
 	
+	entityInsert.setCBC_GATHERDATE(entityInsert.getTotalDate());
 	int result = labcheckService.ajaxcbcEntityInsertDo(entityInsert);		
 System.out.println(" 객체 입력하기   ");					
 return result;		
@@ -151,7 +152,8 @@ public int ajaxbiochemicalEntityInsertDo(Model model,Farm farm,String farm_Id,Bi
 //	entityInsert.setCHECK_DATE(checkday);
 	//System.out.println(" 객체 입력하기   "+entityInsert.getCHECK_DATE());		
 	//System.out.println(" 객체 입력하기   "+entityInsert.getENTITY_ID());
-	
+
+	entityInsert.setBIO_GATHERDATE(entityInsert.getTotalDate());
 	int result = labcheckService.ajaxbiochemicalEntityInsertDo(entityInsert);		
 System.out.println(" 객체 입력하기   ");					
 return result;		
@@ -162,7 +164,7 @@ public int ajaxbiochemicalEntityUpdateDo(Model model,Farm farm,String farm_Id,Bi
 					
 System.out.println("  수정하기   "+entityUpdate.getENTITY_ID());		
 //String checkday = entityUpdate.getCheck1()+"년"+entityUpdate.getCheck2()+"월"+entityUpdate.getCheck3()+"일"+entityUpdate.getCheck4()+"시";
-
+entityUpdate.setBIO_GATHERDATE(entityUpdate.getTotalDate());
 //entityUpdate.setCHECK_DATE(checkday);			
 int result = labcheckService.ajaxbiochemicalEntityUpdateDo(entityUpdate);		
 		
@@ -214,14 +216,14 @@ public int ajaxphosEntityInsertDo(Model model,Farm farm,String farm_Id,Phosentit
 			
 //	String entity_id = entityInsert.getFarm_id()+entityInsert.getENTITY_ID();	
 	//String checkday = entityInsert.getCheck1()+"년"+entityInsert.getCheck2()+"월"+entityInsert.getCheck3()+"일"+entityInsert.getCheck4()+"시";
-
+	System.out.println(" 객체 입력하기   "+entityInsert.getTotalDate());		
 	//entityInsert.setENTITY_ID(entity_id);
 	//entityInsert.setCHECK_DATE(checkday);
 	//System.out.println(" 객체 입력하기   "+entityInsert.getCHECK_DATE());		
 	//System.out.println(" 객체 입력하기   "+entityInsert.getENTITY_ID());
-	
+	entityInsert.setPHOS_GATHERDATE(entityInsert.getTotalDate());
 	int result = labcheckService.ajaxphosEntityInsertDo(entityInsert);		
-System.out.println(" 객체 입력하기   ");					
+System.out.println(" 객체 입력하기   "+entityInsert.getTotalDate());					
 return result;		
 }		
  
@@ -291,7 +293,7 @@ public int ajaxistatEntityInsertDo(Model model,Farm farm,String farm_Id,Istatent
 	//entityInsert.setCHECK_DATE(checkday);
 	//System.out.println(" 객체 입력하기   "+entityInsert.getCHECK_DATE());		
 //	System.out.println(" 객체 입력하기   "+entityInsert.getENTITY_ID());
-	
+	entityInsert.setISTAT_GATHERDATE(entityInsert.getTotalDate());
 	int result = labcheckService.ajaxistatEntityInsertDo(entityInsert);		
 System.out.println(" 객체 입력하기   ");					
 return result;		
@@ -303,7 +305,9 @@ public int ajaxistatEntityUpdateDo(Model model,Farm farm,String farm_Id,Istatent
 System.out.println("  수정하기   "+entityUpdate.getSEQNO());		
 //String checkday = entityUpdate.getCheck1()+"년"+entityUpdate.getCheck2()+"월"+entityUpdate.getCheck3()+"일"+entityUpdate.getCheck4()+"시";
 
-//entityUpdate.setCHECK_DATE(checkday);			
+//entityUpdate.setCHECK_DATE(checkday);		
+
+entityUpdate.setISTAT_GATHERDATE(entityUpdate.getTotalDate());
 int result = labcheckService.ajaxistatEntityUpdateDo(entityUpdate);		
 		
 model.addAttribute("result", result);		
@@ -358,7 +362,7 @@ public int ajaximmuneEntityInsertDo(Model model,Farm farm,String farm_Id,Immunee
 	//entityInsert.setCHECK_DATE(checkday);
 	//System.out.println(" 객체 입력하기   "+entityInsert.getCHECK_DATE());		
 	//System.out.println(" 객체 입력하기   "+entityInsert.getENTITY_ID());
-	
+	entityInsert.setIMMUNE_GATHERDATE(entityInsert.getTotalDate());
 	int result = labcheckService.ajaximmuneEntityInsertDo(entityInsert);		
 System.out.println(" 객체 입력하기   ");					
 return result;		
@@ -369,7 +373,7 @@ public int ajaximmuneEntityUpdateDo(Model model,Farm farm,String farm_Id,Immunee
 					
 System.out.println("  수정하기   "+entityUpdate.getENTITY_ID());		
 //String checkday = entityUpdate.getCheck1()+"년"+entityUpdate.getCheck2()+"월"+entityUpdate.getCheck3()+"일"+entityUpdate.getCheck4()+"시";
-
+entityUpdate.setIMMUNE_GATHERDATE(entityUpdate.getTotalDate());
 //entityUpdate.setCHECK_DATE(checkday);			
 int result = labcheckService.ajaximmuneEntityUpdateDo(entityUpdate);		
 		
@@ -425,7 +429,7 @@ public int ajaxinfectionEntityInsertDo(Model model,Farm farm,String farm_Id,Infe
 	//entityInsert.setCHECK_DATE(checkday);
 	//System.out.println(" 객체 입력하기   "+entityInsert.getCHECK_DATE());		
 	System.out.println(" 객체 입력하기   "+entityInsert.getENTITY_ID());
-	
+	entityInsert.setINFECTION_GATHERDATE(entityInsert.getTotalDate());
 	int result = labcheckService.ajaxinfectionEntityInsertDo(entityInsert);		
 System.out.println(" 객체 입력하기   ");					
 return result;		
@@ -436,7 +440,7 @@ public int ajaxinfectionEntityUpdateDo(Model model,Farm farm,String farm_Id,Infe
 					
 System.out.println("  수정하기   "+entityUpdate.getENTITY_ID());		
 //String checkday = entityUpdate.getCheck1()+"년"+entityUpdate.getCheck2()+"월"+entityUpdate.getCheck3()+"일"+entityUpdate.getCheck4()+"시";
-
+entityUpdate.setINFECTION_GATHERDATE(entityUpdate.getTotalDate());
 //entityUpdate.setCHECK_DATE(checkday);			
 int result = labcheckService.ajaxinfectionEntityUpdateDo(entityUpdate);		
 		

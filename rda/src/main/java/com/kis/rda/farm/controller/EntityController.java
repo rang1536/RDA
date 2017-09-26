@@ -77,6 +77,8 @@ model.addAttribute("entity_id", entity_id);
 
 String farmNm = 	entityService.entityEntityUpdateSelectOne(farmId);
 EntityList entityEntity = (EntityList) entityService.ajaxenvEntitySelectOneBeforUpdate(entity_id);	
+//entityEntity.getTotalDate();
+System.out.println("목장"+ entityEntity.getYdate());
 model.addAttribute("entityEntity", entityEntity);	
 model.addAttribute("farmNm", farmNm);	
 return "data_management/entity/entityEntity_update";	

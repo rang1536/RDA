@@ -4,6 +4,14 @@
 <c:import url="../../module/side_data_management.jsp"></c:import>
 <script>
 	function farmAdd() {
+		var ydate =	$("#ydate option:selected").val();
+	 	var mdate = $("#mdate option:selected").val();
+	 	var ddate =$("#ddate option:selected").val();
+	   var tdate =$("#tdate option:selected").val();
+		if (ydate=="" ){	alert("년도를 입력해주세요");	return false}	
+		if (mdate=="" ){	alert("월을 입력해주세요");	return false}
+		if (ddate=="" ){	alert("일을 입력해주세요");	return false}
+		if (tdate=="" ){	alert("시간을 입력해주세요");	return false}
 		if(confirm("등록하시겠습니까?")) {
 			var farm = $('#farmAddForm').serialize();
 			$.ajax({

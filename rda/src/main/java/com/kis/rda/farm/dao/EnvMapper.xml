@@ -5,16 +5,16 @@
 <mapper namespace="EnvDao">
 
 
-         <resultMap id="bbsDataResult" type="com.kis.rda.common.domain.Environment">
-  
-                  <result property="FARM_ID" column="FARM_ID"  javaType="java.lang.String" />
-                  <result property="ENV_GATHERDATE" column="ENV_GATHERDATE" javaType="java.lang.String"/>
-                  <result property="CLEAN" column="CLEAN" javaType="java.lang.String"/>
-                  <result property="WTC" column="WTC" javaType="java.lang.String"/>
-                  <result property="WSQ" column="WSQ" javaType="java.lang.String"/> 
-                   <result property="FQ" column="FQ" javaType="java.lang.String"/>
-                   <result property="INPUTDATE" column="INPUTDATE" javaType="java.lang.String"/>
-                    <result property="UPDATEDATE" column="UPDATEDATE" javaType="java.lang.String"/>
+         <resultMap id="envDataResult" type="com.kis.rda.common.domain.Environment">  
+			     <result property="FARM_ID" column="FARM_ID"  javaType="java.lang.String" />
+			   <result property="ENV_GATHERDATE" column="ENV_GATHERDATE"  javaType="java.lang.String" />
+			   <result property="CLEAN" column="CLEAN"  javaType="java.lang.String" />
+			   <result property="WTC" column="WTC"  javaType="java.lang.String" />
+			   <result property="WSQ" column="WSQ"  javaType="java.lang.String" />
+			   <result property="FQ" column="FQ"  javaType="java.lang.String" />
+			   <result property="INPUTDATE" column="INPUTDATE"  javaType="java.lang.String" />
+			   <result property="UPDATEDATE" column="UPDATEDATE"  javaType="java.lang.String" />
+			   <result property="SEQNO" column="SEQNO"  javaType="java.lang.String" />
          </resultMap>
 
  
@@ -41,7 +41,10 @@
 
 
 <select id="ajaxenvEntityList1" parameterType="Map" resultType="com.kis.rda.common.domain.Environment">
-SELECT  rownum as rnum,a.FARM_ID
+SELECT 
+ rownum as rnum
+ ,a.seqno
+ ,a.FARM_ID
 ,a.ENV_GATHERDATE
 ,a.CLEAN
 ,a.WTC
@@ -52,8 +55,10 @@ SELECT  rownum as rnum,a.FARM_ID
 	FROM RDA_TEST.ENVIRONMENT a	WHERE FARM_ID=  #{farmId}
 </select>
 
-<select id="ajaxenvEntityList" parameterType="Map" resultMap="bbsDataResult">
-SELECT  rownum as rnum,a.FARM_ID
+<select id="ajaxenvEntityList" parameterType="Map" resultMap="envDataResult">
+SELECT  rownum as rnum
+ ,a.seqno
+,a.FARM_ID
 ,a.ENV_GATHERDATE
 ,a.CLEAN
 ,a.WTC
@@ -64,11 +69,12 @@ SELECT  rownum as rnum,a.FARM_ID
 	FROM RDA_TEST.ENVIRONMENT a	WHERE FARM_ID=  #{farmId}
 </select>
 
-<select id="envEntityUpdateSelectOne" parameterType="String" resultType="String">
+<!-- <select id="envEntityUpdateSelectOne" parameterType="String" resultType="com.kis.rda.common.domain.Environment"> -->
+<select id="envEntityUpdateSelectOne" parameterType="String"  resultMap="envDataResult">
 	SELECT 
-	a. FNAME
+	*
 	FROM 
-		RDA_TEST.FARM a WHERE   FARM_ID=  #{farmId}
+		RDA_TEST.ENVIRONMENT a WHERE   SEQNO=  #{seqno}
 </select>
 
 <!--  환경 추가 -->

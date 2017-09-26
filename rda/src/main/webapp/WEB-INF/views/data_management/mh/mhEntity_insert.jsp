@@ -46,7 +46,35 @@ tr.bottom_button td{
 </style>
 <script type="text/javascript">
 function insert(){
+		var ydate =	$("#ydate option:selected").val();
+	 	var mdate = $("#mdate option:selected").val();
+	 	var ddate =$("#ddate option:selected").val();
+	   var tdate =$("#tdate option:selected").val();
+		if (ydate=="" ){	alert("년도를 입력해주세요");	return false}	
+		if (mdate=="" ){	alert("월을 입력해주세요");	return false}
+		if (ddate=="" ){	alert("일을 입력해주세요");	return false}
+		if (tdate=="" ){	alert("시간을 입력해주세요");	return false}
+	    var ydate1 =	$("#ydate1 option:selected").val();
+		var mdate1 = $("#mdate1 option:selected").val();
+		var ddate1 =$("#ddate1 option:selected").val();
+	   var tdate1 =$("#tdate1 option:selected").val();
+		if (ydate1=="" ){	alert("년도를 입력해주세요");	return false}	
+		if (mdate1=="" ){	alert("월을 입력해주세요");	return false}
+		if (ddate1=="" ){	alert("일을 입력해주세요");	return false}
+		if (tdate1=="" ){	alert("시간을 입력해주세요");	return false}
+		var ydate2 =	$("#ydate2 option:selected").val();
+		 var mdate2 = $("#mdate2 option:selected").val();
+		 var ddate2 =$("#ddate2 option:selected").val();
+		var tdate2 =$("#tdate2 option:selected").val();
+		if (ydate2=="" ){	alert("년도를 입력해주세요");	return false}	
+		if (mdate2=="" ){	alert("월을 입력해주세요");	return false}
+		if (ddate2=="" ){	alert("일을 입력해주세요");	return false}
+		if (tdate2=="" ){	alert("시간을 입력해주세요");	return false}
+		
 	if(confirm("입력하시겠습니까?")) {
+ 
+	
+		
 		var quresearch = $('#regForm').serialize();
 		 console.log(quresearch);
 				$.ajax({
@@ -117,6 +145,7 @@ function del() {
 	}
 }
 $(document).ready(function(){
+ 
  
 
 });
@@ -255,7 +284,7 @@ $(document).ready(function(){
 <!--             	<input name="occur2" id="occur2" onkeyup="if ( isNaN(this.value) ) { alert('숫자만 입력가능합니다.'); this.value=''; } else { if(this.value > 12) { alert('1~12 사이의 숫자로 입력바랍니다.'); } }" value="" type="text" maxlength="2" style="width:50px; text-align: right;">월 -->
 <!--             	<input name="occur3" id="occur3" onkeyup="if ( isNaN(this.value) ) { alert('숫자만 입력가능합니다.'); this.value=''; } else { if(this.value > 31) { alert('1~32 사이의 숫자로 입력바랍니다.'); } }" value="" type="text" maxlength="2" style="width:50px; text-align: right;">일 -->
 <!--             	<input name="occur4" id="occur4" onkeyup="if ( isNaN(this.value) ) { alert('숫자만 입력가능합니다.'); this.value=''; } else { if(this.value > 24) { alert('1~24 사이의 숫자로 입력바랍니다.'); } }" value="" type="text" maxlength="2" style="width:50px; text-align: right;">시 -->
-			<select name="ydate" id="ydate">
+			<select name="ydate1" id="ydate1">
     <option value="" selected="selected">년도선택</option>
     <option value="2017">2017년</option>
     <option value="2018">2018년</option>
@@ -272,7 +301,7 @@ $(document).ready(function(){
     <option value="2029">2029년</option>
     <option value="2030">2030년</option>
 </select>
-<select name="mdate" id="mdate">
+<select name="mdate1" id="mdate1">
     <option value="" selected="selected">월 선택</option>
     <option value="01">01월</option>
     <option value="02">02월</option>
@@ -287,7 +316,7 @@ $(document).ready(function(){
     <option value="11">11월</option>
     <option value="12">12월</option>
 </select>
-<select name="ddate" id="ddate">
+<select name="ddate1" id="ddate1">
     <option value="" selected="selected">일 선택</option>
     <option value="01">01일</option>
     <option value="02">02일</option>
@@ -321,7 +350,7 @@ $(document).ready(function(){
     <option value="30">30일</option>
     <option value="31">31일</option>
 </select>
-<select name="tdate" id="tdate">
+<select name="tdate1" id="tdate1">
     <option value="" selected="selected">시 선택</option>
     <option value="01">01시</option>
     <option value="02">02시</option>
@@ -370,7 +399,7 @@ $(document).ready(function(){
 <!--             	<input name="recov2" id="recov2" onkeyup="if ( isNaN(this.value) ) { alert('숫자만 입력가능합니다.'); this.value=''; } else { if(this.value > 12) { alert('1~12 사이의 숫자로 입력바랍니다.'); } }" value="" type="text" maxlength="2" style="width:50px; text-align: right;">월 -->
 <!--             	<input name="recov3" id="recov3" onkeyup="if ( isNaN(this.value) ) { alert('숫자만 입력가능합니다.'); this.value=''; } else { if(this.value > 31) { alert('1~32 사이의 숫자로 입력바랍니다.'); } }" value="" type="text" maxlength="2" style="width:50px; text-align: right;">일 -->
 <!--             	<input name="recov4" id="recov4" onkeyup="if ( isNaN(this.value) ) { alert('숫자만 입력가능합니다.'); this.value=''; } else { if(this.value > 24) { alert('1~24 사이의 숫자로 입력바랍니다.'); } }" value="" type="text" maxlength="2" style="width:50px; text-align: right;">시 -->
-			<select name="ydate" id="ydate">
+			<select name="ydate2" id="ydate2">
     <option value="" selected="selected">년도선택</option>
     <option value="2017">2017년</option>
     <option value="2018">2018년</option>
@@ -387,7 +416,7 @@ $(document).ready(function(){
     <option value="2029">2029년</option>
     <option value="2030">2030년</option>
 </select>
-<select name="mdate" id="mdate">
+<select name="mdate2" id="mdate2">
     <option value="" selected="selected">월 선택</option>
     <option value="01">01월</option>
     <option value="02">02월</option>
@@ -402,7 +431,7 @@ $(document).ready(function(){
     <option value="11">11월</option>
     <option value="12">12월</option>
 </select>
-<select name="ddate" id="ddate">
+<select name="ddate2" id="ddate2">
     <option value="" selected="selected">일 선택</option>
     <option value="01">01일</option>
     <option value="02">02일</option>
@@ -436,7 +465,7 @@ $(document).ready(function(){
     <option value="30">30일</option>
     <option value="31">31일</option>
 </select>
-<select name="tdate" id="tdate">
+<select name="tdate2" id="tdate2">
     <option value="" selected="selected">시 선택</option>
     <option value="01">01시</option>
     <option value="02">02시</option>

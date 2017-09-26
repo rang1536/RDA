@@ -69,17 +69,29 @@ public int ajaxmhEntityInsertDo(Model model,Farm farm,String farm_Id,MhListDetai
 //System.out.println(" 환경 입력하기   "+environment.getFARM_ID());		
 			
 //	String entity_id = entityInsert.getFarm_id()+entityInsert.getENTITY_ID();	
-	String cure = entityInsert.getCure1()+"년"+entityInsert.getCure2()+"월"+entityInsert.getCure3()+"일"+entityInsert.getCure4()+"시";
-	String occur = entityInsert.getOccur1()+"년"+entityInsert.getOccur2()+"월"+entityInsert.getOccur3()+"일"+entityInsert.getOccur4()+"시";
-	String recov = entityInsert.getRecov1()+"년"+entityInsert.getRecov2()+"월"+entityInsert.getRecov3()+"일"+entityInsert.getRecov4()+"시";
-  
-	//entityInsert.setENTITY_ID(entity_id);
-	entityInsert.setCURE_DATE(cure);
-	entityInsert.setOCCUR_DATE(occur);
-	entityInsert.setRECOVERY_DATE(recov);
- 	
+//	String cure = entityInsert.getCure1()+"년"+entityInsert.getCure2()+"월"+entityInsert.getCure3()+"일"+entityInsert.getCure4()+"시";
+//	String occur = entityInsert.getOccur1()+"년"+entityInsert.getOccur2()+"월"+entityInsert.getOccur3()+"일"+entityInsert.getOccur4()+"시";
+//	String recov = entityInsert.getRecov1()+"년"+entityInsert.getRecov2()+"월"+entityInsert.getRecov3()+"일"+entityInsert.getRecov4()+"시";
+//  
+//	//entityInsert.setENTITY_ID(entity_id);
+//	entityInsert.setCURE_DATE(cure);
+//	entityInsert.setOCCUR_DATE(occur);
+//	entityInsert.setRECOVERY_DATE(recov);
+
+
 	System.out.println(" 객체 입력하기   "+entityInsert.getENTITY_ID());
+
+	System.out.println(" 객체 입력하기   "+entityInsert.getTotalDate());
+
+	System.out.println(" 객체 입력하기   "+entityInsert.getTotalDate1());
+
+	System.out.println(" 객체 입력하기   "+entityInsert.getTotalDate2());
 	
+	entityInsert.setOCCUR_DATE(entityInsert.getTotalDate());
+	entityInsert.setCURE_DATE(entityInsert.getTotalDate1());
+	entityInsert.setRECOVERY_DATE(entityInsert.getTotalDate2());
+	
+	System.out.println(" 객체 입력하기   "+entityInsert.getOCCUR_DATE());
 	int result = mhService.ajaxmhEntityInsertDo(entityInsert);		
 System.out.println(" 객체 입력하기   ");					
 return result;		
@@ -179,6 +191,18 @@ public int ajaxmhEntityUpdatetDo(Model model,Farm farm,String farm_Id,MhListDeta
 //String checkday = entityUpdate.getCheck1()+"년"+entityUpdate.getCheck2()+"월"+entityUpdate.getCheck3()+"일"+entityUpdate.getCheck4()+"시";
 
 //entityUpdate.setCHECK_DATE(checkday);			
+	
+	System.out.println(" 객체 입력하기   "+entityUpdate.getENTITY_ID());
+
+	System.out.println(" 객체 입력하기   "+entityUpdate.getTotalDate());
+
+	System.out.println(" 객체 입력하기   "+entityUpdate.getTotalDate1());
+
+	System.out.println(" 객체 입력하기   "+entityUpdate.getTotalDate2());
+	
+	entityUpdate.setOCCUR_DATE(entityUpdate.getTotalDate());
+	entityUpdate.setCURE_DATE(entityUpdate.getTotalDate1());
+	entityUpdate.setRECOVERY_DATE(entityUpdate.getTotalDate2());
 int result = mhService.ajaxmhEntityUpdatetDo(entityUpdate);		
 		
 model.addAttribute("result", result);		
