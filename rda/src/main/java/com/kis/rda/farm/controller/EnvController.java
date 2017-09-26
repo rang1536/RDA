@@ -68,6 +68,7 @@ import com.kis.rda.farm.service.EnvService;
 	@RequestParam(value="searchOption", defaultValue="none") String searchOption,				
 	@RequestParam(value="searchValue", defaultValue="none") String searchValue, String farmId, String seqno,EnvUpdate  environment) {		
 		model.addAttribute("farmId", farmId);		
+		model.addAttribute("seqno", seqno);		
 	//Map<String, Object> map = envService.selectFarmListServ(pageNum, searchOption, searchValue);				
 	//model.addAttribute("farmList", map.get("farmList"));				
 	//model.addAttribute("totalCount", map.get("totalCount"));				
@@ -77,11 +78,11 @@ import com.kis.rda.farm.service.EnvService;
 	 
 	//String farmNm = 	envService.envEntityUpdateSelectOne(farmId);
 		Environment EntityList = 	envService.envEntityUpdateSelectOne(seqno);
-		
-		 System.out.println(EntityList.getYdate());
-		 System.out.println(EntityList.getMdate());
-		 System.out.println(EntityList.getDdate());
-		 System.out.println(EntityList.getTdate());
+//		
+//		 System.out.println(EntityList.getYdate());
+//		 System.out.println(EntityList.getMdate());
+//		 System.out.println(EntityList.getDdate());
+//		 System.out.println(EntityList.getTdate());
 
 	model.addAttribute("EntityList", EntityList);	
 	return "data_management/env/envEntity_update";				

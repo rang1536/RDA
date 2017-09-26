@@ -197,7 +197,7 @@ return json.entityList
       {data: "birth_WEIGHT"},
       {data: "colostrum"},
       {data: "vaccine"},
-      {data: "birth_NUMBER"},
+      {data: "birthnumber"},
       {data: "birth_CASE"},
       {data: "phone3"}
       

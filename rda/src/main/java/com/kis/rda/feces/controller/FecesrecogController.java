@@ -150,7 +150,7 @@ listDetail.getBIRTH();
 listDetail.getBIRTH_WEIGHT();
 listDetail.getCOLOSTRUM();
 listDetail.getVACCINE();
-listDetail.getBirth_NUMBER();
+//listDetail.getBirth_NUMBER();
 listDetail.getBIRTH_CASE();
 
 	model.addAttribute("entity_id", entity_id);		

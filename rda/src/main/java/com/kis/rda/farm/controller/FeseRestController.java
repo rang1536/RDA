@@ -50,34 +50,26 @@ return map;
 
 
 @RequestMapping(value = "/ajax/feseEntityInsertDo", method = RequestMethod.POST)		
-public void ajaxfeseEntityInsertDo(Model model,Farm farm,String farm_Id,FecesInput  entityInsert,MultipartHttpServletRequest request,MultipartFile file,Fecesimg entityImgInsert) throws IllegalStateException, IOException {		
+public ResponseEntity<String> ajaxfeseEntityInsertDo(Model model,Farm farm,String farm_Id,FecesInput  entityInsert,MultipartHttpServletRequest request,MultipartFile file,Fecesimg entityImgInsert) throws IllegalStateException, IOException {		
 		
-	//MultipartFile file = request.getFile("uploadfile");
+ 
 	
- // 파일가져오기
+      // 파일가져오기
 	 file = request.getFile("uploadfile");
-//		     String fileName = file.getOriginalFilename();
-//	         String path = "C:\\Users\\Administrator\\git\\RDA\\rda\\src\\main\\webapp\\resources\\upload\\"+fileName;
-//		     File destFile = new File(path); 
-//		     file .transferTo(destFile);
-//		     
-//		     
-//		     
-//		     System.out.println("-------------- file end --------------" + fileName);
-// 
+ 
 	
 	 //오리지날 파일이름 가져오기
 	 String fileName = file.getOriginalFilename();
 	 entityImgInsert.setORIGINIMG(fileName);
-	 System.out.println(" 객체 오리지날  파일이름 "+fileName);
+ 
 	 //확장자가져오기
 	 int pos = fileName.lastIndexOf( "." );
 	 String ext = fileName.substring( pos + 1 );	
-	 System.out.println(" 객체확장자가져오기   "+ext);
+ 
 	
 	 //경로가져오기
 	  String path = "C:\\Users\\Administrator\\git\\RDA\\rda\\src\\main\\webapp\\resources\\upload\\";
-	  System.out.println(" 객체 경로가져오기   "+path);
+ 
 	 UUID uuid = UUID.randomUUID();
 	 
 	 
@@ -85,20 +77,14 @@ public void ajaxfeseEntityInsertDo(Model model,Farm farm,String farm_Id,FecesInp
      // 랜덤생성+파일이름 저장
 	 String savedName = uuid.toString()+"."+ext;
  	entityInsert.setFECES_IMAGE(savedName);
-	 System.out.println(" 객체 저장될 파일이름  "+savedName);
+ 
 	 
      File target = new File(path, savedName);
      // 임시디렉토리에 저장된 업로드된 파일을 지정된 디렉토리로 복사
      // FileCopyUtils.copy(바이트배열, 파일객체)
      FileCopyUtils.copy(file.getBytes(), target);
  
-    
-	
-	
-	
-//	String gather = entityInsert.getFECES_GATHERDATE1()+"년"+entityInsert.getFECES_GATHERDATE2()+"월"+entityInsert.getFECES_GATHERDATE3()+"일"+entityInsert.getFECES_GATHERDATE4()+"시";
-//	String occur = entityInsert.getFECES_OCCURDATE1()+"년"+entityInsert.getFECES_OCCURDATE2()+"월"+entityInsert.getFECES_OCCURDATE3()+"일"+entityInsert.getFECES_OCCURDATE4()+"시";
-//	 
+     
      String occur = entityInsert.getTotalDate();
      String gather = entityInsert.getTotalDate1();
     		 
@@ -116,9 +102,9 @@ public void ajaxfeseEntityInsertDo(Model model,Farm farm,String farm_Id,FecesInp
 System.out.println(" 객체 입력하기   " +result );					
 
 
-
- 
-//return result;		
+HttpHeaders responseHeaders = new HttpHeaders();
+responseHeaders.add("Content-Type", "text/html; charset=UTF-8");
+return new ResponseEntity<String>("<script> alert(\"전송완료했습니다.\"),window.close();</script> ", responseHeaders, HttpStatus.OK);
 }		
 
 

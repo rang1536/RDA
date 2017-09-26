@@ -147,13 +147,13 @@ UPDATE rda_test.ENVIRONMENT
 					
 		UPDATEDATE = to_date(SYSDATE, 'YY-MM-DD HH24:MI:SS') 		 
 	WHERE 
-		farm_id = #{FARM_ID}
+		SEQNO = #{SEQNO}	
 </update>
 
 <delete id="ajaxenvEntityDeleteDo" parameterType="com.kis.rda.common.domain.Environment"  >
 DELETE rda_test.ENVIRONMENT 
 	 	WHERE 
-		farm_id = #{FARM_ID}
+	SEQNO = #{SEQNO}	
 </delete>
 
 

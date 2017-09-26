@@ -103,7 +103,7 @@
     			   
     			   console.log(farmlist[i].phone1);  
 		   	        	
- 		   	        	farmlist[i].phone1 = farmlist[i].phone1+"-" +farmlist[i].phone2+"-" +farmlist[i].phone3 ;
+ 		       	farmlist[i].phone1 = farmlist[i].phone1+"-" +farmlist[i].phone2+"-" +farmlist[i].phone3 ;
  
 		   	             
 		   	             

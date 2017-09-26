@@ -37,11 +37,12 @@ public class Survey {
 	private String	 ydate;		
 	private String	 mdate;		
 	private String	 ddate;		
-	private String	 	tdate;	
+//	private String	 	tdate;	
 				
 				
 		public String getTotalDate() {		
-		totalDate=	ydate+"/"+mdate+"/"+ddate+"/"+tdate;	
+		//totalDate=	ydate+"/"+mdate+"/"+ddate+"/"+tdate;	
+			totalDate=	ydate+"/"+mdate+"/"+ddate ;
 		return totalDate;		
 	}			
 	public void setTotalDate(String totalDate) {			
@@ -65,12 +66,12 @@ public class Survey {
 	public void setDdate(String ddate) {			
 		this.ddate = ddate;		
 	}			
-	public String getTdate() {			
-		return tdate;		
-	}			
-	public void setTdate(String tdate) {			
-		this.tdate = tdate;		
-		}		
+//	public String getTdate() {			
+//		return tdate;		
+//	}			
+//	public void setTdate(String tdate) {			
+//		this.tdate = tdate;		
+//		}		
 				
 
 	public String getSEQNO() {

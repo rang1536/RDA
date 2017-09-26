@@ -103,8 +103,10 @@ return map;
 		System.out.println(" 환경 수정하기   "+environment.getFARM_ID());
 	 
 		
-		String eNV_GATHERDATE= environment.getEnv_date1()+"년"+environment.getEnv_res2()+"월"+environment.getEnv_res3()+"일"+environment.getEnv_res4()+"시";
-		environment.setENV_GATHERDATE(eNV_GATHERDATE);	
+		//String eNV_GATHERDATE= environment.getEnv_date1()+"년"+environment.getEnv_res2()+"월"+environment.getEnv_res3()+"일"+environment.getEnv_res4()+"시";
+		System.out.println(" 환경 수정하기   "+environment.getSEQNO());
+		environment.getSEQNO();
+		environment.setENV_GATHERDATE(environment.getTotalDate());	
 	 
 		int result = envService.ajaxenvEntityUpdateDo(environment);
 	  	

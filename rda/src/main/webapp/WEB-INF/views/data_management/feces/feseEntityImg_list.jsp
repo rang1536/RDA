@@ -88,108 +88,32 @@
 				      "url":"${pageContext.request.contextPath }/ajax/feseEntityImgList?entity_id=${entity_id}",
 				      "type":"POST",				     
 				      "dataSrc": function(json){
-				    	   console.log("======");  
-				    	   console.log(json);
-				    	   var farmlist = json.entityList;
-				    	   if (json == 'null') {alert();}
-				    	   if (json != 'null') {
-				    		   
-				    		   console.log("===ok==");  
-				    		   console.log(farmlist.length);  
-				            
-				    		   for(var i=0; i<farmlist.length; i++){
-				    			   
-				    			   farmlist[i].rnum=i+1;
-				    			   
-				    			   //핸드폰번호 조합하여 phone1에 넣게
-				    			   if(farmlist[i].phone1=="null"){ farmlist[i].phone1=""   }
-				    			   if(farmlist[i].phone2=="null"){ farmlist[i].phone2=""   }
-				    			   if(farmlist[i].phone3=="null"){ farmlist[i].phone3=""   }
-				    			   if(farmlist[i].phone1==null){ farmlist[i].phone1=""   }
-				    			   if(farmlist[i].phone2==null){ farmlist[i].phone2=""   }
-				    			   if(farmlist[i].phone3==null){ farmlist[i].phone3=""   }
-				    			   
-				    			   console.log(farmlist[i].phone1);  
-						   	        	
-				 		   	        	farmlist[i].phone1 = farmlist[i].phone1+"-" +farmlist[i].phone2+"-" +farmlist[i].phone3 ;
-				 
-						   	             
-				 		   	        farmlist[i].feces_IMAGE = "<img src='resources/upload/"+  farmlist[i].feces_IMAGE+"' style='width:200px; '> ";
-						   	     
-						   	    	   
-						   	       //일반번호 조합하여 hp1에 넣기
-				 		   	        if(farmlist[i].hp1=="null"){ farmlist[i].hp1=""   }
-				     			   if(farmlist[i].hp2=="null"){ farmlist[i].hp2=""   }
-				     			   if(farmlist[i].hp3=="null"){ farmlist[i].hp3=""   }
-				     			   if(farmlist[i].hp1==null){ farmlist[i].hp1=""   }
-				     			   if(farmlist[i].hp2==null){ farmlist[i].hp2=""   }
-				     			   if(farmlist[i].hp3==null){ farmlist[i].hp3=""   }
-				     			   
-				     			   
-
-					   	        	
-					   	        	farmlist[i].hp1 = farmlist[i].hp1+"-" +farmlist[i].hp2+"-" +farmlist[i].hp3 ;
-
-				     			   
-						   	    	   
-						   	       //보기 버튼 만들기	
-						   	       // phone2에 지도보기버튼 추가
-						   	         	farmlist[i].phone2 =" 	<div align='center'><a href='fecesEntityImg?farmId=${farmId }''><input type='button' value='보기'></a></div>";
-						   	    	   // 	farmlist[i].phone3 =" <div align='center'><a href='fecesEntityInsert?farmId=${farmId}&entity_id="+farmlist[i].entity_ID+"'><input  type='button' onclick=\"window.open('feces_input.jsp?entity_id=005107','분변 추가','top=100px, left=200px, height=500px, width=500px');\" value='추가'></a></div>";
-						   	    	  //   farmlist[i].phone3 =" <div align='center'><input type='button' onclick=\"window.open('fecesEntityInsert?entity_id="+encodeURI(farmlist[i].entity_ID)+"','설문조사','top=100px, left=200px, height=500px, width=500px');\" value='추가'></div>";
-
-// 						   	    	     <input onclick="window.open('feces_input.jsp?entity_id=005107','분변 추가','top=100px, left=200px, height=500px, width=500px');" type="button" value="추가">
-						            //수정 버튼만들기
-						   	    	  //phone3에 수정버튼 추가
-						   	    	  
-						   	    	     // 	farmlist[i].phone3 =" <div align='center'><a href='envEntityList?farmId="+farmlist[i].farmId+"'><input type='button' value=' 수정'></a></div>";
-						   	    	  
-						   	    	  
-						   	    	   
-//						   	     	   		<div align="center">
-//						   	 										<input type="button" value="보기">
-//						   	 									</div>
-//						   	 								</td>
-//						   	 								<td style="font-size: 13px;">
-//						   	 									<div align="center">
-//						   	 										<a href="farmUpdate?farmId=${list.farmId }"><input type="button" value="수정"></a>
-//						   	 									</div>
-						   	    	 
-				   	          }
-				    		   
+				    	 
+						    	   console.log(json);
+						    	   var farmlist = json.entityList;
+						    	   if (json == 'null') {alert();}
+						    	   if (json != 'null') {
+							    		   
+							    		   console.log("===ok==");  
+							    		   console.log(farmlist.length);  
+							            
+							    		   for(var i=0; i<farmlist.length; i++){
+							    			   
+											farmlist[i].rnum=i+1;
+											
+											farmlist[i].feces_IMAGE = "<img src='resources/upload/"+  farmlist[i].feces_IMAGE+"' style='width:200px; '> ";
+											      
+											   // phone2에 지도보기버튼 추가
+											farmlist[i].phone2 =" 	<div align='center'><a href='fecesEntityImg?farmId=${farmId }''><input type='button' value='보기'></a></div>";
+									   	     	 
+							   	          } 
 				    	   }
-				    	   //핸드폰번호 조합하여 phone1에 넣게
-				    	   
-				    	   //일반번호 조합하여 hp1에 넣기
-				    	   
-				    	   
-				    //보기 버튼 만들기	   
-				    	   
-				    	   //수정 버튼만들기
-//				     	   		<div align="center"><input type="button" value="보기"></div>
-//				 							
-//				 									<div align="center"><a href="farmUpdate?farmId=${list.farmId }"><input type="button" value="수정"></a></div>
-				    	   
-				    	   
-//				         if (json.data != 'null') {
-				       
-//				          for(var i=0; i<json.length; i++){
-//				          if( json[i].corpSttus == 'D'){
-//				            json[i].corpSttus = '이용 중지'
-//				          } else{
-//				           json[i].corpSttus  = '이용중'
-//				          }
-//				          json[i].pageIndex = i+1;
-				         
-//				          }
-				         
-//				          return json;
-//				          }
-				return json.entityList
+				    	  
+			     	return json.entityList
 				      }
 				  },            
 				  columns : [
-					   {data: "rnum", sClass:"counNo"},
+					      {data: "rnum", sClass:"counNo"},
 					      {data: "feces_IMAGE"},
 					      {data: "view_totalGathDate"},
 					      {data: "view_totalOccDate1"},
@@ -198,17 +122,12 @@
 					      {data: "feed"}
 				      
 				  ],
-				         initComplete : function() {
-				 
-				        	 
-				        	 
+				         initComplete : function() { 
 				        	 $('#payList_filter').prepend( $('#buttonWrap')) ;
 				        	 
 				         }
 				  
-				  
-				  
-				  //=============
+
 				   });      
 				      
 				       
@@ -216,10 +135,15 @@
 
 				 
 						
-				</script><style>
-      #content  .buttons-print {
+</script>
+				
+<style>
+ table  img{
+	width: 130px!important;
+				}
+#content  .buttons-print {
     margin-left: 7px !important;
-  border: 2px  solid #ccc !important;
+	border: 2px  solid #ccc !important;
             }    
 </style>
 			
@@ -230,56 +154,51 @@
 								  
 				</div>	
 				<div id="content">
-	<table id="payList">
+			<table id="payList">
                    <colgroup>
-                        <col width="70px">
-                        <col width="150px">
-                            <col width="100px">
-                              <col width="100px">
-                         <col width="100px">
-                        <col width="100px">
-                        <col width="150px">
-                    
+							<col width="70px">
+							<col width="150px">
+							<col width="100px">
+							<col width="100px">
+							<col width="100px">
+							<col width="100px">
+							<col width="150px">
+							                    
                     </colgroup>
-                    <thead>
-                     <tr>
-                         <th>
-                             NO
-                         </th>
-                         <th>
-                             분변이미지
-                         </th>
-                         <th>
-                            채취일시
-                         </th>
-                         <th>
-                             발병일시 
-                         </th>
-                         <th>
-                             병명 
-                         </th>
-                         
-                            <th>
-                             성별 
-                         </th>
-                     
-                  <th>
-                             사료 
-                         </th>
-                        </tr>
-                    </thead>
+					  <thead>
+									<tr>
+										<th>
+										NO
+										</th>
+										<th>
+										분변이미지
+										</th>
+										<th>
+										채취일시
+										</th>
+										<th>
+										발병일시 
+										</th>
+										<th>
+										병명 
+										</th>
+										
+										<th>
+										성별 
+										</th>
+									
+										<th>
+										사료 
+										</th>
+					      </tr>
+					  </thead>
                     <tbody>
                         
                     </tbody>
                 </table>
     	</div>
 
-
-
-
-
-
-
-				<c:import url="../../module/footer.jsp"></c:import>
+ 
+<c:import url="../../module/footer.jsp"></c:import>
 				 
 

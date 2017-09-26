@@ -13,7 +13,7 @@
    <result property="BIRTH_WEIGHT" column="BIRTH_WEIGHT"  javaType="java.lang.String" />
    <result property="COLOSTRUM" column="COLOSTRUM"  javaType="java.lang.String" />
    <result property="VACCINE" column="VACCINE"  javaType="java.lang.String" />
-   <result property="BIRTH_NUMBER" column="BIRTH_NUMBER"  javaType="java.lang.String" />
+   <result property="BIRTHNUMBER" column="BIRTHNUMBER"  javaType="java.lang.String" />
    <result property="BIRTH_CASE" column="BIRTH_CASE"  javaType="java.lang.String" />
    <result property="INPUTDATE" column="INPUTDATE"  javaType="java.lang.String" />
    <result property="UPDATEDATE" column="UPDATEDATE"  javaType="java.lang.String" />
@@ -100,7 +100,7 @@ BIRTH	,
 BIRTH_WEIGHT 	,	   
 COLOSTRUM	,	   
 VACCINE	,	   
-BIRTH_NUMBER	,	   
+BIRTH_NUMBER as  BIRTHNUMBER,	   
 BIRTH_CASE	,	   
 INPUTDATE	,	   
 UPDATEDATE	,	   

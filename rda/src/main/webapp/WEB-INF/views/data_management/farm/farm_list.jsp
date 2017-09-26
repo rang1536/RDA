@@ -4,7 +4,7 @@
 <c:import url="../../module/side_data_management.jsp"></c:import>
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css"/>
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.css"/>
-
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
 
@@ -49,9 +49,29 @@
 	//==============================================================
 		
 		$(document).ready(function(){
+			   $(function(){   
+
+	                var onSampleResized = function(e){
+	                    var columns = $(e.currentTarget).find("th");
+	                    var msg = "columns widths: ";
+	                    columns.each(function(){ msg += $(this).width() + "px; "; })
+	                    $("#sample2Txt").html(msg);
+	                    
+	                };  
+	            
+	                $("table").colResizable({
+	                    liveDrag:true, 
+	                    gripInnerHtml:"<div class='grip'></div>", 
+	                    draggingClass:"dragging", 
+	                    onResize:onSampleResized});
+	                
+	            });
    var table = 
         $('#payList').DataTable( {
           dom: 'Bfrtip',
+//           scrollY:        "300px",
+//           scrollX:        true,
+//           scrollCollapse: true,
           lengthChange: false,
           autoWidth : false,
           processing: false,
@@ -223,6 +243,9 @@ return json.farmList
 				  
 </div>	
 	<div id="content">
+<!-- 	<div> -->
+<!-- 	<img src="resources/images/icon/board.png" style="width: 20px; position: relative; top: 0.2em"> <h3>목장자료>기존목장자료</h5> -->
+	
 	<table id="payList">
                    <colgroup>
                         <col width="100px">
