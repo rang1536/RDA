@@ -117,6 +117,7 @@
 <!-- 목장 추가 -->
 <insert id="insertFarm" parameterType="com.kis.rda.farm.domain.Farm">
 	INSERT INTO rda_test.farm (
+	SEQNO,	
 		farm_id, 
 		address, 
 		fname, 
@@ -133,6 +134,7 @@
 		hp3
 	) 
 	VALUES(
+	rda_test.SEQ_NEWFARM.nextval	,
 		#{farmId},
 		#{address},
 		#{fname},
