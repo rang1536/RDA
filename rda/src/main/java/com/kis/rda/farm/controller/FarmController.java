@@ -1,5 +1,6 @@
 package com.kis.rda.farm.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kis.rda.common.domain.Newfarm;
 import com.kis.rda.farm.domain.Farm;
+import com.kis.rda.farm.domain.FarmMap;
 import com.kis.rda.farm.service.FarmService;
+import com.kis.rda.util.GeoCode;
 
 
 @Controller
@@ -114,18 +117,26 @@ public class FarmController {
 		return "data_management/new_farm/new_farm_input";
 	}
 	//목장자료 -  신규 목장 수정 FORM
-		@RequestMapping(value = "/newfarmUpdate", method = RequestMethod.GET)
-		public String  newfarmUpdateFormCtrl(Model model,
-				@RequestParam(value="farmId") String farmId) {
-			System.out.println(farmId);
-			 Newfarm farm = farmService.selectnewFarmDetailServ(farmId);
-	 
-			
-		 model.addAttribute("EntityList", farm);
-			System.out.println( " farm.getFARM_ID()===>"+farm.getFARM_NAME());
-			
-			
-			return "data_management/new_farm/new_farm_update";
-		}
-	
+	@RequestMapping(value = "/newfarmUpdate", method = RequestMethod.GET)
+	public String  newfarmUpdateFormCtrl(Model model,
+			@RequestParam(value="farmId") String farmId) {
+		System.out.println(farmId);
+		Newfarm farm = farmService.selectnewFarmDetailServ(farmId);
+ 
+		
+		model.addAttribute("EntityList", farm);
+		System.out.println( " farm.getFARM_ID()===>"+farm.getFARM_NAME());
+		
+		return "data_management/new_farm/new_farm_update";
+	}
+
+	//목장자료 - 목장현황지도
+	@RequestMapping(value = "/mapFarmView", method = RequestMethod.GET)
+	public String mapViewCtrl(Model model) {
+		/*List<FarmMap> farmList = farmService.readFarmMapAllServ();
+		
+		model.addAttribute("farmList", farmList);*/
+		
+		return "map/google_map_farm";
+	}
 }

@@ -13,6 +13,9 @@
 					<a href=""><img class="side_icon" src="<c:url value='resources/img/side_icon.png'/>">혈액검사</a></li>
 				<li class="files">
 					<a href=""><img class="side_icon" src="<c:url value='resources/img/side_icon.png'/>">설문조사</a></li>
+				<li class="files">
+					<a href="mapFarmView"><img class="side_icon" src="<c:url value='resources/img/side_icon.png'/>">목장현황지도</a>
+				</li>
 			</ul>
 		</div>
 	</div>

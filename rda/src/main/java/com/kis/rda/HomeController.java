@@ -1,5 +1,6 @@
 package com.kis.rda;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.kis.rda.farm.domain.FarmMap;
 import com.kis.rda.farm.service.FarmService;
+import com.kis.rda.util.GeoCode;
 
 @Controller
 public class HomeController {
@@ -64,5 +67,7 @@ public class HomeController {
 	public String test6(Model model) {
 		return "test/test6";
 	}
+	
+	
 	
 }

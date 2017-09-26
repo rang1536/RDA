@@ -219,7 +219,7 @@ return json.farmList
  <div id="buttonWrap">
 <!-- 			 <input  class="btn btn-default buttons-excel buttons-html5" type="button" value="인쇄" onClick="print(document.getElementById('amc_content_body').innerHTML)"> -->
 			  
-			 <input  class="btn btn-default buttons-excel buttons-html5"  type="button" value="추가" onclick="location.href='farmAdd'">
+			 <input class="btn btn-default buttons-excel buttons-html5" type="button" value="추가" onclick="location.href='farmAdd'">
 				  
 </div>	
 	<div id="content">

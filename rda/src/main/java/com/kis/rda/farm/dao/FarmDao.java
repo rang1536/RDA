@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kis.rda.common.domain.Newfarm;
 import com.kis.rda.farm.domain.Farm;
+import com.kis.rda.farm.domain.FarmMap;
 import com.kis.rda.farm.domain.NewFarm;
 
 @Repository
@@ -84,4 +85,13 @@ public class FarmDao {
 		return sqlSession.selectOne("FarmDao.selectnewFarmDetailServ", farmId);
 	}
 	
+	//주소로 위경도값 구하기위해 데이터 조회
+	public List<FarmMap> selectFarmMapAll(Map<String, Object> params){
+		return sqlSession.selectList("FarmDao.selectFarmMapAll",params);
+	}
+	
+	// 구한주소 업데이트하기
+	public int updateLatLng(FarmMap farmMap) {
+		return sqlSession.update("FarmDao.updateLatLng", farmMap);
+	}
 }

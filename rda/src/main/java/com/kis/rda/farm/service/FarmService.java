@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 import com.kis.rda.common.domain.Newfarm;
 import com.kis.rda.farm.dao.FarmDao;
 import com.kis.rda.farm.domain.Farm;
+import com.kis.rda.farm.domain.FarmMap;
 import com.kis.rda.farm.domain.NewFarm;
+import com.kis.rda.util.GeoCode;
 import com.kis.rda.util.Paging;
 import com.kis.rda.util.UtilPaging;
 
@@ -100,11 +102,11 @@ public class FarmService {
 
 	public int ajaxnewfarmUpdateCtrl(Newfarm farm) {
 		return farmDao.ajaxnewfarmUpdateCtrl(farm);
-		}
+	}
 
 	public int ajaxnewfarmAdd(Newfarm farm) {
 		return farmDao.ajaxnewfarmAdd(farm);
-		}
+	}
 
 	public Newfarm selectnewFarmDetailServ(String farmId) {
 		return farmDao.selectnewFarmDetailServ(farmId);
@@ -112,5 +114,34 @@ public class FarmService {
 
 	public int ajaxnewfarmDelete(String farmId) {
 		return farmDao.ajaxnewfarmDelete(farmId);
-		}
+	}
+	
+	// 구글맵 마킹테스트
+	public List<FarmMap> readFarmMapAllServ(String farmDo){
+		Map<String, Object> params = new HashMap<String,Object>();
+		params.put("startNo", 0);
+		params.put("endNo",2600);
+		params.put("farmDo", farmDo);
+		List<FarmMap> farmList = farmDao.selectFarmMapAll(params);
+		GeoCode geoCode = new GeoCode();
+		/*String[] coords = geoCode.geoCoding("강원 춘천시 동산면 원창리 451-1");
+		System.out.println("강원 춘천시 동산면 원창리 451-1" + ": " + coords[0] + ", " + coords[1]);*/
+		
+		/*for(int i=0; i<farmList.size(); i++) {
+			String[] coords = geoCode.geoCoding(farmList.get(i).getFarmFullAdd());
+			if(coords != null) {
+				farmList.get(i).setFarmLat(coords[0]);
+				farmList.get(i).setFarmLng(coords[1]);
+				
+				int result = farmDao.updateLatLng(farmList.get(i));
+				System.out.println(i+" 번째 수정결과 : "+result);
+			}
+		}*/
+		System.out.println("완료");
+		return farmList;
+	}
+	
+	/*GeoCode geoCode = new GeoCode();
+	Float[] coords = geoCode.geoCoding("전북 전주시 완산구 평화동1가 386-2");
+	System.out.println("전북 전주시 완산구 평화동1가 386-2" + ": " + coords[0] + ", " + coords[1]);*/
 }
