@@ -411,4 +411,34 @@ FARM_ID=#{FARM_ID}
 	ORDER BY
 		farm_id ASC
 </select>
+
+<!-- 주소로 위경도 구하기위해 목장값 셀렉트  -->
+<select id="selectFarmMapAll" parameterType="Map" resultType="com.kis.rda.farm.domain.FarmMap">
+	SELECT
+		*
+	FROM
+		RDA_TEST.FARMMAP
+	WHERE
+		farm_no > #{startNo}
+	AND
+		farm_no &lt; #{endNo}
+	<if test="!farmDo.equals('전체')">
+	AND
+		farm_do = #{farmDo}
+	</if>
+	
+</select>
+
+<!-- 구한 위경도값 db업데이트 -->
+<update id="updateLatLng" parameterType="com.kis.rda.farm.domain.FarmMap">
+	UPDATE
+		RDA_TEST.FARMMAP
+	SET
+		<if test="farmLat != null and farmLat != ''">
+			FARM_LAT = #{farmLat},
+			FARM_LNG = #{farmLng}
+		</if>
+	WHERE
+		FARM_NO = #{farmNo}
+</update>
 </mapper>

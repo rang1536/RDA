@@ -110,6 +110,13 @@
 			<artifactId>ojdbc6</artifactId>
 			<version>12.1.0.2</version>
 		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/com.google.code.geocoder-java/geocoder-java -->
+		<dependency>
+		    <groupId>com.google.code.geocoder-java</groupId>
+		    <artifactId>geocoder-java</artifactId>
+		    <version>0.16</version>
+		</dependency>
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
