@@ -56,7 +56,7 @@ $(document).ready(function(){
 	var BIRTH_WEIGHT="${entityEntity.getBIRTH_WEIGHT()}";
 	var COLOSTRUM="${entityEntity.getCOLOSTRUM()}";
 	var VACCINE="${entityEntity.getVACCINE()}";
-	var BIRTH_NUMBER="${entityEntity.getBIRTH_NUMBER()}";
+	var BIRTH_NUMBER="${entityEntity.getBIRTHNUMBER()}";
 	//var BIRTH_CASE="인공수정";
 	var BIRTH_CASE="${entityEntity.getBIRTH_CASE()}";
 	var INPUTDATE="${entityEntity.getINPUTDATE()}";
@@ -215,10 +215,17 @@ $(document).ready(function(){
 			<col width="80%">
 		</colgroup>
 		
-		<tbody><tr>
-			<th>개체 ID</th>
+		<tbody>
+<!-- 		<tr> -->
+<!-- 			<th>개체 ID</th> -->
+<!-- 			<td style="padding-left: 5px"> -->
+<%--             	<input type="text" name="ENTITY_ID" id="entity_id" disabled="disabled" value="${entity_id}" style="background-color: #e2e2e2;"><br> --%>
+<!--             </td> -->
+<!--         </tr> -->
+<tr>
+			<th>관리번호</th>
 			<td style="padding-left: 5px">
-            	<input type="text" name="ENTITY_ID" id="entity_id" disabled="disabled" value="${entity_id}" style="background-color: #e2e2e2;"><br>
+                   	<input type="text" name="CASENUM" id="CASENUM" value="${entityEntity.getCASENUM()}"><br>
             </td>
         </tr>
 		<tr>
@@ -347,7 +354,7 @@ $(document).ready(function(){
 		<tr>
 			<th>생시 체중</th>
 			<td style="padding-left: 5px">
-				<input style="width:50px; text-align: right;" type="text" name="BIRTH_WEIGHT" id="BIRTH_WEIGHT">&nbsp;&nbsp;(18 ~ 25(kg))<br>
+				<input style="width:50px; text-align: right;" type="text" name="BIRTH_WEIGHT" id="BIRTH_WEIGHT" value="${entityEntity.getBIRTH_WEIGHT()}">&nbsp;&nbsp;(18 ~ 25(kg))<br>
 			</td>
 		</tr>
 		<tr>

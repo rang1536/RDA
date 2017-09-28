@@ -306,6 +306,12 @@ $(document).ready(function(){
 				<input type="text" name="IGA" id="IGA" onkeyup="if ( isNaN(this.value) ) { alert('숫자만 입력가능합니다.'); this.value=''; } else { if(this.value > 999) { this.value = this.value.substring(0,4); } }" value="${EntityList.getIGA()}">mg/dl&nbsp;&nbsp;(6~100)<br>
 			</td>
 		</tr>
+				<tr>
+			<th>측정 장비</th>
+			<td style="padding-left: 5px">
+				<input type="text" name="EQUIPMENT" id="EQUIPMENT" value="${EntityList.getEQUIPMENT()}"><br>
+			</td>
+		</tr>
 		<tr>
 			<td colspan="2" align="center">
 			  <input type="hidden" id="mod" name="mod" value="modify">

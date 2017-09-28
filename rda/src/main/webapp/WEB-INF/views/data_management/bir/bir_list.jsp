@@ -82,11 +82,11 @@
        },
     ajax : {
    
-      "url":"${pageContext.request.contextPath }/ajax/birList",
+      "url":"${pageContext.request.contextPath }/ajax/farmList",
       "type":"POST",
       "dataSrc": function(json){
-    	   console.log("======");  console.log(json.birList);
-    	   var farmlist = json.birList;
+    	   console.log("======");  console.log(json.farmList);
+    	   var farmlist = json.farmList;
     	   if (json.farmList != 'null') {
     		   
     		   console.log("===ok==");  
@@ -174,7 +174,7 @@
          
 //          return json;
 //          }
-return json.birList
+return json.farmList
       }
   },            
   columns : [

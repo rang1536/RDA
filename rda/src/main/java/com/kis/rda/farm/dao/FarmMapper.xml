@@ -67,7 +67,7 @@
 </select>
 <!-- 목장자료 - 기존 목장 LIST-->
 <select id="selectFarmList" parameterType="Map" resultType="com.kis.rda.farm.domain.Farm">
-	SELECT
+		SELECT
 		*
 	FROM ( 
    			SELECT 
@@ -77,27 +77,9 @@
         			SELECT
         				*
        				FROM 
-       					RDA_TEST.FARM
-   					<if test="searchValue != null and searchValue != '' and searchValue != 'none'">
-					WHERE
-						<choose>
-							<when test="searchOption =='fname'">
-								 fname LIKE '%'||#{searchValue}||'%'
-							</when>
-							<when test="searchOption =='name'">
-								 name LIKE '%'||#{searchValue}||'%'
-							</when>
-						</choose>
-					</if>
-        			ORDER BY
-        				inputdate DESC
-      			) A
-    		WHERE 
-    			rownum &lt;= #{endRow}
- 		) B
-	WHERE
-		B.rnum &gt;= #{beginRow}
+       					RDA_TEST.FARM) A)
 </select>
+
 <!-- 목장자료 - 기존 목장 EXCEL LIST -->
 <select id="selectFarmExcel" resultType="com.kis.rda.farm.domain.Farm">
 	SELECT

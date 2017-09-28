@@ -43,16 +43,11 @@
 						window.location.href = "farmList?searchOption="+searchOption+"&searchValue="+ encodeURI(searchValue);
 					}
 					
-					
-					
-					
-					//==============================================================
-						
-						$(document).ready(function(){
-					
+							
+						$(document).ready(function(){					
 							
 						var 	 varfarmId ="001"; 
-				   var table = 
+			       	   var table = 
 				        $('#payList').DataTable( {
 				          dom: 'Bfrtip',
 				          lengthChange: false,
@@ -85,7 +80,7 @@
 				       },
 				    ajax : {
 				   
-				      "url":"${pageContext.request.contextPath }/ajax/birEntityList?farm_id=${farmId}",
+				      "url":"${pageContext.request.contextPath }/ajax/entityEntityList?farm_id=${farmId}",
 				      "type":"POST",
 				      "data" : { FARM_ID :  "${farmId}" },
 				      "dataSrc": function(json){
@@ -99,89 +94,24 @@
 				    		   console.log(farmlist.length);  
 				            
 				    		   for(var i=0; i<farmlist.length; i++){
-				    			   //핸드폰번호 조합하여 phone1에 넣게
-				    			   if(farmlist[i].phone1=="null"){ farmlist[i].phone1=""   }
-				    			   if(farmlist[i].phone2=="null"){ farmlist[i].phone2=""   }
-				    			   if(farmlist[i].phone3=="null"){ farmlist[i].phone3=""   }
-				    			   if(farmlist[i].phone1==null){ farmlist[i].phone1=""   }
-				    			   if(farmlist[i].phone2==null){ farmlist[i].phone2=""   }
-				    			   if(farmlist[i].phone3==null){ farmlist[i].phone3=""   }
-				    			   
-				    			   console.log(farmlist[i].phone1);  
-						   	        	
-				 		   	        	farmlist[i].phone1 = farmlist[i].phone1+"-" +farmlist[i].phone2+"-" +farmlist[i].phone3 ;
-				 
-						   	             
-						   	             
-						   	     
-						   	    	   
-						   	       //일반번호 조합하여 hp1에 넣기
-				 		   	        if(farmlist[i].hp1=="null"){ farmlist[i].hp1=""   }
-				     			   if(farmlist[i].hp2=="null"){ farmlist[i].hp2=""   }
-				     			   if(farmlist[i].hp3=="null"){ farmlist[i].hp3=""   }
-				     			   if(farmlist[i].hp1==null){ farmlist[i].hp1=""   }
-				     			   if(farmlist[i].hp2==null){ farmlist[i].hp2=""   }
-				     			   if(farmlist[i].hp3==null){ farmlist[i].hp3=""   }
-				     			   
-				     			   
+				    			 
+						   	        
+				    				farmlist[i].rnum = i+1;
 
-					   	        	
-					   	        	farmlist[i].hp1 = farmlist[i].hp1+"-" +farmlist[i].hp2+"-" +farmlist[i].hp3 ;
-
-				     			   
-						   	    	   
+					   	        	 
 						   	       //보기 버튼 만들기	
 						   	       // phone2에 지도보기버튼 추가
 						   	    //  	farmlist[i].phone2 =" 	<div align='center'><a href='envEntityUpdate?farmId=${farmId }''><input type='button' value='수정'></a></div>";
 						   	    	      	farmlist[i].phone3 =" <div align='center'><a href='biochemicalEntityListDetail?farmId=${farmId}&entity_id="+farmlist[i].entity_ID+"'><input type='button' value='보기'></a></div>";
 		   	    	  
-		   	    	     
-						            //수정 버튼만들기
-						   	    	  //phone3에 수정버튼 추가
-						   	    	  
-						   	    	     // 	farmlist[i].phone3 =" <div align='center'><a href='envEntityList?farmId="+farmlist[i].farmId+"'><input type='button' value=' 수정'></a></div>";
-						   	    	  
-						   	    	  
+		   	    	   
 						   	    	   
-//						   	     	   		<div align="center">
-//						   	 										<input type="button" value="보기">
-//						   	 									</div>
-//						   	 								</td>
-//						   	 								<td style="font-size: 13px;">
-//						   	 									<div align="center">
-//						   	 										<a href="farmUpdate?farmId=${list.farmId }"><input type="button" value="수정"></a>
-//						   	 									</div>
+ 
 						   	    	 
 				   	          }
 				    		   
 				    	   }
-				    	   //핸드폰번호 조합하여 phone1에 넣게
-				    	   
-				    	   //일반번호 조합하여 hp1에 넣기
-				    	   
-				    	   
-				    //보기 버튼 만들기	   
-				    	   
-				    	   //수정 버튼만들기
-//				     	   		<div align="center"><input type="button" value="보기"></div>
-//				 							
-//				 									<div align="center"><a href="farmUpdate?farmId=${list.farmId }"><input type="button" value="수정"></a></div>
-				    	   
-				    	   
-//				         if (json.data != 'null') {
-				       
-//				          for(var i=0; i<json.length; i++){
-//				          if( json[i].corpSttus == 'D'){
-//				            json[i].corpSttus = '이용 중지'
-//				          } else{
-//				           json[i].corpSttus  = '이용중'
-//				          }
-//				          json[i].pageIndex = i+1;
-				         
-//				          }
-				         
-//				          return json;
-//				          }
+				    	  
 				return json.entityList
 				      }
 				  },            
@@ -195,7 +125,7 @@
 					      {data: "birth_WEIGHT"},
 					      {data: "colostrum"},
 					      {data: "vaccine"},
-					      {data: "birth_NUMBER"},
+					      {data: "birthnumber"},
 					      {data: "birth_CASE"},
 					      {data: "phone3"}
 				      

@@ -24,16 +24,8 @@ public class SenseDao {
 private SqlSessionTemplate sqlSession;		
 		
 		
-	public int selectSenseCount(Map<String, Object> map){	
-		return sqlSession.selectOne("SenseDao.selectFarmCount", map);
-	}	
-public List<Farm> selectSenseList(Map<String, Object> map){		
-	return sqlSession.selectList("SenseDao.selectFarmList", map);	
-	}
-public List<TbSenseCount> ajaxsenseCountList() {
-	 
-	return sqlSession.selectList("SenseDao.ajaxsenseCountList");	
-}
+ 
+ 
 public List<TbSenseEntityList> ajaxsenseEntityList() {
 	return sqlSession.selectList("SenseDao.ajaxsenseEntityList");	
 }
@@ -49,6 +41,35 @@ public List<TbsenseStableList> ajaxsenseStableListDetail(TbsenseStableList entit
 public int ajaxsenseStableEntityInsertDo(Sense entityInsert) {
 	return sqlSession.insert("SenseDao.ajaxsenseStableEntityInsertDo",entityInsert);			
 	}
+public List<String> selectchartymd(Map<String, Object> map) {
+	return sqlSession.selectList("SenseDao.selectchartymd", map);
+}
+public List<String> selectupdown(Map<String, Object> map) {
+	return sqlSession.selectList("SenseDao.selectupdown", map);
+}
+public List<String> selectchartavg(Map<String, Object> map) {
+	return sqlSession.selectList("SenseDao.selectchartavg", map);
+}
+public List<String> selectchartcentr(Map<String, Object> map) {
+	return sqlSession.selectList("SenseDao.selectchartcentr", map);
+}
+
+
+public List<String> selectStablechartymd(Map<String, Object> map) {
+	return sqlSession.selectList("SenseDao.selectStablechartymd", map);
+}
+public List<String> selectStablechartavg(Map<String, Object> map) {
+	return sqlSession.selectList("SenseDao.selectStablechartavg", map);
+}
+public List<String> selectStablechartavg2(Map<String, Object> map) {
+	return sqlSession.selectList("SenseDao.selectStablechartavg2", map);
+}
+public List<String> selectStablechartavg3(Map<String, Object> map) {
+	return sqlSession.selectList("SenseDao.selectStablechartavg3", map);
+}
+ 
+
+
 }		
 		
 		

@@ -85,7 +85,7 @@
 				       },
 				    ajax : {
 				   
-				      "url":"${pageContext.request.contextPath }/ajax/birEntityList?farm_id=${farmId}",
+				      "url":"${pageContext.request.contextPath }/ajax/entityEntityList?farm_id=${farmId}",
 				      "type":"POST",
 				      "data" : { FARM_ID :  "${farmId}" },
 				      "dataSrc": function(json){
@@ -195,7 +195,7 @@
 					      {data: "birth_WEIGHT"},
 					      {data: "colostrum"},
 					      {data: "vaccine"},
-					      {data: "birth_NUMBER"},
+					      {data: "birthnumber"},
 					      {data: "birth_CASE"},
 					      {data: "phone3"}
 				      

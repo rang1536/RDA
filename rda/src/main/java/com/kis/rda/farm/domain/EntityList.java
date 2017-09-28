@@ -6,20 +6,20 @@ public class EntityList extends Entity   {
 	private String	   farm_id	;
 
 	private String	   rnum	;
-//	private String	 birth_NUMBER;
+ 	private String	 birth_NUMBER;
 	
 	private	String		BIRTH1;
 	private	String	    BIRTH2;
 	private	String		BIRTH3;
 	private	String		BIRTH4;
-//	
-//	public String getBirth_NUMBER() {
-//		return birth_NUMBER;
-//	}
-//
-//	public void setBirth_NUMBER(String birth_NUMBER) {
-//		this.birth_NUMBER = birth_NUMBER;
-//	}
+	
+	public String getBirth_NUMBER() {
+		return birth_NUMBER;
+	}
+
+	public void setBirth_NUMBER(String birth_NUMBER) {
+		this.birth_NUMBER = birth_NUMBER;
+	}
 
 	public String getRnum() {
 		return rnum;

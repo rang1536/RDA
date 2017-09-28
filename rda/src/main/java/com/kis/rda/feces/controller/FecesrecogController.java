@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kis.rda.common.domain.Entity;
 import com.kis.rda.farm.domain.EntityList;
-import com.kis.rda.farm.domain.MhListDetail;
+
 import com.kis.rda.feces.service.DataanalyService;				
 				
 				

@@ -352,6 +352,12 @@ $(document).ready(function(){
 				<input type="text" name="SO2" id="SO2" onkeyup="if ( isNaN(this.value) ) { alert('숫자만 입력가능합니다.'); this.value=''; } else { if(this.value > 999) { this.value = this.value.substring(0,4); } }" value="">&nbsp;&nbsp;미정<br>
 			</td>
 		</tr>
+				<tr>
+			<th>측정 장비</th>
+			<td style="padding-left: 5px">
+				<input  type="text" name="EQUIPMENT" id="EQUIPMENT"><br>
+			</td>
+		</tr>
 		<tr>
 	 
 			<td colspan="2" align="center">

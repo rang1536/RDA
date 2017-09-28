@@ -8,11 +8,9 @@ import org.springframework.stereotype.Service;
 							
 import com.kis.rda.feces.dao.DataanalyDao;
 import com.kis.rda.feces.domain.Feces;
-import com.kis.rda.common.domain.Entity;
+
 import com.kis.rda.farm.domain.EntityList;
-import com.kis.rda.farm.domain.Farm;
-import com.kis.rda.farm.domain.MhListDetail;
-import com.kis.rda.farm.domain.NewFarm;							
+							
 import com.kis.rda.util.Paging;							
 import com.kis.rda.util.UtilPaging;							
 							

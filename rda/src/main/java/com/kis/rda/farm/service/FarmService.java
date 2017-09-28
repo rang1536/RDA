@@ -33,6 +33,8 @@ public class FarmService {
 		map.put("beginRow", paging.getBeginRow());
 		map.put("endRow", paging.getEndRow());
 		List<Farm> farmList = farmDao.selectFarmList(map);
+//		List<String> farmList2 = farmDao.selectFarmLis2t(map);
+//		map.put("farmListString", farmList2);
 		map.put("farmList", farmList);
 		map.put("totalCount", totalCount);
 		map.put("paging", paging);

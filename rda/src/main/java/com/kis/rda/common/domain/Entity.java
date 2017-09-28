@@ -9,6 +9,7 @@ public class Entity {
 	private String BIRTH_WEIGHT;
 	private String COLOSTRUM;
 	private String VACCINE;
+	private String BIRTH_NUMBER;
 	private String BIRTHNUMBER;
 	private String BIRTH_CASE;
 	private String INPUTDATE;
@@ -16,7 +17,14 @@ public class Entity {
 	private String CASENUM;
 	private String SEQNO;
 
-	
+
+	public String getBIRTH_NUMBER() {
+		return BIRTH_NUMBER;
+	}
+	public void setBIRTH_NUMBER(String bIRTH_NUMBER) {
+		BIRTH_NUMBER = bIRTH_NUMBER;
+	}
+
 	private String	 totalDate;			
 	private String	 ydate;			
 	private String	 mdate;			

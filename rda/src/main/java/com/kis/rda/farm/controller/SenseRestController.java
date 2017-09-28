@@ -26,47 +26,47 @@ public class SenseRestController {
 				
 @Autowired				
 private SenseService senseService;				
-@RequestMapping(value = "/ajax/senseList", method = RequestMethod.POST)				
-public Map<String,Object> ajaxsenseList(Model model,				
-	@RequestParam(value="pageNum", defaultValue="1") int pageNum,			
-	@RequestParam(value="searchOption", defaultValue="none") String searchOption,			
-	@RequestParam(value="searchValue", defaultValue="none") String searchValue) {			
-Map<String, Object> map = senseService.selectFarmListServ(pageNum, searchOption, searchValue);				
-model.addAttribute("farmList", map.get("farmList"));				
-model.addAttribute("totalCount", map.get("totalCount"));				
-model.addAttribute("paging", map.get("paging"));				
-model.addAttribute("searchOption", searchOption);				
-model.addAttribute("searchValue", searchValue);				
-				
-				
-return map;				
-}			
+//@RequestMapping(value = "/ajax/senseList", method = RequestMethod.POST)				
+//public Map<String,Object> ajaxsenseList(Model model,				
+//	@RequestParam(value="pageNum", defaultValue="1") int pageNum,			
+//	@RequestParam(value="searchOption", defaultValue="none") String searchOption,			
+//	@RequestParam(value="searchValue", defaultValue="none") String searchValue) {			
+//Map<String, Object> map = senseService.selectFarmListServ(pageNum, searchOption, searchValue);				
+//model.addAttribute("farmList", map.get("farmList"));				
+//model.addAttribute("totalCount", map.get("totalCount"));				
+//model.addAttribute("paging", map.get("paging"));				
+//model.addAttribute("searchOption", searchOption);				
+//model.addAttribute("searchValue", searchValue);				
+//				
+//				
+//return map;				
+//}			
 
 
 
 
 //=============================현황==================================================		
 
-@RequestMapping(value = "/ajax/senseCountList", method = RequestMethod.POST)			
-public Map<String,Object> ajaxsenseCountList(Model model,			
-	@RequestParam(value="pageNum", defaultValue="1") int pageNum,		
-	@RequestParam(value="searchOption", defaultValue="none") String searchOption,		
-	@RequestParam(value="searchValue", defaultValue="none") String entity_id,String searchValue,Cbcentity  entityDetail) {		
-	  System.out.println("목장birEntityListDetail"+ entity_id);	
- 
- Map<String, Object> map =senseService.ajaxsenseCountList( );			
-  //entityEntityList =entityService.ajaxentityEntityList(farmId);			
-  			
-model.addAttribute("entityEntityList", map.get("entityList"));			
-  System.out.println("목장birEntityListDetail"+ entity_id);			
- //model.addAttribute("entityEntityList",entityEntityList  );			
-//model.addAttribute("paging", map.get("paging"));			
-//model.addAttribute("searchOption", searchOption);			
-//model.addAttribute("searchValue", searchValue);			
-			
-			
-return map;			
-}	
+//@RequestMapping(value = "/ajax/senseCountList", method = RequestMethod.POST)			
+//public Map<String,Object> ajaxsenseCountList(Model model,			
+//	@RequestParam(value="pageNum", defaultValue="1") int pageNum,		
+//	@RequestParam(value="searchOption", defaultValue="none") String searchOption,		
+//	@RequestParam(value="searchValue", defaultValue="none") String entity_id,String searchValue,Cbcentity  entityDetail) {		
+//	  System.out.println("목장birEntityListDetail"+ entity_id);	
+// 
+//// Map<String, Object> map =senseService.ajaxsenseCountList( );			
+//  //entityEntityList =entityService.ajaxentityEntityList(farmId);			
+//  			
+//model.addAttribute("entityEntityList", map.get("entityList"));			
+//  System.out.println("목장birEntityListDetail"+ entity_id);			
+// //model.addAttribute("entityEntityList",entityEntityList  );			
+////model.addAttribute("paging", map.get("paging"));			
+////model.addAttribute("searchOption", searchOption);			
+////model.addAttribute("searchValue", searchValue);			
+//			
+//			
+//return map;			
+//}	
 
 
 //==============================개체=================================================		

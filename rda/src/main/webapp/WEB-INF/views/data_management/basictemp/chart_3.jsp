@@ -1,9 +1,35 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.sql.*"%>
 <%@ page import="java.text.*"%>
 <%@ page import="java.util.*"%>
 <%@ page import="java.io.*"%>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css"/>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.css"/>
 
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
+
+        <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/dataTables.buttons.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.bootstrap.min.js"></script>
+
+        <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.html5.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.print.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.colVis.min.js"></script>
+        <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/vfs_fonts.js"></script>
+        <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/pdfmake.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+        
+         
+<!--         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css" > -->
+<link rel="StyleSheet" href="<c:url value='resources/css/datatable.css'/>" type="text/css">
+<link rel="StyleSheet" href="<c:url value='resources/css/datatableUse.css'/>" type="text/css"> 
+ <c:import url="../../module/top_menu.jsp"></c:import>
+<c:import url="../../module/side_menu2.jsp"></c:import>
+ 
+ 
 <%
 	request.setCharacterEncoding("UTF-8");
 
@@ -371,8 +397,8 @@ function selected_box_1() {
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 
 
-	 <form id ="chart3" name = "chart3" method ="post" action="chart_3.jsp?pageNum=1">
-	
+<!-- 	 <form id ="chart3" name = "chart3" method ="post" action="chart_3.jsp?pageNum=1"> -->
+	<form id ="chart3" name = "chart3" method ="get" action="../rda/basicTempTotalChart">
 		<tr height="30" >
 			<td height="33" colspan="4" >
 			<div>
@@ -380,7 +406,7 @@ function selected_box_1() {
 				<table width="100%" >
 					<tr>
 						<td align="left" style="padding-bottom: 5px; ">
-							<font style="color:#000000; font-family:gulim; font-size:14px;"><b><img src="<%= request.getContextPath() %>/images/icon/board.png" style="width:20px; position:relative; top:0.2em"> 센서측정 > 체온분석</b></font><br>
+							<font style="color:#000000; font-family:gulim; font-size:14px;"><b><img src="resources/images/icon/board.png" style="width:20px; position:relative; top:0.2em"> 센서측정 > 체온분석</b></font><br>
 						</td>
 						<td align="right" width="71" > <!-- 검색조건 셀렉트 박스(검색 결과를 뿌려준후 선택했던값 유지되도록 코딩) -->
 						
@@ -540,3 +566,4 @@ function selected_box_1() {
 <div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
 	</body>
 </html>
+<c:import url="../../module/footer.jsp"></c:import>

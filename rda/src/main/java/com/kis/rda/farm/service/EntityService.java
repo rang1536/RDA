@@ -6,12 +6,12 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;							
 import org.springframework.stereotype.Service;
 
-import com.kis.rda.common.domain.Environment;
+import com.kis.rda.common.domain.Entity;
 import com.kis.rda.farm.dao.EntityDao;
 import com.kis.rda.farm.domain.EntityList;
-import com.kis.rda.farm.domain.EnvUpdate;
+ 
 import com.kis.rda.farm.domain.Farm;							
-import com.kis.rda.farm.domain.NewFarm;							
+ 						
 import com.kis.rda.util.Paging;							
 import com.kis.rda.util.UtilPaging;							
 							
@@ -22,24 +22,24 @@ public class EntityService {
 							
 @Autowired							
 private EntityDao entityDao;							
-public Map<String, Object> selectFarmListServ(int pageNum, String searchOption, String searchValue){							
-	Map<String, Object> map = new HashMap<String, Object>();						
-	map.put("searchOption", searchOption);						
-	map.put("searchValue", searchValue);						
-	int totalCount = entityDao.selectEntityCount(map);						
-	UtilPaging utilPaging = new UtilPaging();						
-	Paging paging = utilPaging.pagingMethod(pageNum, totalCount);						
-	map.put("beginRow", paging.getBeginRow());						
-	map.put("endRow", paging.getEndRow());						
-	List<Farm> entityList = entityDao.selectEntityList(map);						
-	map.put("entityList",entityList);						
-	map.put("totalCount", totalCount);						
-	map.put("paging", paging);						
-	return map;						
-}
-public Map<String, Object> ajaxentityEntityList(EntityList entityEntityList) {
+//public Map<String, Object> selectFarmListServ(int pageNum, String searchOption, String searchValue){							
+//	Map<String, Object> map = new HashMap<String, Object>();						
+//	map.put("searchOption", searchOption);						
+//	map.put("searchValue", searchValue);						
+//	int totalCount = entityDao.selectEntityCount(map);						
+//	UtilPaging utilPaging = new UtilPaging();						
+//	Paging paging = utilPaging.pagingMethod(pageNum, totalCount);						
+//	map.put("beginRow", paging.getBeginRow());						
+//	map.put("endRow", paging.getEndRow());						
+//	List<Farm> entityList = entityDao.selectEntityList(map);						
+//	map.put("entityList",entityList);						
+//	map.put("totalCount", totalCount);						
+//	map.put("paging", paging);						
+//	return map;						
+//}
+public Map<String, Object> ajaxentityEntityList(String farm_Id) {
 	Map<String, Object> map = new HashMap<String, Object>();		
-	List<EntityList> ajaxentityEntityList = entityDao.ajaxentityEntityList(entityEntityList);	
+	List<Entity> ajaxentityEntityList = entityDao.ajaxentityEntityList(farm_Id);	
 	map.put("entityList",ajaxentityEntityList);
 	return map;
 }
@@ -52,7 +52,7 @@ public String entityEntityUpdateSelectOne(String farmId) {
 }			
 		
 
-public int ajaxentityEntityUpdatetDo(EntityList entityUpdate) {			
+public int ajaxentityEntityUpdatetDo(Entity entityUpdate) {			
 	
 int result = entityDao.ajaxentityEntityUpdatetDo(entityUpdate);		
 return result;		
@@ -63,17 +63,16 @@ return result;
 //return result;		
 //}			
  
-public int ajaxentityEntityDeleteDo(EntityList entityUpdate) {
+public int ajaxentityEntityDeleteDo(Entity entityUpdate) {
 	int result = entityDao.ajaxentityEntityDeleteDo(entityUpdate);		
 	return result;		
 	}	
-public int ajaxentityEntityInsertDo(EntityList environment) {			
+public int ajaxentityEntityInsertDo(EntityList  environment) {			
 	 int result = entityDao.ajaxentityEntityInsertDo(environment);		
 	return result;		
 }
  
-public EntityList ajaxenvEntitySelectOneBeforUpdate(String entity_id) {
-	// TODO Auto-generated method stub
+public Entity ajaxenvEntitySelectOneBeforUpdate(String entity_id) {
 	return entityDao.ajaxenvEntitySelectOneBeforUpdate(entity_id);	 
 }			
 			
