@@ -154,5 +154,15 @@ select  ROUND(AVG(TEMP),3) from TURBOSOFT.SENSE_ENV  GROUP BY node_id,to_char(to
 select  ROUND(AVG(HUM),3) from TURBOSOFT.SENSE_ENV  GROUP BY node_id,to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd') ORDER BY to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd') asc
 </select>
 
+<!-- 9축값 가져오기 -->
+<select id="selectAduinoSensing" resultType="com.kis.rda.farm.domain.Aduino">
+	SELECT
+		*
+	FROM
+		GIKIMI_T
+	WHERE
+		G_DATE LIKE '17/09/'||'%'
+	ORDER BY G_DATE DESC
+</select>
 
 </mapper>

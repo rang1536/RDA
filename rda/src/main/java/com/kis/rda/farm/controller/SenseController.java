@@ -11,9 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;				
 import org.springframework.web.bind.annotation.RequestMapping;				
 import org.springframework.web.bind.annotation.RequestMethod;				
-import org.springframework.web.bind.annotation.RequestParam;				
-				
-				
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.kis.rda.farm.domain.Aduino;
 import com.kis.rda.farm.service.SenseService;				
 				
 				
@@ -192,5 +192,12 @@ return "data_management/sensestable/senseStableEntity_insert";
 
 ////축사 자료 리스트( 센스가 있는 ?? 목장리스트) > (분석) 보기
  
-
+	//아두이노 센싱자료 목록가기
+	@RequestMapping(value = "/sensing", method = RequestMethod.GET)				
+	public String aduinoSensingCtrl(Model model) {				
+		/*List<Aduino> list = senseService.readAduinoSensingServ();*/
+		
+			
+		return "data_management/sensestable/sensing_list";				
+	}		
 }				

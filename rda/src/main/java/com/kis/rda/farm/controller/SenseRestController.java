@@ -1,5 +1,7 @@
 package com.kis.rda.farm.controller;				
 				
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;				
 				
 import org.springframework.beans.factory.annotation.Autowired;				
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kis.rda.common.domain.Sense;
+import com.kis.rda.farm.domain.Aduino;
 import com.kis.rda.farm.domain.Cbcentity;
 import com.kis.rda.farm.domain.EntityList;
 import com.kis.rda.farm.domain.Farm;
@@ -24,86 +27,65 @@ import com.kis.rda.farm.service.SenseService;
 @RestController				
 public class SenseRestController {				
 				
-@Autowired				
-private SenseService senseService;				
-//@RequestMapping(value = "/ajax/senseList", method = RequestMethod.POST)				
-//public Map<String,Object> ajaxsenseList(Model model,				
-//	@RequestParam(value="pageNum", defaultValue="1") int pageNum,			
-//	@RequestParam(value="searchOption", defaultValue="none") String searchOption,			
-//	@RequestParam(value="searchValue", defaultValue="none") String searchValue) {			
-//Map<String, Object> map = senseService.selectFarmListServ(pageNum, searchOption, searchValue);				
-//model.addAttribute("farmList", map.get("farmList"));				
-//model.addAttribute("totalCount", map.get("totalCount"));				
-//model.addAttribute("paging", map.get("paging"));				
-//model.addAttribute("searchOption", searchOption);				
-//model.addAttribute("searchValue", searchValue);				
-//				
-//				
-//return map;				
-//}			
-
-
-
-
-//=============================현황==================================================		
-
-//@RequestMapping(value = "/ajax/senseCountList", method = RequestMethod.POST)			
-//public Map<String,Object> ajaxsenseCountList(Model model,			
-//	@RequestParam(value="pageNum", defaultValue="1") int pageNum,		
-//	@RequestParam(value="searchOption", defaultValue="none") String searchOption,		
-//	@RequestParam(value="searchValue", defaultValue="none") String entity_id,String searchValue,Cbcentity  entityDetail) {		
-//	  System.out.println("목장birEntityListDetail"+ entity_id);	
-// 
-//// Map<String, Object> map =senseService.ajaxsenseCountList( );			
-//  //entityEntityList =entityService.ajaxentityEntityList(farmId);			
-//  			
-//model.addAttribute("entityEntityList", map.get("entityList"));			
-//  System.out.println("목장birEntityListDetail"+ entity_id);			
-// //model.addAttribute("entityEntityList",entityEntityList  );			
-////model.addAttribute("paging", map.get("paging"));			
-////model.addAttribute("searchOption", searchOption);			
-////model.addAttribute("searchValue", searchValue);			
-//			
-//			
-//return map;			
-//}	
-
-
-//==============================개체=================================================		
-
-@RequestMapping(value = "/ajax/senseEntityList", method = RequestMethod.POST)			
-public Map<String,Object> ajaxsenseEntityList(Model model,			
-	@RequestParam(value="pageNum", defaultValue="1") int pageNum,		
-	@RequestParam(value="searchOption", defaultValue="none") String searchOption,		
-	@RequestParam(value="searchValue", defaultValue="none") String entity_id,String searchValue,Cbcentity  entityDetail) {		
-	  System.out.println("목장birEntityListDetail"+ entity_id);	
- 
- Map<String, Object> map =senseService.ajaxsenseEntityList( );			
-  //entityEntityList =entityService.ajaxentityEntityList(farmId);			
-  			
-model.addAttribute("entityEntityList", map.get("entityList"));			
-  System.out.println("목장birEntityListDetail"+ entity_id);			
- //model.addAttribute("entityEntityList",entityEntityList  );			
-//model.addAttribute("paging", map.get("paging"));			
-//model.addAttribute("searchOption", searchOption);			
-//model.addAttribute("searchValue", searchValue);			
-			
-			
-return map;			
-}	
-
-@RequestMapping(value = "/ajax/senseEntityListDetail", method = RequestMethod.POST)			
-public Map<String,Object> ajaxsenseEntityListDetail(Model model,			
+	@Autowired				
+	private SenseService senseService;				
+	//@RequestMapping(value = "/ajax/senseList", method = RequestMethod.POST)				
+	//public Map<String,Object> ajaxsenseList(Model model,				
+	//	@RequestParam(value="pageNum", defaultValue="1") int pageNum,			
+	//	@RequestParam(value="searchOption", defaultValue="none") String searchOption,			
+	//	@RequestParam(value="searchValue", defaultValue="none") String searchValue) {			
+	//Map<String, Object> map = senseService.selectFarmListServ(pageNum, searchOption, searchValue);				
+	//model.addAttribute("farmList", map.get("farmList"));				
+	//model.addAttribute("totalCount", map.get("totalCount"));				
+	//model.addAttribute("paging", map.get("paging"));				
+	//model.addAttribute("searchOption", searchOption);				
+	//model.addAttribute("searchValue", searchValue);				
+	//				
+	//				
+	//return map;				
+	//}			
+	
+	
+	
+	
+	//=============================현황==================================================		
+	
+	//@RequestMapping(value = "/ajax/senseCountList", method = RequestMethod.POST)			
+	//public Map<String,Object> ajaxsenseCountList(Model model,			
+	//	@RequestParam(value="pageNum", defaultValue="1") int pageNum,		
+	//	@RequestParam(value="searchOption", defaultValue="none") String searchOption,		
+	//	@RequestParam(value="searchValue", defaultValue="none") String entity_id,String searchValue,Cbcentity  entityDetail) {		
+	//	  System.out.println("목장birEntityListDetail"+ entity_id);	
+	// 
+	//// Map<String, Object> map =senseService.ajaxsenseCountList( );			
+	//  //entityEntityList =entityService.ajaxentityEntityList(farmId);			
+	//  			
+	//model.addAttribute("entityEntityList", map.get("entityList"));			
+	//  System.out.println("목장birEntityListDetail"+ entity_id);			
+	// //model.addAttribute("entityEntityList",entityEntityList  );			
+	////model.addAttribute("paging", map.get("paging"));			
+	////model.addAttribute("searchOption", searchOption);			
+	////model.addAttribute("searchValue", searchValue);			
+	//			
+	//			
+	//return map;			
+	//}	
+	
+	
+	//==============================개체=================================================		
+	
+	@RequestMapping(value = "/ajax/senseEntityList", method = RequestMethod.POST)			
+	public Map<String,Object> ajaxsenseEntityList(Model model,			
 		@RequestParam(value="pageNum", defaultValue="1") int pageNum,		
 		@RequestParam(value="searchOption", defaultValue="none") String searchOption,		
-		@RequestParam(value="searchValue", defaultValue="none") String searchValue, String sensecuid,String sensenodeid,TbSenseEntityListDetail  entityDetail) {		
-	  System.out.println("목장sensecuid"+ sensecuid);	
-		  System.out.println("목장sensenodeid"+ entityDetail.getNODEID());	
-	 Map<String, Object> map =senseService.ajaxsenseEntityListDetail(entityDetail );			
+		@RequestParam(value="searchValue", defaultValue="none") String entity_id,String searchValue,Cbcentity  entityDetail) {		
+		  System.out.println("목장birEntityListDetail"+ entity_id);	
+	 
+	 Map<String, Object> map =senseService.ajaxsenseEntityList( );			
 	  //entityEntityList =entityService.ajaxentityEntityList(farmId);			
 	  			
 	model.addAttribute("entityEntityList", map.get("entityList"));			
-	  	
+	  System.out.println("목장birEntityListDetail"+ entity_id);			
 	 //model.addAttribute("entityEntityList",entityEntityList  );			
 	//model.addAttribute("paging", map.get("paging"));			
 	//model.addAttribute("searchOption", searchOption);			
@@ -112,67 +94,92 @@ public Map<String,Object> ajaxsenseEntityListDetail(Model model,
 				
 	return map;			
 	}	
-//===============================축사================================================		
-
-@RequestMapping(value = "/ajax/senseStableList", method = RequestMethod.POST)			
-public Map<String,Object> ajaxsenseStableList(Model model,			
-	@RequestParam(value="pageNum", defaultValue="1") int pageNum,		
-	@RequestParam(value="searchOption", defaultValue="none") String searchOption,		
-	@RequestParam(value="searchValue", defaultValue="none") String entity_id,String searchValue,TbSenseEntityList  entityDetail) {		
-	  System.out.println("목장birEntityListDetail"+ entity_id);	
- 
- Map<String, Object> map =senseService.ajaxsenseStableList( );			
-  //entityEntityList =entityService.ajaxentityEntityList(farmId);			
-  			
-model.addAttribute("entityEntityList", map.get("entityList"));			
-  System.out.println("목장birEntityListDetail"+ entity_id);			
- //model.addAttribute("entityEntityList",entityEntityList  );			
-//model.addAttribute("paging", map.get("paging"));			
-//model.addAttribute("searchOption", searchOption);			
-//model.addAttribute("searchValue", searchValue);			
-			
-			
-return map;			
-}	
-
-
-
-@RequestMapping(value = "/ajax/senseStableListDetail", method = RequestMethod.POST)			
-public Map<String,Object> ajaxsenseStableListDetail(Model model,			
-	@RequestParam(value="pageNum", defaultValue="1") int pageNum,		
-	@RequestParam(value="searchOption", defaultValue="none") String searchOption,		
-	@RequestParam(value="searchValue", defaultValue="none") String entity_id,String searchValue,TbsenseStableList  entityDetail) {		
-	  System.out.println("목장birEntityListDetail"+ entity_id);	
- 
- Map<String, Object> map =senseService.ajaxsenseStableListDetail(entityDetail );			
-  //entityEntityList =entityService.ajaxentityEntityList(farmId);			
-  			
-model.addAttribute("entityEntityList", map.get("entityList"));			
-  System.out.println("목장birEntityListDetail"+ entity_id);			
- //model.addAttribute("entityEntityList",entityEntityList  );			
-//model.addAttribute("paging", map.get("paging"));			
-//model.addAttribute("searchOption", searchOption);			
-//model.addAttribute("searchValue", searchValue);			
-			
-			
-return map;			
-}	
-@RequestMapping(value = "/ajax/senseStableEntityInsertDo", method = RequestMethod.POST)		
-public int ajaxsenseStableEntityInsertDo(Model model,Farm farm,String farm_Id,Sense  entityInsert) {		
-		
- 		
-//System.out.println(" 객체 입력하기   "+environment.getFARM_ID());		
+	
+	@RequestMapping(value = "/ajax/senseEntityListDetail", method = RequestMethod.POST)			
+	public Map<String,Object> ajaxsenseEntityListDetail(Model model,			
+			@RequestParam(value="pageNum", defaultValue="1") int pageNum,		
+			@RequestParam(value="searchOption", defaultValue="none") String searchOption,		
+			@RequestParam(value="searchValue", defaultValue="none") String searchValue, String sensecuid,String sensenodeid,TbSenseEntityListDetail  entityDetail) {		
+		  System.out.println("목장sensecuid"+ sensecuid);	
+			  System.out.println("목장sensenodeid"+ entityDetail.getNODEID());	
+		 Map<String, Object> map =senseService.ajaxsenseEntityListDetail(entityDetail );			
+		  //entityEntityList =entityService.ajaxentityEntityList(farmId);			
+		  			
+		model.addAttribute("entityEntityList", map.get("entityList"));			
+		  	
+		 //model.addAttribute("entityEntityList",entityEntityList  );			
+		//model.addAttribute("paging", map.get("paging"));			
+		//model.addAttribute("searchOption", searchOption);			
+		//model.addAttribute("searchValue", searchValue);			
+					
+					
+		return map;			
+		}	
+	//===============================축사================================================		
+	
+	@RequestMapping(value = "/ajax/senseStableList", method = RequestMethod.POST)			
+	public Map<String,Object> ajaxsenseStableList(Model model,			
+		@RequestParam(value="pageNum", defaultValue="1") int pageNum,		
+		@RequestParam(value="searchOption", defaultValue="none") String searchOption,		
+		@RequestParam(value="searchValue", defaultValue="none") String entity_id,String searchValue,TbSenseEntityList  entityDetail) {		
+		  System.out.println("목장birEntityListDetail"+ entity_id);	
 	 
+	 Map<String, Object> map =senseService.ajaxsenseStableList( );			
+	  //entityEntityList =entityService.ajaxentityEntityList(farmId);			
+	  			
+	model.addAttribute("entityEntityList", map.get("entityList"));			
+	  System.out.println("목장birEntityListDetail"+ entity_id);			
+	 //model.addAttribute("entityEntityList",entityEntityList  );			
+	//model.addAttribute("paging", map.get("paging"));			
+	//model.addAttribute("searchOption", searchOption);			
+	//model.addAttribute("searchValue", searchValue);			
+				
+				
+	return map;			
+	}	
+	
+	
+	
+	@RequestMapping(value = "/ajax/senseStableListDetail", method = RequestMethod.POST)			
+	public Map<String,Object> ajaxsenseStableListDetail(Model model,			
+		@RequestParam(value="pageNum", defaultValue="1") int pageNum,		
+		@RequestParam(value="searchOption", defaultValue="none") String searchOption,		
+		@RequestParam(value="searchValue", defaultValue="none") String entity_id,String searchValue,TbsenseStableList  entityDetail) {		
+		  System.out.println("목장birEntityListDetail"+ entity_id);	
 	 
-int result = senseService.ajaxsenseStableEntityInsertDo(entityInsert);		
-System.out.println(" 객체 입력하기   ");		
+	 Map<String, Object> map =senseService.ajaxsenseStableListDetail(entityDetail );			
+	  //entityEntityList =entityService.ajaxentityEntityList(farmId);			
+	  			
+	model.addAttribute("entityEntityList", map.get("entityList"));			
+	  System.out.println("목장birEntityListDetail"+ entity_id);			
+	 //model.addAttribute("entityEntityList",entityEntityList  );			
+	//model.addAttribute("paging", map.get("paging"));			
+	//model.addAttribute("searchOption", searchOption);			
+	//model.addAttribute("searchValue", searchValue);			
+				
+				
+	return map;			
+	}	
+	@RequestMapping(value = "/ajax/senseStableEntityInsertDo", method = RequestMethod.POST)		
+	public int ajaxsenseStableEntityInsertDo(Model model,Farm farm,String farm_Id,Sense  entityInsert) {		
+		//System.out.println(" 객체 입력하기   "+environment.getFARM_ID());		
+		int result = senseService.ajaxsenseStableEntityInsertDo(entityInsert);		
+		System.out.println(" 객체 입력하기   ");		
+				
+		model.addAttribute("result", result);		
+				
+		return result;		
+	}		
+			
+	//List<Aduino> list = senseService.readAduinoSensingServ();
+	@RequestMapping(value="/aduinoSensingList", method = RequestMethod.POST)
+	public Map<String, Object> aduinoSensingListCtrl(){
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		List<Aduino> list = senseService.readAduinoSensingServ();
+		resultMap.put("list", list);
 		
-model.addAttribute("result", result);		
-		
-return result;		
-}		
-		
-
+		return resultMap;
+	}
 }				
 				
 				

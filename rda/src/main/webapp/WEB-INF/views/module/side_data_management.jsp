@@ -76,6 +76,8 @@ $(function(){
 							<a href="senseEntityList"><font class="sub_menu_font"><font style="color: #496189;">├</font> 개체</font></a></li>
 						<li>
 							<a href="senseStableList"><font class="sub_menu_font"><font style="color: #496189;">└</font> 축사</font></a></li>
+						<li>
+							<a href="sensing"><font class="sub_menu_font"><font style="color: #496189;">└</font> 정보통계</font></a></li>
 					</ul>
 				</li>
 			</ul>
