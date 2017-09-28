@@ -401,8 +401,20 @@ $(document).ready(function(){
 			<td style="padding-left: 5px">
 				<input type="text" name="FMM" id="FMM" onkeyup="if ( isNaN(this.value) ) { alert('숫자만 입력가능합니다.'); this.value=''; } else { if(this.value > 999) { this.value = this.value.substring(0,4); } }" value="${EntityList.getFMM()}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(200~700)<br>
 			</td>
-			<th></th>
-			<td></td>
+<th>측정 장비</th>
+			<td style="padding-left: 5px">
+				<input type="text" name="EQUIPMENT" id="EQUIPMENT" value="${EntityList.getEQUIPMENT()}"><br>
+			</td>
+		</tr>
+		<tr>
+			<th>PP</th>
+			<td style="padding-left: 5px">
+				<input type="text" name="PP" id="PP" onkeyup="if ( isNaN(this.value) ) { alert('숫자만 입력가능합니다.'); this.value=''; } else { if(this.value > 999) { this.value = this.value.substring(0,4); } }" value="${EntityList.getPP()}">Plasma Protein(g/dL)<br>
+			</td>
+<th>SP</th>
+			<td style="padding-left: 5px">
+				<input type="text" name="SP" id="SP" onkeyup="if ( isNaN(this.value) ) { alert('숫자만 입력가능합니다.'); this.value=''; } else { if(this.value > 999) { this.value = this.value.substring(0,4); } }" value="${EntityList.getSP()}">Serum Protein(g/dL)<br>
+			</td>
 		</tr>
 		<tr>
 			<td colspan="4" align="center">

@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="LabcheckDao">
-<resultMap id="cbcListResultMap" type="com.kis.rda.farm.domain.Cbcentity">
+<resultMap id="cbcListResultMap" type="com.kis.rda.common.domain.Cbc">
      <result property="ENTITY_ID" column="ENTITY_ID"  javaType="java.lang.String" />						
    <result property="CBC_GATHERDATE" column="CBC_GATHERDATE"  javaType="java.lang.String" />						
    <result property="RBC" column="RBC"  javaType="java.lang.String" />						
@@ -39,7 +39,7 @@
    <result property="0" column="0"  javaType="java.lang.String" />						
 
    </resultMap>
-<resultMap id="biochemicalListResultMap" type="com.kis.rda.farm.domain.Biochemicalentity">
+<resultMap id="biochemicalListResultMap" type="com.kis.rda.common.domain.Biochemical">
       <result property="ENTITY_ID" column="ENTITY_ID"  javaType="java.lang.String" />
    <result property="BIO_GATHERDATE" column="BIO_GATHERDATE"  javaType="java.lang.String" />
    <result property="TOTAL_PROTEIN" column="TOTAL_PROTEIN"  javaType="java.lang.String" />
@@ -54,7 +54,7 @@
    <result property="UPDATEDATE" column="UPDATEDATE"  javaType="java.lang.String" />
    
    </resultMap>
-<resultMap id="phosListResultMap" type="com.kis.rda.farm.domain.Phosentity">
+<resultMap id="phosListResultMap" type="com.kis.rda.common.domain.Phos">
       <result property="ENTITY_ID" column="ENTITY_ID"  javaType="java.lang.String" />
    <result property="PHOS_GATHERDATE" column="PHOS_GATHERDATE"  javaType="java.lang.String" />
    <result property="PHOS" column="PHOS"  javaType="java.lang.String" />
@@ -63,7 +63,7 @@
    <result property="UPDATEDATE" column="UPDATEDATE"  javaType="java.lang.String" />
    
    </resultMap>
-   <resultMap id="istatListResultMap" type="com.kis.rda.farm.domain.Istatentity">
+   <resultMap id="istatListResultMap" type="com.kis.rda.common.domain.Istat">
       <result property="ENTITY_ID" column="ENTITY_ID"  javaType="java.lang.String" />
    <result property="ISTAT_GATHERDATE" column="ISTAT_GATHERDATE"  javaType="java.lang.String" />
    <result property="NA" column="NA"  javaType="java.lang.String" />
@@ -85,7 +85,7 @@
    <result property="UPDATEDATE" column="UPDATEDATE"  javaType="java.lang.String" />
    
    </resultMap>
-   <resultMap id="immuneListResultMap" type="com.kis.rda.farm.domain.Immuneentity">
+   <resultMap id="immuneListResultMap" type="com.kis.rda.common.domain.Immune">
       <result property="ENTITY_ID" column="ENTITY_ID"  javaType="java.lang.String" />
    <result property="IMMUNE_GATHERDATE" column="IMMUNE_GATHERDATE"  javaType="java.lang.String" />
    <result property="SAA" column="SAA"  javaType="java.lang.String" />
@@ -99,7 +99,7 @@
    <result property="FB" column="FB"  javaType="java.lang.String" />
    
    </resultMap>
-   <resultMap id="infectionListResultMap" type="com.kis.rda.farm.domain.Infectionentity">
+   <resultMap id="infectionListResultMap" type="com.kis.rda.common.domain.Infection">
       <result property="ENTITY_ID" column="ENTITY_ID"  javaType="java.lang.String" />
    <result property="INFECTION_GATHERDATE" column="INFECTION_GATHERDATE"  javaType="java.lang.String" />
    <result property="ECOLI" column="ECOLI"  javaType="java.lang.String" />
@@ -120,7 +120,7 @@
    
    </resultMap>
 
-<select id="ajaxcbcEntityListDetail" parameterType="com.kis.rda.farm.domain.Cbcentity" resultMap="cbcListResultMap">
+<select id="ajaxcbcEntityListDetail" parameterType="com.kis.rda.common.domain.Cbc" resultMap="cbcListResultMap">
 SELECT rownum as rnum,
 a.*
  FROM RDA_TEST.CBC  a 

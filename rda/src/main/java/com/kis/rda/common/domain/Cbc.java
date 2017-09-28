@@ -53,11 +53,7 @@ public class Cbc {
 	}		
 		
 		public void setCBC_GATHERDATE(String cBC_GATHERDATE) {
-			String[] date = cBC_GATHERDATE.split("/");
-//			ydate=array[0];
-//				mdate=array[1];
-//				ddate=array[2];
-//				tdate=array[3];
+			String[] date = cBC_GATHERDATE.split("/"); 
 			 if(date.length==1) {
 					setYdate(date[0]);
 			 }else if (date.length==2) {

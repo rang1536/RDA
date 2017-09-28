@@ -167,6 +167,7 @@ $(document).ready(function(){
 
 <form name="regForm" id="regForm"  method="post" style="margin-left: 10px; margin-right: 10px" action="/dbconn/farm/input_env.jsp?farm_id=005">
 <input type="hidden" id="FARM_ID" name="FARM_ID" value="${farmId}">
+<input type="hidden" id="SEQNO" name="SEQNO" value="${seqno}">
 <div align="left" style="padding-bottom: 5px">
 	<font style="color:#000000; font-family:gulim; font-size:14px;"><b><img src="/images/icon/board.png" style="width:20px; position:relative; top:0.2em"> 환 경 자 료 수 정 ${farmNm}</b></font>
 </div>

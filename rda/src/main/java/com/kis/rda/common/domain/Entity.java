@@ -10,13 +10,21 @@ public class Entity {
 	private String COLOSTRUM;
 	private String VACCINE;
 	private String BIRTH_NUMBER;
+	private String BIRTHNUMBER;
 	private String BIRTH_CASE;
 	private String INPUTDATE;
 	private String UPDATEDATE;
 	private String CASENUM;
 	private String SEQNO;
 
-	
+
+	public String getBIRTH_NUMBER() {
+		return BIRTH_NUMBER;
+	}
+	public void setBIRTH_NUMBER(String bIRTH_NUMBER) {
+		BIRTH_NUMBER = bIRTH_NUMBER;
+	}
+
 	private String	 totalDate;			
 	private String	 ydate;			
 	private String	 mdate;			
@@ -163,14 +171,17 @@ public class Entity {
 		VACCINE = vACCINE;
 	}
 
-	public String getBIRTH_NUMBER() {
-		return BIRTH_NUMBER;
-	}
+ 
 
-	public void setBIRTH_NUMBER(String bIRTH_NUMBER) {
-		BIRTH_NUMBER = bIRTH_NUMBER;
+	public String getBIRTHNUMBER() {
+		return BIRTHNUMBER;
 	}
-
+	public void setBIRTHNUMBER(String bIRTHNUMBER) {
+		BIRTHNUMBER = bIRTHNUMBER;
+	}
+	public void setView_totalBirDate(String view_totalBirDate) {
+		this.view_totalBirDate = view_totalBirDate;
+	}
 	public String getBIRTH_CASE() {
 		return BIRTH_CASE;
 	}

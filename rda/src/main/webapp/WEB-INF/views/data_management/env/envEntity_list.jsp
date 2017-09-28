@@ -113,7 +113,12 @@
 				    			  else   if(farmlist[i].wtc=="4"){ farmlist[i].wtc="양호"}
 				    			  else   if(farmlist[i].wtc=="4"){ farmlist[i].wtc="매우 양호"}
 								
-				    			  
+				    			  if( farmlist[i].colostrum=="1"){ farmlist[i].colostrum="Yes"}
+				        		   else if( farmlist[i].colostrum=="2"){ farmlist[i].colostrum="No"}
+				        		   else{ farmlist[i].colostrum="-"}
+				        		      if( farmlist[i].vaccine=="1"){ farmlist[i].vaccine="Yes"}
+				           		   else if( farmlist[i].vaccine=="2"){ farmlist[i].vaccine="No"}
+				           		   else{ farmlist[i].vaccine="-"}
 				    			  
 				    			  
 				    			  

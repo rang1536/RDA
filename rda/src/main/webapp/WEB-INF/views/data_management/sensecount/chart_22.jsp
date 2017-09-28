@@ -168,7 +168,9 @@ stmt4 = conn.prepareStatement(SQL4);
 	} 
 	System.out.println(SQL);*/
 	
-	
+	System.out.println(SQL1);
+	System.out.println(SQL3);
+	System.out.println(SQL4); 
 	
 	
 	

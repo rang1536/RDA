@@ -98,10 +98,10 @@
     			   
       		     
         		   if( farmlist[i].colostrum=="1"){ farmlist[i].colostrum="Yes"}
-        		   else if( farmlist[i].colostrum=="0"){ farmlist[i].colostrum="No"}
+        		   else if( farmlist[i].colostrum=="2"){ farmlist[i].colostrum="No"}
         		   else{ farmlist[i].colostrum="-"}
         		      if( farmlist[i].vaccine=="1"){ farmlist[i].vaccine="Yes"}
-           		   else if( farmlist[i].vaccine=="0"){ farmlist[i].vaccine="No"}
+           		   else if( farmlist[i].vaccine=="2"){ farmlist[i].vaccine="No"}
            		   else{ farmlist[i].vaccine="-"}
     			   //핸드폰번호 조합하여 phone1에 넣게
     			   if(farmlist[i].phone1=="null"){ farmlist[i].phone1=""   }

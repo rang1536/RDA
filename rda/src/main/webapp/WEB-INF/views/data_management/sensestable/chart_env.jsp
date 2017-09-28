@@ -31,289 +31,6 @@
  
 
 
-<%
-	request.setCharacterEncoding("UTF-8");
-
-	Connection conn = null;
-	PreparedStatement stmt = null;
-	PreparedStatement stmt_2 = null;
-	PreparedStatement stmt_3 = null;
-	PreparedStatement stmt2 = null;
-	Statement stmt3 = null;
-	PreparedStatement stmt4 = null;
-	
-	ResultSet rs = null;
-	ResultSet rs_2 = null;
-	ResultSet rs_3 = null;
-	ResultSet rs2 = null;
-	ResultSet rs3 = null;
-
-	
-	String entity="", entity1="" ,xdate= "", xdate1= "" , avr="", avr1="", e="";
-	String entity3="", entity4="" ,entity5= "", entity6= "" , entity7="", entity8="", entity9="";
-	String avr2="", avr3="" ,avr4= "", avr5= "" , avr6="", avr7="", avr8="", avr9=""; 
-	String en1="", en2="";
-
-	Class.forName("oracle.jdbc.driver.OracleDriver");
-
-	String url="jdbc:oracle:thin:@192.168.0.100:1521:kis";
-	String user = "admin";
-	String passwd = "sRc0488#";
-	
-	String sense_cuId = request.getParameter("sense_cuId");     
-	String sense_nodeId = request.getParameter("sensenodeid");
-	
-	String sel02 = request.getParameter("sel02");      // 검색조건(년)이 있을경우 셀렉트 박스의 선택된 값을 get방식으로 받는 부분
-	String sel02_2 = request.getParameter("sel02");      // 검색조건(년)이 있을경우 셀렉트 박스의 선택된 값을 get방식으로 받는 부분
-	String sel02_3 = request.getParameter("sel02");      // 검색조건(년)이 있을경우 셀렉트 박스의 선택된 값을 get방식으로 받는 부분
-	String sel03 = request.getParameter("sel03");      // 검색조건(월)이 있을경우 셀렉트 박스의 선택된 값을 get방식으로 받는 부분
-	String sel03_2 = request.getParameter("sel03");      // 검색조건(월)이 있을경우 셀렉트 박스의 선택된 값을 get방식으로 받는 부분
-	String sel03_3 = request.getParameter("sel03");      // 검색조건(월)이 있을경우 셀렉트 박스의 선택된 값을 get방식으로 받는 부분
-	conn = DriverManager.getConnection(url,user,passwd);
-	
-	
-	stmt3 = conn.createStatement();
-	String SQL;
-	String SQL_2;
-	String SQL_3;
-	String SQL1;
-	String SQL3;
-	String SQL4;
-	
-	
-	
-	//
-	
-	SQL3 = "select distinct substr(node_id,1,11) from TURBOSOFT.SENSE_ENV ORDER BY substr(node_id,1,11) asc";
-
-	/////////////////////////온도/////////////////
-	
-	if(sel02 != "" && sel02 != null ){
-		//년도쿼리뽑아내기
-		SQL1 = "select to_char(to_date(DTIME,'yyyy-mm-dd'),'mm.dd') from TURBOSOFT.SENSE_ENV where to_char(to_date(DTIME, 'yyyy-mm-dd'),'yy') = ? GROUP BY to_char(to_date(DTIME,'yyyy-mm-dd'),'mm.dd') ORDER BY to_char(to_date(DTIME,'yyyy-mm-dd'),'mm.dd') asc";
-		stmt2 = conn.prepareStatement(SQL1);
-		stmt2.setString(1, sel02);
-			
-		//년 안에서 월쿼리뽑아내기
-		if(sel03 != "" && sel03 != null ){
-			SQL1 = "select to_char(to_date(DTIME,'yyyy-mm-dd'),'mm.dd') from TURBOSOFT.SENSE_ENV where to_char(to_date(DTIME, 'yyyy-mm-dd'),'mm') = ? GROUP BY to_char(to_date(DTIME,'yyyy-mm-dd'),'mm.dd') ORDER BY to_char(to_date(DTIME,'yyyy-mm-dd'),'mm.dd') asc";
-			stmt2 = conn.prepareStatement(SQL1);
-			
-			stmt2.setString(1, sel03);
-			}
-
-	}else{
-		//전체일일쿼리뽑아내기
-		SQL1 = "select to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd') from TURBOSOFT.SENSE_ENV  GROUP BY to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd') ORDER BY to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd') asc";
-		stmt2 = conn.prepareStatement(SQL1);
-		
-	}
-	
-	//System.out.println("sel02 go "+sel02);
-	//System.out.println("sel03 go "+sel03);
-	//System.out.println("stmt2 go "+SQL1);
-	
-	//System.out.println("sel03 come"+sel03);
-	if(sel03 != "" && sel03 != null ){
-		//월별뽑아내기
-		SQL = "select node_id,to_char(to_date(DTIME,'yyyy-mm-dd'),'mm.dd'),ROUND(AVG(TEMP),3) from TURBOSOFT.SENSE_ENV where  to_char(to_date(DTIME, 'yyyy-mm-dd'),'mm') = ? GROUP BY node_id,to_char(to_date(DTIME,'yyyy-mm-dd'),'mm.dd') ORDER BY to_char(to_date(DTIME,'yyyy-mm-dd'),'mm.dd') asc";
-		
-		stmt = conn.prepareStatement(SQL);
-		
-		stmt.setString(1, sel03);
-		
-		
-	}else if(sel02 != "" && sel02 != null ){
-		SQL = "select node_id,to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd'),ROUND(AVG(TEMP),3) from TURBOSOFT.SENSE_ENV where  and to_char(to_date(DTIME, 'yyyy-mm-dd'),'yy') = ? GROUP BY node_id,to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd') ORDER BY to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd') asc";
-		
-		stmt = conn.prepareStatement(SQL);
-		
-		stmt.setString(1, sel02);
-	
-	}else{
-		//월전체뽑아내기
-		SQL = "select node_id,to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd'),ROUND(AVG(TEMP),3) from TURBOSOFT.SENSE_ENV  GROUP BY node_id,to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd') ORDER BY to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd') asc";
-		stmt = conn.prepareStatement(SQL);
-		
-	}
-	
-	////////////습도//////////////////////
-	
-		
-	
-	//System.out.println("sel02 go "+sel02);
-	//System.out.println("sel03 go "+sel03);
-	//System.out.println("stmt2 go "+SQL1);
-	
-	//System.out.println("sel03 come"+sel03);
-	if(sel03 != "" && sel03 != null ){
-		//월별뽑아내기
-		SQL_2 = "select node_id,to_char(to_date(DTIME,'yyyy-mm-dd'),'mm.dd'),ROUND(AVG(CO2),3) from TURBOSOFT.SENSE_ENV where  to_char(to_date(DTIME, 'yyyy-mm-dd'),'mm') = ? GROUP BY node_id,to_char(to_date(DTIME,'yyyy-mm-dd'),'mm.dd') ORDER BY to_char(to_date(DTIME,'yyyy-mm-dd'),'mm.dd') asc";
-		
-		stmt_2 = conn.prepareStatement(SQL_2);
-		
-		stmt_2.setString(1, sel03);
-		
-		
-	}else if(sel02 != "" && sel02 != null ){
-		SQL_2 = "select node_id,to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd'),ROUND(AVG(CO2),3) from TURBOSOFT.SENSE_ENV where  and to_char(to_date(DTIME, 'yyyy-mm-dd'),'yy') = ? GROUP BY node_id,to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd') ORDER BY to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd') asc";
-		
-		stmt_2 = conn.prepareStatement(SQL_2);
-		
-		stmt_2.setString(1, sel02);
-	
-	}else{
-		//월전체뽑아내기
-		SQL_2 = "select node_id,to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd'),ROUND(AVG(CO2),3) from TURBOSOFT.SENSE_ENV  GROUP BY node_id,to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd') ORDER BY to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd') asc";
-		stmt_2 = conn.prepareStatement(SQL_2);
-		
-	}
-	///////////////////////////이산화탄소/////////////////////////
-	
-	
-	//System.out.println("sel02 go "+sel02);
-	//System.out.println("sel03 go "+sel03);
-	//System.out.println("stmt2 go "+SQL1);
-	
-	//System.out.println("sel03 come"+sel03);
-		if(sel03 != "" && sel03 != null ){
-		//월별뽑아내기
-		SQL_3 = "select node_id,to_char(to_date(DTIME,'yyyy-mm-dd'),'mm.dd'),ROUND(AVG(HUM),3) from TURBOSOFT.SENSE_ENV where  to_char(to_date(DTIME, 'yyyy-mm-dd'),'mm') = ? GROUP BY node_id,to_char(to_date(DTIME,'yyyy-mm-dd'),'mm.dd') ORDER BY to_char(to_date(DTIME,'yyyy-mm-dd'),'mm.dd') asc";
-		
-		stmt_3 = conn.prepareStatement(SQL_3);
-		
-		stmt_3.setString(1, sel03);
-		
-		
-	}else if(sel02 != "" && sel02 != null ){
-		SQL_3 = "select node_id,to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd'),ROUND(AVG(HUM),3) from TURBOSOFT.SENSE_ENV where  and to_char(to_date(DTIME, 'yyyy-mm-dd'),'yy') = ? GROUP BY node_id,to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd') ORDER BY to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd') asc";
-		
-		stmt_3 = conn.prepareStatement(SQL_3);
-		
-		stmt_3.setString(1, sel02);
-	
-	}else{
-		//월전체뽑아내기
-		SQL_3 = "select node_id,to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd'),ROUND(AVG(HUM),3) from TURBOSOFT.SENSE_ENV  GROUP BY node_id,to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd') ORDER BY to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd') asc";
-		stmt_3 = conn.prepareStatement(SQL_3);
-		
-	}
-	
-	
-	//System.out.println(SQL);
-	
-	
-	rs3 = stmt3.executeQuery(SQL3);
-	
-	List<String> list_date = new ArrayList<String>();
-	List<String> list1 = new ArrayList<String>();
-	List<String> list2 = new ArrayList<String>();
-	List<String> list3 = new ArrayList<String>();
-	List<String> list4 = new ArrayList<String>();
-	try{
-		rs2 = stmt2.executeQuery();
-		rs = stmt.executeQuery();
-		rs_2 = stmt_2.executeQuery();
-		rs_3 = stmt_3.executeQuery();
-	        	
-		//x축 일일 증가
-		if(rs2 != null){
-	        while(rs2.next()){
-	        	
-	        	xdate = rs2.getString(1);
-	        	xdate1 = "'" + xdate + "'";
-	        	//xdate1.replaceAll("-", ".");
-	        	list_date.add(xdate1);
-	
-	        	
-	        }		
-	        	//System.out.println(list_date);
-	        
-	         	
-		}
-		//개체 따로 뽑아오기
-// 		if(rs3 != null){
-// 	        while(rs3.next()){
-	        	
-// 	        	en1 = rs3.getString(1);
-// 	        	//en2 = "["+"'" + en1 + "'"+"]";
-// 	        	list1.add(en1);
-	        	
-	        	//System.out.println(en1);
-	        	//en = "'" + xdate + "'";
-	        	//list_date.add(xdate1);
-// 	        }
-// 		}
-		//y축 개체별 평균온도
-		if(rs != null){
-       		while(rs.next()){
-		 
-       			//평균온도 값 가져와 series 형식에 맞게끔 파싱
-       			avr = rs.getString(3);
-       			//avr1 = "["+avr+"]";
-       			//avr1 = "["+avr+"]";
-       			list2.add(avr);
-       			
-       				
-       		}
-       		
-       		
-		}
-		//습도
-		if(rs != null){
-       		while(rs_2.next()){
-		 
-       			//평균온도 값 가져와 series 형식에 맞게끔 파싱
-       			avr2 = rs_2.getString(3);
-       			//avr1 = "["+avr+"]";
-       			//avr1 = "["+avr+"]";
-       			list3.add(avr2);
-       			
-       				
-       		}
-       		
-       		
-		}
-		
-		//이산화탄소
-		if(rs != null){
-       		while(rs_3.next()){
-		 
-       			//평균온도 값 가져와 series 형식에 맞게끔 파싱
-       			avr3 = rs_3.getString(3);
-       			//avr1 = "["+avr+"]";
-       			//avr1 = "["+avr+"]";
-       			list4.add(avr3);
-       			
-       				
-       		}
-       		
-       		
-		}
-      		
-  			 
-      		
-      		
-				//System.out.println(list4);
-       			
-       			// String x = list_date.toString().replace("[", "['").replace("]", "']").replace(", ", "','");
-       			
-		
-    
-	}catch(SQLException sqlException){
-		System.out.println("sql exception");
-	}catch(Exception exception){
-		System.out.println("exception");
-	}finally{
-		if(rs !=null)try{rs.close();}catch(SQLException ex){}
-	if(stmt !=null)try{stmt.close();}catch(SQLException ex){}
-	if(conn !=null)try{conn.close();}catch(Exception ex){}
-	}
-	
-	
-	
-	
-%>
  
 
 		<style>
@@ -329,8 +46,8 @@
 		
 		
 		//x값축
-		var categories= <%=list_date%>
-		
+		var categories= "${chartymd}";
+		console.log(categories);
 		
 		//개체
 		var entity1 = "온도"
@@ -339,11 +56,12 @@
 		
 		
 		//평균온도
-		var avr = <%=list2%>
-		var avr2 = <%=list3%>
-		var avr3 = <%=list4%>
-		
-	
+		var avr =  ${chartavg};
+		var avr2 = ${chartavg2};
+		var avr3 =${chartavg3};
+		console.log(avr);
+		console.log(avr2);
+		console.log(avr3);
 		
 $(function () {
     var chart;
@@ -602,120 +320,9 @@ $(function () {
 						
 						<td align="right" width="71" > <!-- 검색조건 셀렉트 박스(검색 결과를 뿌려준후 선택했던값 유지되도록 코딩) -->
 						
-						<%
-						
-						
-						
-						conn = DriverManager.getConnection(url,user,passwd);
-						
-						
-						
-						//System.out.println(sel02);
-						//System.out.println(sel03);
-						
-						try{
-						
-							//	yy의 카운터 구하기
-							String sql5, sql6, sql7, sql8;
-							int fcount = 0;
-							int fcountm = 0;
-							sql5 = "select count(count(distinct(to_char(to_date(DTIME,'yyyy-mm-dd'),'yy')))) from TURBOSOFT.SENSE_ENV  GROUP BY to_char(to_date(DTIME,'yyyy-mm-dd'),'yy')";
-							stmt4 = conn.prepareStatement(sql5);
-							rs = stmt4.executeQuery();
-							if(rs.next()) {
-								fcount = rs.getInt(1);
-								
-							}
-								//System.out.println(fcount);
-								
-							// mm의 카운터 구하기
-							sql8 = "select count(distinct(to_char(to_date(DTIME,'yyyy-mm-dd'),'yy'))),count(distinct(to_char(to_date(DTIME,'yyyy-mm-dd'),'mm'))) from TURBOSOFT.SENSE_ENV where to_char(to_date(DTIME, 'yyyy-mm-dd'),'yy') = ? GROUP BY to_char(to_date(DTIME,'yyyy-mm-dd'),'yy')";
-							stmt4 = conn.prepareStatement(sql8);
-							stmt4.setString(1, sel02);
-							rs = stmt4.executeQuery();
-							if(rs.next()) {
-								fcountm = rs.getInt(2);
-							}	
-								//System.out.println(fcountm);
-								
-							
-							//	yy의 실 데이터 뿌리기
-							String[] selString = new String[fcount];
-							sql6 = "select to_char(to_date(DTIME,'yyyy-mm-dd'),'yy') from TURBOSOFT.SENSE_ENV  GROUP BY to_char(to_date(DTIME,'yyyy-mm-dd'),'yy') ORDER BY to_char(to_date(DTIME,'yyyy-mm-dd'),'yy') asc";
-							
-							stmt4 = conn.prepareStatement(sql6);
-							rs = stmt4.executeQuery();
-							
-							for(int i = 0; i < fcount ; i++){
-								if(rs.next()) {
-									selString[i] = rs.getString(1);
-									//System.out.println(selString[i]);
-								}
-							}
-							
-							// mm의 실 데이터 뿌리기
-							String[] selmString = new String[fcountm];
-							sql7 = "select to_char(to_date(DTIME,'yyyy-mm-dd'),'mm') from TURBOSOFT.SENSE_ENV where to_char(to_date(DTIME, 'yyyy-mm-dd'),'yy') = ?  GROUP BY to_char(to_date(DTIME,'yyyy-mm-dd'),'mm') ORDER BY to_char(to_date(DTIME,'yyyy-mm-dd'),'mm') asc";
-							
-							stmt4 = conn.prepareStatement(sql7);
-							stmt4.setString(1, sel02);
-							//stmt4.setString(2, sel03);
-							rs = stmt4.executeQuery();
-							
-							for(int j = 0; j< fcountm ; j++){
-								if(rs.next()) {
-									selmString[j] = rs.getString(1);
-									//selmString[j] = rs.getString(2);
-									//System.out.println(selmString[j]);
-								}
-							}
-							
-							
-							
-						%>
-<!-- 							<select id="sel02" name="sel02" onchange="selected_box_1()"> -->
-<!-- 	                            <option value="" selected>Year</option> -->
-<%-- 	                            <% --%>
-<!-- // 	                            	for(int i = 0; i < fcount ; i++){ -->
-<%-- 	                            %> --%>
-<%-- 	                            		<option value="<%=selString[i]%>" <%=(selString[i].equals(sel02))? "selected":"" %> >20<%=selString[i]%>년</option> --%>
-<%-- 	                            <% --%>
-<!-- // 	                            	} -->
-<%-- 	                            %> --%>
-<!-- 							</select> -->
-<!-- 						</td> -->
-<!-- 							<td  width="71"  > -->
-<!-- 							<select id="sel03" name="sel03" onchange="submit()"> -->
-<!-- 	                            <option value="" selected>Month</option> -->
-<%-- 	                            <% --%>
-<!-- // 	                            	if(sel03 != null){ -->
-<!-- // 	                            		for(int j = 0; j < fcountm ; j++){ -->
-<%-- 	                            %> --%>
-<%-- 	                            		<option value="<%=selmString[j]%>" <%=(selmString[j].equals(sel03))? "selected":"" %>><%=selmString[j]%>월</option> --%>
-<%-- 	                            <%  --%>
-<!-- // 	                            		} -->
-<%-- 	                            %>		 --%>
-	                          
-<%-- 	                            <%		 --%>
-<!-- // 	                            	}else if(sel03 == null){ -->
-<%-- 	                            %>	 --%>
-<!-- 	                            		<option value="" ></option> -->
-<%-- 	                            <%		 --%>
-<!-- // 	                            	} -->
-<%-- 	                            %>	 --%>
-	                        
-<%-- 	                            	else{
-
-<%-- 	                            %>		 --%>
-<%-- 	                            		<option value="<%=selmString[j]%>" ><%=selmString[j]%>월</option> --%>
-<%-- 	                            <% --%>
-<%-- 	                            	} --%>
-<!-- 	                            %> --%> -->
-	                            		
-	                       
-<!-- 							</select> -->
+					 
 							</td>
-												<td width="48" align="right"><span class="button green"><input onclick="parent.center.location.href='../sense/chart_env2.jsp?sense_nodeId=<%=sense_nodeId%>&sense_cuId=<%=sense_cuId %>'" type="button" value="중앙값분석"></span></td>
+												<td width="48" align="right"><span class="button green"><input onclick="parent.center.location.href='../sense/chart_env2.jsp?sense_nodeId= &sense_cuId='" type="button" value="중앙값분석"></span></td>
 						<td width="48" align="right"><span class="button blue"><input onclick="window.open('chart_env_excel.jsp','설문조사','fullscreen');" type="button" value="엑셀"></span></td>
 						
 						
@@ -740,19 +347,7 @@ $(function () {
 							<span class="button white"><input class="button blue" type="submit" value="검색" ></span>
 							
 						</td> -->
-						
-						<% 
-					}catch(SQLException sqlException){
-							System.out.println("sql exception");
-					}catch(Exception exception){
-							System.out.println("exception");
-							exception.printStackTrace();
-					}finally{
-						if(rs !=null)try{rs.close();}catch(SQLException ex){}
-					if(stmt !=null)try{stmt.close();}catch(SQLException ex){}
-					if(conn !=null)try{conn.close();}catch(Exception ex){}
-					}
-				%>
+					 
 					</tr>
 				</table>	
 				

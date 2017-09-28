@@ -71,25 +71,16 @@
      			 var form = $('#regForm')[0];
      			 var quresearch = new FormData(form);
  
-     			 console.log(quresearch);
+     		         	 console.log(quresearch);
      					$.ajax({
      						url : "${pageContext.request.contextPath }/ajax/feseEntityInsertDo",
      						type : "POST",
      						 data : quresearch,
-//      						dataType : "POST",
      						success : function(data) {
-     							alert('성공적으로 입력하였습니다.');
-     							
-     							//var result = data;
-//      							if(result > 0){
-//      								alert('성공적으로 입력하였습니다.');
-// //     			 					location.href="farmList";
-//      								 window.close();
-//      							}else{
-//      								alert('입력에 실패하였습니다.');
-//      							}
+     			            	alert('성공적으로 입력하였습니다.');
+ 
      						},
-     				complete : function() {
+     							complete : function() {
      					   
       					       window.close();
       					    }

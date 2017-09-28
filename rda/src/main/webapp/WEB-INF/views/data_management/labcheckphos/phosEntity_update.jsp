@@ -287,7 +287,7 @@ $(document).ready(function(){
 		<tr>
 			<th>측정 장비</th>
 			<td style="padding-left: 5px">
-				<input style="  text-align: right;" type="text" name="EQUIPMENT" id="EQUIPMENT" value="${EntityList.getEQUIPMENT()}"><br>
+				<input   type="text" name="EQUIPMENT" id="EQUIPMENT" value="${EntityList.getEQUIPMENT()}"><br>
 			</td>
 		</tr>
 		<tr>

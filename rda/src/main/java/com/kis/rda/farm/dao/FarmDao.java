@@ -94,4 +94,7 @@ public class FarmDao {
 	public int updateLatLng(FarmMap farmMap) {
 		return sqlSession.update("FarmDao.updateLatLng", farmMap);
 	}
+	public List<String> selectFarmLis2t(Map<String, Object> map) {
+		return sqlSession.selectList("FarmDao.selectFarmLis2t", map);
+	}
 }

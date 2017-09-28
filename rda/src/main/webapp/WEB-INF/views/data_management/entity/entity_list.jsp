@@ -90,14 +90,14 @@
        },
     ajax : {
    
-      "url":"${pageContext.request.contextPath }/ajax/envList",
+      "url":"${pageContext.request.contextPath }/ajax/farmList",
       "type":"POST",
       "dataSrc": function(json){
     	   console.log("======");  
     	   console.log(json);
     	   console.log(json.envList);
-    	   var farmlist = json.envList;
-    	   if (json.envList != 'null') {
+    	   var farmlist = json.farmList;
+    	   if (json.farmList != 'null') {
     		   
     		   console.log("===ok==");  
     		   console.log(farmlist.length);  

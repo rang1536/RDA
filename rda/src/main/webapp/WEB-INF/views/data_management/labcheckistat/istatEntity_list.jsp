@@ -85,7 +85,7 @@
 				       },
 				    ajax : {
 				   
-				      "url":"${pageContext.request.contextPath }/ajax/birEntityList?farm_id=${farmId}",
+				      "url":"${pageContext.request.contextPath }/ajax/entityEntityList?farm_id=${farmId}",
 				      "type":"POST",
 				      "data" : { FARM_ID :  "${farmId}" },
 				      "dataSrc": function(json){
@@ -112,7 +112,12 @@
 				 		   	        	farmlist[i].phone1 = farmlist[i].phone1+"-" +farmlist[i].phone2+"-" +farmlist[i].phone3 ;
 				 
 						   	             
-						   	             
+				 		   	  	  if( farmlist[i].colostrum=="1"){ farmlist[i].colostrum="Yes"}
+				        		   else if( farmlist[i].colostrum=="2"){ farmlist[i].colostrum="No"}
+				        		   else{ farmlist[i].colostrum="-"}
+				        		      if( farmlist[i].vaccine=="1"){ farmlist[i].vaccine="Yes"}
+				           		   else if( farmlist[i].vaccine=="2"){ farmlist[i].vaccine="No"}
+				           		   else{ farmlist[i].vaccine="-"}
 						   	     
 						   	    	   
 						   	       //일반번호 조합하여 hp1에 넣기
@@ -195,7 +200,7 @@
 					      {data: "birth_WEIGHT"},
 					      {data: "colostrum"},
 					      {data: "vaccine"},
-					      {data: "birth_NUMBER"},
+					      {data: "birthnumber"},
 					      {data: "birth_CASE"},
 					      {data: "phone3"}
 				      

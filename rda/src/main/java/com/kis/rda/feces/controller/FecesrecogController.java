@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kis.rda.common.domain.Entity;
 import com.kis.rda.farm.domain.EntityList;
-import com.kis.rda.farm.domain.MhListDetail;
+
 import com.kis.rda.feces.service.DataanalyService;				
 				
 				
@@ -150,7 +150,7 @@ listDetail.getBIRTH();
 listDetail.getBIRTH_WEIGHT();
 listDetail.getCOLOSTRUM();
 listDetail.getVACCINE();
-listDetail.getBirth_NUMBER();
+//listDetail.getBirth_NUMBER();
 listDetail.getBIRTH_CASE();
 
 	model.addAttribute("entity_id", entity_id);		

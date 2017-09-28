@@ -6,7 +6,7 @@ public class EntityList extends Entity   {
 	private String	   farm_id	;
 
 	private String	   rnum	;
-	private String	 birth_NUMBER;
+ 	private String	 birth_NUMBER;
 	
 	private	String		BIRTH1;
 	private	String	    BIRTH2;

@@ -54,14 +54,10 @@ public class BasicRestController {
 			  System.out.println("목장birEntityListDetail"+ entity_id);	
 		 
 		 Map<String, Object> map =temperService.ajaxbasicEntityList(sensedevtipe );			
-		  //entityEntityList =entityService.ajaxentityEntityList(farmId);			
+ 
 		  			
 		model.addAttribute("entityEntityList", map.get("entityList"));			
-		  System.out.println("목장birEntityListDetail"+ entity_id);			
-		 //model.addAttribute("entityEntityList",entityEntityList  );			
-		//model.addAttribute("paging", map.get("paging"));			
-		//model.addAttribute("searchOption", searchOption);			
-		//model.addAttribute("searchValue", searchValue);			
+	 	
 					
 					
 		return map;			

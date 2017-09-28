@@ -314,7 +314,7 @@ $(document).ready(function(){
 		<tr>
 			<th>측정 장비</th>
 			<td style="padding-left: 5px">
-				<input style="width:50px; text-align: right;" type="text" name="EQUIPMENT" id="EQUIPMENT"><br>
+				<input  type="text" name="EQUIPMENT" id="EQUIPMENT"><br>
 			</td>
 		</tr>
 		<tr>
