@@ -114,21 +114,14 @@ table thead tr th.sorting {
 		   	        	
  		   	        	farmlist[i].phone1 = farmlist[i].phone1+"-" +farmlist[i].phone2+"-" +farmlist[i].phone3 ;
  
-		   	             
-		   	             
-		   	     
-		   	    	   
-		   	       //일반번호 조합하여 hp1에 넣기
- 		   	        if(farmlist[i].hp1=="null"){ farmlist[i].hp1=""   }
+		   	      //일반번호 조합하여 hp1에 넣기
+ 		   	       if(farmlist[i].hp1=="null"){ farmlist[i].hp1=""   }
      			   if(farmlist[i].hp2=="null"){ farmlist[i].hp2=""   }
      			   if(farmlist[i].hp3=="null"){ farmlist[i].hp3=""   }
      			   if(farmlist[i].hp1==null){ farmlist[i].hp1=""   }
      			   if(farmlist[i].hp2==null){ farmlist[i].hp2=""   }
      			   if(farmlist[i].hp3==null){ farmlist[i].hp3=""   }
      			   
-     			   
-
-	   	        	
 	   	        	farmlist[i].hp1 = farmlist[i].hp1+"-" +farmlist[i].hp2+"-" +farmlist[i].hp3 ;
 
      			   
@@ -182,6 +175,7 @@ table thead tr th.sorting {
          
 //          return json;
 //          }
+	console.log(json.ajaxList);
 return json.ajaxList
       }
   },            
@@ -189,7 +183,7 @@ return json.ajaxList
       {data: "num"},
       {data: "farmNm"},
       {data: "sensenodeid"},
-      {data: "cot"},
+      {data: "uplast"},
       {data: "co2AVR"},
       {data: "co2STD"},      
       {data: "co2MIN"},
@@ -227,130 +221,72 @@ return json.ajaxList
 		
 </script><style>
       #content  .buttons-print {
-    margin-left: 7px !important;
-  border: 2px  solid #ccc !important;
-            }    
+    	margin-left: 7px !important;
+  		border: 2px  solid #ccc !important;
+       }    
 </style>
- <div id="buttonWrap">
-<!-- 			 <input  class="btn btn-default buttons-excel buttons-html5" type="button" value="인쇄" onClick="print(document.getElementById('amc_content_body').innerHTML)"> -->
-			  
-<!-- 			 <input  class="btn btn-default buttons-excel buttons-html5"  type="button" value="추가" onclick="location.href='farmAdd'"> -->
-				  
+
+<div id="buttonWrap">
+ 
 </div>	
-	<div id="content">
+
+<div id="content">
 	<table id="payList">
-                   <colgroup>
-                  <col width="50px">
-                        <col width="70px">
-                          <col width="70px">
-                        <col width="170px">
-                          <col width="50px">
-                        <col width="50px">
-                          <col width="50px">
-                        <col width="50px">
-                          <col width="50px">
-                        <col width="50px">
-                          <col width="50px">
-                        <col width="50px">
-                          <col width="50px">
-                        <col width="50px">
-                          <col width="50px">
-                        <col width="50px">
-                          <col width="50px">
-                        <col width="50px">
-                          <col width="50px">
-                    </colgroup>
-                    <thead>
-                         <tr>
-                         <th rowspan="2">
-                             NO
-                         </th>
-                         <th rowspan="2">
-                             목장명
-                         </th>
-                            <th rowspan="2">
-                             축사ID
-                         </th>
-                         <th>
-                        업데이트
-                         </th>
-                               <th rowspan="2">
-                             건수
-                         </th>
-                         <th  colspan="4">
-                             CO2(0~3000ppm)
-                         </th>
-                         
-                          
-                            <th  colspan="4">
-                             온도(-25°C ~ 85°C)
-                         </th>
-                         
-                          
-                             <th  colspan="4">
-                             습도(0 ~ 99.9)
-                         </th>
-                         
-                          
-                             <th rowspan="2">
-                             데이터
-                         </th>
-                          <th rowspan="2">
-                             분석
-                         </th>
-                        </tr>
-                         <tr>
-                         
-                         <th>
-                             최초 ~ 최근
-                         </th>
-                         <th>
-                             평균
-                         </th>
-                         
-                            <th>
-                             표준편차
-                         </th>
-                         <th>
-                             최소값
-                         </th>
-                         <th>
-                             최대값
-                         </th>
-                          <th>
-                             평균
-                         </th>
-                         
-                            <th>
-                             표준편차
-                         </th>
-                         <th>
-                             최소값
-                         </th>
-                         <th>
-                             최대값
-                         </th>
-                          <th>
-                             평균
-                         </th>
-                         
-                            <th>
-                             표준편차
-                         </th>
-                         <th>
-                             최소값
-                         </th>
-                         <th>
-                             최대값
-                         </th>
-                         
-                        </tr>
-                    </thead>
-                    <tbody>
-                        
-                    </tbody>
-                </table>
-    	</div>
+		<colgroup>
+			<col width="50px">
+			<col width="70px">
+			<col width="70px">
+			<col width="170px">
+			<col width="50px">
+			<col width="50px">
+			<col width="50px">
+			<col width="50px">
+			<col width="50px">
+			<col width="50px">
+			<col width="50px">
+			<col width="50px">
+			<col width="50px">
+			<col width="50px">
+			<col width="50px">
+			<col width="50px">
+			<col width="50px">
+			<col width="50px">
+			<col width="50px">
+		</colgroup>
+		<thead>
+			<tr>
+				<th rowspan="2">NO</th>
+				<th rowspan="2">목장명</th>
+				<th rowspan="2">축사ID</th>
+				<th>업데이트</th>
+				<th rowspan="2">건수</th>
+				<th colspan="4">CO2(0~3000ppm)</th>
+				<th colspan="4">온도(-25°C ~ 85°C)</th>
+				<th colspan="4">습도(0 ~ 99.9)</th>
+				<th rowspan="2">데이터</th>
+				<th rowspan="2">분석</th>
+			</tr>
+			<tr>
+				<th>최근</th>
+				<th>평균</th>
+				<th>표준편차</th>
+				<th>최소값</th>
+				<th>최대값</th>
+				<th>평균</th>
+				<th>표준편차</th>
+				<th>최소값</th>
+				<th>최대값</th>
+				<th>평균</th>
+				<th>표준편차</th>
+				<th>최소값</th>
+				<th>최대값</th>
+			</tr>
+		</thead>
+		<tbody>
+		    
+		</tbody>
+	</table>
+</div>
  
 
 

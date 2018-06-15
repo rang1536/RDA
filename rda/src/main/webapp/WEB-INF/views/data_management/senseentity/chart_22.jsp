@@ -1,51 +1,50 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page import="java.sql.*"%>
-<%@ page import="java.text.*"%>
-<%@ page import="java.util.*"%>
-<%@ page import="java.io.*"%>
+<c:import url="../../module/top_menu.jsp"></c:import>
+<c:import url="../../module/side_data_management.jsp"></c:import>
+
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css"/>
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.css"/>
 
-        <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
 
-        <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.js"></script>
-        <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/dataTables.buttons.min.js"></script>
-        <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.bootstrap.min.js"></script>
 
-        <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.js"></script>
-        <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.html5.min.js"></script>
-        <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.print.min.js"></script>
-        <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.colVis.min.js"></script>
-        <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/vfs_fonts.js"></script>
-        <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/pdfmake.min.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-        
-         
-<!--         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css" > -->
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.html5.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.print.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.colVis.min.js"></script>
+<script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+
 <link rel="StyleSheet" href="<c:url value='resources/css/datatable.css'/>" type="text/css">
 <link rel="StyleSheet" href="<c:url value='resources/css/datatableUse.css'/>" type="text/css"> 
- <c:import url="../../module/top_menu.jsp"></c:import>
-<c:import url="../../module/side_data_management.jsp"></c:import>
+
+
  
 
 	 
-		<script type="text/javascript">
-		   
-	 
-		var categories="${chartymd}";
-		var data=${chartupdown};
-		var data2=${chartavg};
-        var data3=${chartcentr};
-		
-		
-		console.log("${chartymd}");
-		console.log("${chartavg}");
-		console.log("${chartcentr}");
-		<%-- var data1=<%=list2%> --%>
-		//----categories-----
-$(function () {
+	<script type="text/javascript">
+	   
+ 
+	var categories= "${chartymd}";
+	var data=${chartupdown};
+	var data2=${chartavg};
+    var data3=${chartcentr};
+	
+	
+	console.log(categories);
+	console.log(data);
+	console.log(data2);
+	console.log(data3);
+	<%-- var data1=<%=list2%> --%>
+	//----categories-----
+	
+	$(function () {
    
     	window.chart = new Highcharts.stockChart({
     	
@@ -124,13 +123,13 @@ $(function () {
 		
 		    xAxis: {
             	type: 'datetime',
-                  	min: new Date('2016/10/26').getTime(),
+                  	min: new Date('2017/10/18').getTime(),
 //                     max: new Date('2016/12/20').getTime(),
                 dateTimeLabelFormats: {
                     second: '<br/>%H:%M:%S',
                     minute: '<br/>%H:%M:%S',
                     hour: '<br/>%H:%M:%S',
-                    day: '%Y<br/>%b-%d',
+                    day: '%b-%d',
                     week: '%Y<br/>%b-%d',
                     month: '%Y-%b',
                     year: '%Y'
@@ -186,7 +185,7 @@ $(function () {
 		        type: 'arearange',
 
 		        pointInterval: 24 * 3600 * 1000,
-                pointStart: Date.UTC(2016, 9, 26),
+                pointStart: Date.UTC(2017, 9, 18),
 //                 pointEnd: Date.UTC(2016, 11, 20),
                 tooltip: {
                     valueSuffix: ''
@@ -199,7 +198,7 @@ $(function () {
 		        type: 'line',
 
 		        pointInterval: 24 * 3600 * 1000,
-                pointStart: Date.UTC(2016, 9, 26),
+                pointStart: Date.UTC(2017, 9, 18),
 //                 pointEnd: Date.UTC(2016, 11, 20),
                 tooltip: {
                     valueSuffix: ''
@@ -212,7 +211,7 @@ $(function () {
 		        type: 'spline',
 
 		        pointInterval: 24 * 3600 * 1000,
-                pointStart: Date.UTC(2016, 9, 26),
+                pointStart: Date.UTC(2017, 9, 18),
 //                 pointEnd: Date.UTC(2016, 11, 20),
                 tooltip: {
                     valueSuffix: ''

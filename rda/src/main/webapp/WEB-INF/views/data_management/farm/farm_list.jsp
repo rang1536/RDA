@@ -4,35 +4,25 @@
 <c:import url="../../module/side_data_management.jsp"></c:import>
 
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css"/>
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.css"/>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-        <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
-
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
 	
-<!-- 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css"/> -->
-<!--     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.css"/> -->
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.bootstrap.min.js"></script>
 
-<!--     <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.js"></script> -->
-<!--     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script> -->
-
-
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/dataTables.buttons.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.bootstrap.min.js"></script>
-
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.html5.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.print.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.colVis.min.js"></script>
-    <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/vfs_fonts.js"></script>
-    <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/pdfmake.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.html5.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.print.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.colVis.min.js"></script>
+<script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
         
-         
-<!--         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css" > -->
-	<link rel="StyleSheet" href="<c:url value='resources/css/datatable.css'/>" type="text/css">
-	<link rel="StyleSheet" href="<c:url value='resources/css/datatableUse.css'/>" type="text/css">
+<link rel="StyleSheet" href="<c:url value='resources/css/datatable.css'/>" type="text/css">
+<link rel="StyleSheet" href="<c:url value='resources/css/datatableUse.css'/>" type="text/css">
 
 <script>
 	$(document).ready(function(){
@@ -57,24 +47,24 @@
 	
 	//==============================================================
 		
-		$(document).ready(function(){
-			   $(function(){   
+	$(document).ready(function(){
+	   $(function(){   
 
-	                var onSampleResized = function(e){
-	                    var columns = $(e.currentTarget).find("th");
-	                    var msg = "columns widths: ";
-	                    columns.each(function(){ msg += $(this).width() + "px; "; })
-	                    $("#sample2Txt").html(msg);
-	                    
-	                };  
-	            
-	                $("table").colResizable({
-	                    liveDrag:true, 
-	                    gripInnerHtml:"<div class='grip'></div>", 
-	                    draggingClass:"dragging", 
-	                    onResize:onSampleResized});
-	                
-	            });
+			var onSampleResized = function(e){
+			    var columns = $(e.currentTarget).find("th");
+			    var msg = "columns widths: ";
+			    columns.each(function(){ msg += $(this).width() + "px; "; })
+			    $("#sample2Txt").html(msg);
+			    
+			};  
+			
+			$("table").colResizable({
+			    liveDrag:true, 
+			    gripInnerHtml:"<div class='grip'></div>", 
+			    draggingClass:"dragging", 
+			    onResize:onSampleResized});
+
+           	});
    var table = 
         $('#payList').DataTable( {
           dom: 'Bfrtip',
@@ -211,8 +201,8 @@ return json.farmList
       {data: "farmId"},
       {data: "fname"},
       {data: "name"},
+      {data: "phone1"}, 
       {data: "hp1"},
-      {data: "phone1"},      
       {data: "address"},
       {data: "kc"},
       {data: "mc"},

@@ -134,17 +134,16 @@
 	<font style="color:#000000; font-family:gulim; font-size:14px;"><b><img src="resources/images/icon/board.png" style="width:20px; position:relative; top:0.2em"> 분변자료입력</b></font>
 </div>	
 <table class="table_003 w100p">
-<!-- <form id="regForm" name="regForm" method="post" style="margin-left: 10px; margin-right: 10px" action="/ajax/feseEntityInsertDo?entity_id=005107&amp;keyvalue=multipart" enctype="multipart/form-data"> -->
-<!-- <form id="regForm" name="regForm" method="post" style="margin-left: 10px; margin-right: 10px"   enctype="multipart/form-data"> -->
-<form id="regForm" name="regForm" method="post" style="margin-left: 10px; margin-right: 10px" action="${pageContext.request.contextPath }/ajax/feseEntityInsertDo" enctype="multipart/form-data">
-<%-- <form id="regForm" name="regForm" method="post" style="margin-left: 10px; margin-right: 10px" action="${pageContext.request.contextPath }/ajax/feseEntityInsertDoGET" enctype="multipart/form-data"> --%>
 
+	<form id="regForm" name="regForm" method="post" style="margin-left: 10px; margin-right: 10px" action="${pageContext.request.contextPath }/ajax/feseEntityInsertDo" enctype="multipart/form-data">
 	<tbody>
-		</tbody><colgroup>
-			<col width="20%">
-			<col width="80%">
-		</colgroup>
-		<tbody><tr>
+	</tbody>
+	<colgroup>
+		<col width="20%">
+		<col width="80%">
+	</colgroup>
+	<tbody>
+		<tr>
 			<th>관리번호</th>
 			<td style="padding-left: 5px">
             	<input type="hidden" name="ENTITY_ID" id="ENTITY_ID" value="${entity_id}">
@@ -154,208 +153,198 @@
 		<tr>
 			<th>설사 발병 일시</th>
 			<td style="padding-left: 5px">
-<!-- 				<input name="FECES_OCCURDATE1" id="FECES_OCCURDATE1" onkeyup="if ( isNaN(this.value) ) { alert('숫자만 입력가능합니다.'); this.value=''; } else { if(this.value > 9999) { this.value = this.value.substring(0,4); } }" type="text" maxlength="4" style="width:50px; ">년 -->
-<!--             	<input name="FECES_OCCURDATE2" id="FECES_OCCURDATE2" onkeyup="if ( isNaN(this.value) ) { alert('숫자만 입력가능합니다.'); this.value=''; } else { if(this.value > 12) { alert('1~12 사이의 숫자로 입력바랍니다.'); } }" type="text" maxlength="2" style="width:50px;">월 -->
-<!--             	<input name="FECES_OCCURDATE3" id="FECES_OCCURDATE3" onkeyup="if ( isNaN(this.value) ) { alert('숫자만 입력가능합니다.'); this.value=''; } else { if(this.value > 31) { alert('1~32 사이의 숫자로 입력바랍니다.'); } }" type="text" maxlength="2" style="width:50px;">일 -->
-<!--             	<input name="FECES_OCCURDATE4" id="FECES_OCCURDATE4" onkeyup="if ( isNaN(this.value) ) { alert('숫자만 입력가능합니다.'); this.value=''; } else { if(this.value > 24) { alert('1~24 사이의 숫자로 입력바랍니다.'); } }" type="text" maxlength="2" style="width:50px;">시 -->
-<select name="ydate" id="ydate">
-    <option value="" selected="selected">년도선택</option>
-    <option value="2017">2017년</option>
-    <option value="2018">2018년</option>
-    <option value="2019">2019년</option>
-    <option value="2020">2020년</option>
-    <option value="2021">2021년</option>
-    <option value="2022">2022년</option>
-    <option value="2023">2023년</option>
-    <option value="2024">2024년</option>
-    <option value="2025">2025년</option>
-    <option value="2026">2026년</option>
-    <option value="2027">2027년</option>
-    <option value="2028">2028년</option>
-    <option value="2029">2029년</option>
-    <option value="2030">2030년</option>
-</select>
-<select name="mdate" id="mdate">
-    <option value="" selected="selected">월 선택</option>
-    <option value="01">01월</option>
-    <option value="02">02월</option>
-    <option value="03">03월</option>
-    <option value="04">04월</option>
-    <option value="05">05월</option>
-    <option value="06">06월</option>
-    <option value="07">07월</option>
-    <option value="08">08월</option>
-    <option value="09">09월</option>
-    <option value="10">10월</option>
-    <option value="11">11월</option>
-    <option value="12">12월</option>
-</select>
-<select name="ddate" id="ddate">
-    <option value="" selected="selected">일 선택</option>
-    <option value="01">01일</option>
-    <option value="02">02일</option>
-    <option value="03">03일</option>
-    <option value="04">04일</option>
-    <option value="05">05일</option>
-    <option value="06">06일</option>
-    <option value="07">07일</option>
-    <option value="08">08일</option>
-    <option value="09">09일</option>
-    <option value="10">10일</option>
-    <option value="11">11일</option>
-    <option value="12">12일</option>
-    <option value="13">13일</option>
-    <option value="14">14일</option>
-    <option value="15">15일</option>
-    <option value="16">16일</option>
-    <option value="17">17일</option>
-    <option value="18">18일</option>
-    <option value="19">19일</option>
-    <option value="20">20일</option>
-    <option value="21">21일</option>
-    <option value="22">22일</option>
-    <option value="23">23일</option>
-    <option value="24">24일</option>
-    <option value="25">25일</option>
-    <option value="26">26일</option>
-    <option value="27">27일</option>
-    <option value="28">28일</option>
-    <option value="29">29일</option>
-    <option value="30">30일</option>
-    <option value="31">31일</option>
-</select>
-<select name="tdate" id="tdate">
-    <option value="" selected="selected">시 선택</option>
-    <option value="01">01시</option>
-    <option value="02">02시</option>
-    <option value="03">03시</option>
-    <option value="04">04시</option>
-    <option value="05">05시</option>
-    <option value="06">06시</option>
-    <option value="07">07시</option>
-    <option value="08">08시</option>
-    <option value="09">09시</option>
-    <option value="10">10시</option>
-    <option value="11">11시</option>
-    <option value="12">12시</option>
-    <option value="13">13시</option>
-    <option value="14">14시</option>
-    <option value="15">15시</option>
-    <option value="16">16시</option>
-    <option value="17">17시</option>
-    <option value="18">18시</option>
-    <option value="19">19시</option>
-    <option value="20">20시</option>
-    <option value="21">21시</option>
-    <option value="22">22시</option>
-    <option value="23">23시</option>
-    <option value="24">24시</option>
-</select>
-			
 
+				<select name="ydate" id="ydate">
+				    <option value="" selected="selected">년도선택</option>
+				    <option value="2017">2017년</option>
+				    <option value="2018">2018년</option>
+				    <option value="2019">2019년</option>
+				    <option value="2020">2020년</option>
+				    <option value="2021">2021년</option>
+				    <option value="2022">2022년</option>
+				    <option value="2023">2023년</option>
+				    <option value="2024">2024년</option>
+				    <option value="2025">2025년</option>
+				    <option value="2026">2026년</option>
+				    <option value="2027">2027년</option>
+				    <option value="2028">2028년</option>
+				    <option value="2029">2029년</option>
+				    <option value="2030">2030년</option>
+				</select>
+				<select name="mdate" id="mdate">
+				    <option value="" selected="selected">월 선택</option>
+				    <option value="01">01월</option>
+				    <option value="02">02월</option>
+				    <option value="03">03월</option>
+				    <option value="04">04월</option>
+				    <option value="05">05월</option>
+				    <option value="06">06월</option>
+				    <option value="07">07월</option>
+				    <option value="08">08월</option>
+				    <option value="09">09월</option>
+				    <option value="10">10월</option>
+				    <option value="11">11월</option>
+				    <option value="12">12월</option>
+				</select>
+				<select name="ddate" id="ddate">
+				    <option value="" selected="selected">일 선택</option>
+				    <option value="01">01일</option>
+				    <option value="02">02일</option>
+				    <option value="03">03일</option>
+				    <option value="04">04일</option>
+				    <option value="05">05일</option>
+				    <option value="06">06일</option>
+				    <option value="07">07일</option>
+				    <option value="08">08일</option>
+				    <option value="09">09일</option>
+				    <option value="10">10일</option>
+				    <option value="11">11일</option>
+				    <option value="12">12일</option>
+				    <option value="13">13일</option>
+				    <option value="14">14일</option>
+				    <option value="15">15일</option>
+				    <option value="16">16일</option>
+				    <option value="17">17일</option>
+				    <option value="18">18일</option>
+				    <option value="19">19일</option>
+				    <option value="20">20일</option>
+				    <option value="21">21일</option>
+				    <option value="22">22일</option>
+				    <option value="23">23일</option>
+				    <option value="24">24일</option>
+				    <option value="25">25일</option>
+				    <option value="26">26일</option>
+				    <option value="27">27일</option>
+				    <option value="28">28일</option>
+				    <option value="29">29일</option>
+				    <option value="30">30일</option>
+				    <option value="31">31일</option>
+				</select>
+				<select name="tdate" id="tdate">
+				    <option value="" selected="selected">시 선택</option>
+				    <option value="01">01시</option>
+				    <option value="02">02시</option>
+				    <option value="03">03시</option>
+				    <option value="04">04시</option>
+				    <option value="05">05시</option>
+				    <option value="06">06시</option>
+				    <option value="07">07시</option>
+				    <option value="08">08시</option>
+				    <option value="09">09시</option>
+				    <option value="10">10시</option>
+				    <option value="11">11시</option>
+				    <option value="12">12시</option>
+				    <option value="13">13시</option>
+				    <option value="14">14시</option>
+				    <option value="15">15시</option>
+				    <option value="16">16시</option>
+				    <option value="17">17시</option>
+				    <option value="18">18시</option>
+				    <option value="19">19시</option>
+				    <option value="20">20시</option>
+				    <option value="21">21시</option>
+				    <option value="22">22시</option>
+				    <option value="23">23시</option>
+				    <option value="24">24시</option>
+				</select>
 			</td>
 		</tr>
 		<tr>
 			<th>채취 일시</th>
 			<td style="padding-left: 5px">
-<!-- 				<input name="FECES_GATHERDATE1" id="FECES_GATHERDATE1" onkeyup="if ( isNaN(this.value) ) { alert('숫자만 입력가능합니다.'); this.value=''; } else { if(this.value > 9999) { this.value = this.value.substring(0,4); } }" type="text" maxlength="4" style="width:50px; ">년 -->
-<!--             	<input name="FECES_GATHERDATE2" id="FECES_GATHERDATE2" onkeyup="if ( isNaN(this.value) ) { alert('숫자만 입력가능합니다.'); this.value=''; } else { if(this.value > 12) { alert('1~12 사이의 숫자로 입력바랍니다.'); } }" type="text" maxlength="2" style="width:50px;">월 -->
-<!--             	<input name="FECES_GATHERDATE3" id="FECES_GATHERDATE3" onkeyup="if ( isNaN(this.value) ) { alert('숫자만 입력가능합니다.'); this.value=''; } else { if(this.value > 31) { alert('1~32 사이의 숫자로 입력바랍니다.'); } }" type="text" maxlength="2" style="width:50px;">일 -->
-<!--             	<input name="FECES_GATHERDATE4" id="FECES_GATHERDATE4" onkeyup="if ( isNaN(this.value) ) { alert('숫자만 입력가능합니다.'); this.value=''; } else { if(this.value > 24) { alert('1~24 사이의 숫자로 입력바랍니다.'); } }" type="text" maxlength="2" style="width:50px;">시 -->
-		<select name="ydate1" id="ydate1">
-    <option value="" selected="selected">년도선택</option>
-    <option value="2017">2017년</option>
-    <option value="2018">2018년</option>
-    <option value="2019">2019년</option>
-    <option value="2020">2020년</option>
-    <option value="2021">2021년</option>
-    <option value="2022">2022년</option>
-    <option value="2023">2023년</option>
-    <option value="2024">2024년</option>
-    <option value="2025">2025년</option>
-    <option value="2026">2026년</option>
-    <option value="2027">2027년</option>
-    <option value="2028">2028년</option>
-    <option value="2029">2029년</option>
-    <option value="2030">2030년</option>
-</select>
-<select name="mdate1" id="mdate1">
-    <option value="" selected="selected">월 선택</option>
-    <option value="01">01월</option>
-    <option value="02">02월</option>
-    <option value="03">03월</option>
-    <option value="04">04월</option>
-    <option value="05">05월</option>
-    <option value="06">06월</option>
-    <option value="07">07월</option>
-    <option value="08">08월</option>
-    <option value="09">09월</option>
-    <option value="10">10월</option>
-    <option value="11">11월</option>
-    <option value="12">12월</option>
-</select>
-<select name="ddate1" id="ddate1">
-    <option value="" selected="selected">일 선택</option>
-    <option value="01">01일</option>
-    <option value="02">02일</option>
-    <option value="03">03일</option>
-    <option value="04">04일</option>
-    <option value="05">05일</option>
-    <option value="06">06일</option>
-    <option value="07">07일</option>
-    <option value="08">08일</option>
-    <option value="09">09일</option>
-    <option value="10">10일</option>
-    <option value="11">11일</option>
-    <option value="12">12일</option>
-    <option value="13">13일</option>
-    <option value="14">14일</option>
-    <option value="15">15일</option>
-    <option value="16">16일</option>
-    <option value="17">17일</option>
-    <option value="18">18일</option>
-    <option value="19">19일</option>
-    <option value="20">20일</option>
-    <option value="21">21일</option>
-    <option value="22">22일</option>
-    <option value="23">23일</option>
-    <option value="24">24일</option>
-    <option value="25">25일</option>
-    <option value="26">26일</option>
-    <option value="27">27일</option>
-    <option value="28">28일</option>
-    <option value="29">29일</option>
-    <option value="30">30일</option>
-    <option value="31">31일</option>
-</select>
-<select name="tdate1" id="tdate1">
-    <option value="" selected="selected">시 선택</option>
-    <option value="01">01시</option>
-    <option value="02">02시</option>
-    <option value="03">03시</option>
-    <option value="04">04시</option>
-    <option value="05">05시</option>
-    <option value="06">06시</option>
-    <option value="07">07시</option>
-    <option value="08">08시</option>
-    <option value="09">09시</option>
-    <option value="10">10시</option>
-    <option value="11">11시</option>
-    <option value="12">12시</option>
-    <option value="13">13시</option>
-    <option value="14">14시</option>
-    <option value="15">15시</option>
-    <option value="16">16시</option>
-    <option value="17">17시</option>
-    <option value="18">18시</option>
-    <option value="19">19시</option>
-    <option value="20">20시</option>
-    <option value="21">21시</option>
-    <option value="22">22시</option>
-    <option value="23">23시</option>
-    <option value="24">24시</option>
-</select>
-			
+				<select name="ydate1" id="ydate1">
+				    <option value="" selected="selected">년도선택</option>
+				    <option value="2017">2017년</option>
+				    <option value="2018">2018년</option>
+				    <option value="2019">2019년</option>
+				    <option value="2020">2020년</option>
+				    <option value="2021">2021년</option>
+				    <option value="2022">2022년</option>
+				    <option value="2023">2023년</option>
+				    <option value="2024">2024년</option>
+				    <option value="2025">2025년</option>
+				    <option value="2026">2026년</option>
+				    <option value="2027">2027년</option>
+				    <option value="2028">2028년</option>
+				    <option value="2029">2029년</option>
+				    <option value="2030">2030년</option>
+				</select>
+				<select name="mdate1" id="mdate1">
+				    <option value="" selected="selected">월 선택</option>
+				    <option value="01">01월</option>
+				    <option value="02">02월</option>
+				    <option value="03">03월</option>
+				    <option value="04">04월</option>
+				    <option value="05">05월</option>
+				    <option value="06">06월</option>
+				    <option value="07">07월</option>
+				    <option value="08">08월</option>
+				    <option value="09">09월</option>
+				    <option value="10">10월</option>
+				    <option value="11">11월</option>
+				    <option value="12">12월</option>
+				</select>
+				<select name="ddate1" id="ddate1">
+				    <option value="" selected="selected">일 선택</option>
+				    <option value="01">01일</option>
+				    <option value="02">02일</option>
+				    <option value="03">03일</option>
+				    <option value="04">04일</option>
+				    <option value="05">05일</option>
+				    <option value="06">06일</option>
+				    <option value="07">07일</option>
+				    <option value="08">08일</option>
+				    <option value="09">09일</option>
+				    <option value="10">10일</option>
+				    <option value="11">11일</option>
+				    <option value="12">12일</option>
+				    <option value="13">13일</option>
+				    <option value="14">14일</option>
+				    <option value="15">15일</option>
+				    <option value="16">16일</option>
+				    <option value="17">17일</option>
+				    <option value="18">18일</option>
+				    <option value="19">19일</option>
+				    <option value="20">20일</option>
+				    <option value="21">21일</option>
+				    <option value="22">22일</option>
+				    <option value="23">23일</option>
+				    <option value="24">24일</option>
+				    <option value="25">25일</option>
+				    <option value="26">26일</option>
+				    <option value="27">27일</option>
+				    <option value="28">28일</option>
+				    <option value="29">29일</option>
+				    <option value="30">30일</option>
+				    <option value="31">31일</option>
+				</select>
+				<select name="tdate1" id="tdate1">
+				    <option value="" selected="selected">시 선택</option>
+				    <option value="01">01시</option>
+				    <option value="02">02시</option>
+				    <option value="03">03시</option>
+				    <option value="04">04시</option>
+				    <option value="05">05시</option>
+				    <option value="06">06시</option>
+				    <option value="07">07시</option>
+				    <option value="08">08시</option>
+				    <option value="09">09시</option>
+				    <option value="10">10시</option>
+				    <option value="11">11시</option>
+				    <option value="12">12시</option>
+				    <option value="13">13시</option>
+				    <option value="14">14시</option>
+				    <option value="15">15시</option>
+				    <option value="16">16시</option>
+				    <option value="17">17시</option>
+				    <option value="18">18시</option>
+				    <option value="19">19시</option>
+				    <option value="20">20시</option>
+				    <option value="21">21시</option>
+				    <option value="22">22시</option>
+				    <option value="23">23시</option>
+				    <option value="24">24시</option>
+				</select>
 			</td>
 		</tr>
 		<tr>
@@ -385,11 +374,11 @@
 				<input type="reset" value="돌아가기" onclick="winclose()">
 			</td>
 		</tr>
-<!-- 	</tbody> -->
-</tbody>
 
- </form>
+	</tbody>
+ 	</form>
 </table>
 
  
-</body></html>
+</body>
+</html>

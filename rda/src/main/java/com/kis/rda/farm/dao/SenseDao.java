@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.kis.rda.common.domain.Sense;
+import com.kis.rda.common.domain.SenseActive;
 import com.kis.rda.common.domain.TbSensetime;
 import com.kis.rda.farm.domain.Aduino;
 import com.kis.rda.farm.domain.Cbcentity;
@@ -41,10 +42,13 @@ public class SenseDao {
 	}
 	public int ajaxsenseStableEntityInsertDo(Sense entityInsert) {
 		return sqlSession.insert("SenseDao.ajaxsenseStableEntityInsertDo",entityInsert);			
-		}
+	}
+	
+	
 	public List<String> selectchartymd(Map<String, Object> map) {
 		return sqlSession.selectList("SenseDao.selectchartymd", map);
 	}
+	
 	public List<String> selectupdown(Map<String, Object> map) {
 		return sqlSession.selectList("SenseDao.selectupdown", map);
 	}
@@ -55,16 +59,22 @@ public class SenseDao {
 		return sqlSession.selectList("SenseDao.selectchartcentr", map);
 	}
 	
-	
+	// 날짜 목록(2017)
 	public List<String> selectStablechartymd(Map<String, Object> map) {
 		return sqlSession.selectList("SenseDao.selectStablechartymd", map);
 	}
+	
+	// 축사별 온도평균
 	public List<String> selectStablechartavg(Map<String, Object> map) {
 		return sqlSession.selectList("SenseDao.selectStablechartavg", map);
 	}
+	
+	// 축사별 이산화탄소평균
 	public List<String> selectStablechartavg2(Map<String, Object> map) {
 		return sqlSession.selectList("SenseDao.selectStablechartavg2", map);
 	}
+	
+	//축사별 HUM평균
 	public List<String> selectStablechartavg3(Map<String, Object> map) {
 		return sqlSession.selectList("SenseDao.selectStablechartavg3", map);
 	}
@@ -74,6 +84,31 @@ public class SenseDao {
 		return sqlSession.selectList("SenseDao.selectAduinoSensing");
 	}
 
+	//개체목록
+	public List<String> selectEntityIdList(){
+		return sqlSession.selectList("SenseDao.selectEntityIdList");
+	}
+	//개체별 일일활동량 데이터 조회
+	public List<SenseActive> selectEntityActive(String nodeId){
+		return sqlSession.selectList("SenseDao.selectEntityActive", nodeId);
+	}
+	
+	public List<String> selectDateList(String nodeId){
+		return sqlSession.selectList("SenseDao.selectDateList",nodeId);
+	}
+	
+	public List<String> selectDateList2(String nodeId){
+		return sqlSession.selectList("SenseDao.selectDateList2",nodeId);
+	}
+	
+	//개체별 일일활동량 데이터카운트 조회
+	public List<Integer> selectEntityActiveCount(String nodeId){
+		return sqlSession.selectList("SenseDao.selectEntityActiveCount",nodeId);
+	}
+	
+	public List<Aduino> selectSensorDataByTime(Map<String, Object> params){
+		return sqlSession.selectList("SenseDao.selectSensorDataByTime", params);
+	}
 }		
 		
 		

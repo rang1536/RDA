@@ -241,9 +241,7 @@ return json.farmList
                     </colgroup>
                     <thead>
                      <tr>
-                         <th>
-                             NO
-                         </th>
+                         <th>NO</th>
                          <th>
                              목장번호
                          </th>

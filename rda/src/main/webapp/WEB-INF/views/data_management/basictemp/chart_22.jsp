@@ -54,7 +54,7 @@
 
 	Class.forName("oracle.jdbc.driver.OracleDriver");
 
-	String url="jdbc:oracle:thin:@192.168.0.100:1521:kis";
+	String url="jdbc:oracle:thin:@175.202.108.60:1521:kis";
 	String user = "admin";
 	String passwd = "sRc0488#";
 	
@@ -277,6 +277,10 @@ stmt4 = conn.prepareStatement(SQL4);
 		var data2=<%=list3%>
 		var data3=<%=list4%>
 		<%-- var data1=<%=list2%> --%>
+		console.log(categories)
+		console.log(data)
+		console.log(data2)
+		console.log(data3)
 $(function () {
    
     	window.chart = new Highcharts.stockChart({

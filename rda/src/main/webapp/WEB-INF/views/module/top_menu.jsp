@@ -25,9 +25,32 @@
 .login .id ,.login .pw  {
     width: 110px;
     height: 28px;
+    font-size:12px;
     }
 </style>
 <title>RDA</title>
+
+<script>
+	function login(){
+		var userName = $('#userName').val();
+		var userPassword = $('#userPassword').val();
+		
+		$.ajax({
+			url : 'login',
+			data : {'userName':userName, 'userPassword':userPassword},
+			dataType:'json',
+			type : 'post',
+			success:function(data){
+				if(data.check == 'success'){
+					alert('반갑습니다');
+					return;
+				}else{
+					alert('로그인에 실패하였습니다.')
+				}
+			}
+		});
+	}
+</script>
 </head>
 <body bgcolor="#c3cbd8" marginwidth="0" marginheight="0" bottommargin="0" style="margin: 0" leftmargin="0" rightmargin="0" topmargin="0">
 	<div class="admin_wrap">
@@ -36,14 +59,30 @@
 				<img class="logoimg" src="<c:url value='resources/img/logo_rda.png'/>">
 			</div>
 			<div class="login">
-				<div class="login-left">
-					<input type="text" class="id" name="id" placeholder="아이디"> 
-					<input type="text" class="pw" name="pw" placeholder="비밀번호">
-				</div>
-				<div class="login-right">
-					<input type="button" class="logbt" value="login" onclick="login()" accesskey="l" style="margin-top: 2px; margin-right: 5px;">
-					<%-- title="ID와 Password 입력 후 <%out.println();%>Alt+L을 누르면 로그인 됩니다." --%>
-				</div>
+				<c:if test="${loginCheck ne 'login' }">
+					<div class="login-left">
+						<input type="text" class="id" name="userName" id="userName" placeholder="아이디(이름)"> 
+						<input type="text" class="pw" name="userPassword" id="userPassword" placeholder="비밀번호">
+					</div>
+					<div class="login-right">
+						<input type="button" class="logbt" value="login" onclick="login()" accesskey="l" style="margin-top: 2px; margin-right: 5px;">
+						<%-- title="ID와 Password 입력 후 <%out.println();%>Alt+L을 누르면 로그인 됩니다." --%>
+					</div>
+				</c:if>
+				<c:if test="${loginCheck eq 'login' }">
+					<div class="login-left"
+						style="height: 54px; line-height: 27px; text-align: right; margin-right: 8px; padding-top: 3px;">
+						<font style="color: #000000; font-size: 14px;"><b>${userName }</b>
+						<font style="font-size: 13px;"> 님</font></font><br> 
+						<font style="color: #494949; font-size: 13px;">반갑습니다.</font>
+					</div>
+					<div class="login-right">
+						<input type="button" class="logbt" value="logout"
+							onclick="logout2()" accesskey="q"
+							style="margin-top: 2px; margin-right: 5px;"
+							title="Alt+Q를 누르면 로그아웃 됩니다.">
+					</div>
+				</c:if>
 				<%-- <div class="login-left"
 					style="height: 54px; line-height: 27px; text-align: right; margin-right: 8px; padding-top: 3px;">
 					<font style="color: #000000; font-size: 14px;"><b><%=name%></b><font

@@ -50,26 +50,13 @@ public class SenseRestController {
 	
 	//=============================현황==================================================		
 	
-	//@RequestMapping(value = "/ajax/senseCountList", method = RequestMethod.POST)			
-	//public Map<String,Object> ajaxsenseCountList(Model model,			
-	//	@RequestParam(value="pageNum", defaultValue="1") int pageNum,		
-	//	@RequestParam(value="searchOption", defaultValue="none") String searchOption,		
-	//	@RequestParam(value="searchValue", defaultValue="none") String entity_id,String searchValue,Cbcentity  entityDetail) {		
-	//	  System.out.println("목장birEntityListDetail"+ entity_id);	
-	// 
-	//// Map<String, Object> map =senseService.ajaxsenseCountList( );			
-	//  //entityEntityList =entityService.ajaxentityEntityList(farmId);			
-	//  			
-	//model.addAttribute("entityEntityList", map.get("entityList"));			
-	//  System.out.println("목장birEntityListDetail"+ entity_id);			
-	// //model.addAttribute("entityEntityList",entityEntityList  );			
-	////model.addAttribute("paging", map.get("paging"));			
-	////model.addAttribute("searchOption", searchOption);			
-	////model.addAttribute("searchValue", searchValue);			
-	//			
-	//			
-	//return map;			
-	//}	
+	@RequestMapping(value = "/ajax/senseCountList", method = RequestMethod.POST)			
+	public List<Map<String, Object>> ajaxsenseCountList(Model model,
+			@RequestParam(value="pageNum", defaultValue="1") int pageNum) {		
+		
+		List<Map<String, Object>> map =senseService.readEntityActiveCountServ();
+		return map;			
+	}	
 	
 	
 	//==============================개체=================================================		
@@ -98,23 +85,21 @@ public class SenseRestController {
 	@RequestMapping(value = "/ajax/senseEntityListDetail", method = RequestMethod.POST)			
 	public Map<String,Object> ajaxsenseEntityListDetail(Model model,			
 			@RequestParam(value="pageNum", defaultValue="1") int pageNum,		
-			@RequestParam(value="searchOption", defaultValue="none") String searchOption,		
-			@RequestParam(value="searchValue", defaultValue="none") String searchValue, String sensecuid,String sensenodeid,TbSenseEntityListDetail  entityDetail) {		
-		  System.out.println("목장sensecuid"+ sensecuid);	
-			  System.out.println("목장sensenodeid"+ entityDetail.getNODEID());	
-		 Map<String, Object> map =senseService.ajaxsenseEntityListDetail(entityDetail );			
+			@RequestParam(value="sensecuid", defaultValue="none") String sensecuid,		
+			@RequestParam(value="NODEID", defaultValue="none") String NODEID,TbSenseEntityListDetail entityDetail) {		
+		 System.out.println("목장sensecuid : "+ sensecuid);	
+		 System.out.println("목장sensenodeid : "+ NODEID);
+		 System.out.println("목장sensenodeid2 : "+ entityDetail.getNODEID());	
+		 System.out.println("entityDetail : "+ entityDetail);
+		 
+		 Map<String, Object> map =senseService.ajaxsenseEntityListDetail(entityDetail);			
 		  //entityEntityList =entityService.ajaxentityEntityList(farmId);			
-		  			
-		model.addAttribute("entityEntityList", map.get("entityList"));			
+		
+		 model.addAttribute("entityEntityList", map.get("ajaxList"));			
 		  	
-		 //model.addAttribute("entityEntityList",entityEntityList  );			
-		//model.addAttribute("paging", map.get("paging"));			
-		//model.addAttribute("searchOption", searchOption);			
-		//model.addAttribute("searchValue", searchValue);			
-					
-					
-		return map;			
+		 return map;			
 		}	
+	
 	//===============================축사================================================		
 	
 	@RequestMapping(value = "/ajax/senseStableList", method = RequestMethod.POST)			
@@ -176,8 +161,23 @@ public class SenseRestController {
 	public Map<String, Object> aduinoSensingListCtrl(){
 		Map<String, Object> resultMap = new HashMap<String, Object>();
 		List<Aduino> list = senseService.readAduinoSensingServ();
+		System.out.println("리스트 확인 : "+list);
 		resultMap.put("list", list);
 		
+		return resultMap;
+	}
+	
+	//getDistance
+	@RequestMapping(value="/getDistance", method = RequestMethod.POST)
+	public Map<String, Object> getDistanceCtrl(@RequestParam(value="date") String date,
+			@RequestParam(value="startTime") String startTime,
+			@RequestParam(value="endTime") String endTime){
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		System.out.println("date : "+date);
+		System.out.println("startTime : "+startTime);
+		System.out.println("startTime : "+endTime);
+		
+		resultMap = senseService.getDistanceServ(date, startTime, endTime);
 		return resultMap;
 	}
 }				

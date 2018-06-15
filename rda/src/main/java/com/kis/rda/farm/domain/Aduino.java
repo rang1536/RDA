@@ -1,73 +1,73 @@
 package com.kis.rda.farm.domain;
 
 public class Aduino {
-	private int gAx;
-	private int gAy;
-	private int gAz;
-	private int gGx;
-	private int gGy;
-	private int gGz;
-	private int gMx;
-	private int gMy;
-	private int gMz;
+	private float gAx;
+	private float gAy;
+	private float gAz;
+	private float gGx;
+	private float gGy;
+	private float gGz;
+	private float gMx;
+	private float gMy;
+	private float gMz;
 	private float gTemper;
 	private float gHumi;
 	private int gActive;
 	private String gDate;
 	private String gFarm;
 	private String gSensorId;
-	public int getgAx() {
+	public float getgAx() {
 		return gAx;
 	}
-	public void setgAx(int gAx) {
+	public void setgAx(float gAx) {
 		this.gAx = gAx;
 	}
-	public int getgAy() {
+	public float getgAy() {
 		return gAy;
 	}
-	public void setgAy(int gAy) {
+	public void setgAy(float gAy) {
 		this.gAy = gAy;
 	}
-	public int getgAz() {
+	public float getgAz() {
 		return gAz;
 	}
-	public void setgAz(int gAz) {
+	public void setgAz(float gAz) {
 		this.gAz = gAz;
 	}
-	public int getgGx() {
+	public float getgGx() {
 		return gGx;
 	}
-	public void setgGx(int gGx) {
+	public void setgGx(float gGx) {
 		this.gGx = gGx;
 	}
-	public int getgGy() {
+	public float getgGy() {
 		return gGy;
 	}
-	public void setgGy(int gGy) {
+	public void setgGy(float gGy) {
 		this.gGy = gGy;
 	}
-	public int getgGz() {
+	public float getgGz() {
 		return gGz;
 	}
-	public void setgGz(int gGz) {
+	public void setgGz(float gGz) {
 		this.gGz = gGz;
 	}
-	public int getgMx() {
+	public float getgMx() {
 		return gMx;
 	}
-	public void setgMx(int gMx) {
+	public void setgMx(float gMx) {
 		this.gMx = gMx;
 	}
-	public int getgMy() {
+	public float getgMy() {
 		return gMy;
 	}
-	public void setgMy(int gMy) {
+	public void setgMy(float gMy) {
 		this.gMy = gMy;
 	}
-	public int getgMz() {
+	public float getgMz() {
 		return gMz;
 	}
-	public void setgMz(int gMz) {
+	public void setgMz(float gMz) {
 		this.gMz = gMz;
 	}
 	public float getgTemper() {
@@ -112,6 +112,5 @@ public class Aduino {
 				+ ", gMx=" + gMx + ", gMy=" + gMy + ", gMz=" + gMz + ", gTemper=" + gTemper + ", gHumi=" + gHumi
 				+ ", gActive=" + gActive + ", gDate=" + gDate + ", gFarm=" + gFarm + ", gSensorId=" + gSensorId + "]";
 	}
-	
 	
 }

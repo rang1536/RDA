@@ -45,24 +45,26 @@ max(ACTION_VALUE) as TEMMAX
     </select>
 <select id="ajaxsenseStableList" parameterType="Map" resultType="com.kis.rda.farm.domain.TbsenseStableList">
  select 
-  node_id as SENSENODEID ,
- min(dtime) as UPFIRST ,
- max(dtime) as UPLAST ,
- count(*) as COT  ,
- round(avg(co2) ,3) as CO2AVR ,
- round(stddev(co2), 3) as CO2STD  ,
- min(co2) as CO2MIN  ,
- max(co2) as CO2MAX  ,
- round(avg(temp) , 3) as TEMAVR ,
- round(stddev(temp), 3) as TEMSTD  ,
- min(temp) as TEMMIN ,
- max(temp) as TEMMAX  ,
- round(avg(hum) ,3) as HUMAVR  ,
- round(stddev(hum) , 3) as HUMSTD  ,
- min(hum) as HUMMIN  ,
- max(hum) as HUMMAX
+	 node_id as SENSENODEID ,
+	 min(dtime) as UPFIRST ,
+	 max(dtime) as UPLAST ,
+	 count(*) as COT  ,
+	 round(avg(co2) ,3) as CO2AVR ,
+	 round(stddev(co2), 3) as CO2STD  ,
+	 min(co2) as CO2MIN  ,
+	 max(co2) as CO2MAX  ,
+	 round(avg(temp) , 3) as TEMAVR ,
+	 round(stddev(temp), 3) as TEMSTD  ,
+	 min(temp) as TEMMIN ,
+	 max(temp) as TEMMAX  ,
+	 round(avg(hum) ,3) as HUMAVR  ,
+	 round(stddev(hum) , 3) as HUMSTD  ,
+	 min(hum) as HUMMIN  ,
+	 max(hum) as HUMMAX
  from 
- TURBOSOFT.SENSE_ENV 
+ 	TURBOSOFT.SENSE_ENV
+ where
+ 	DTIME &gt; '17/10/13' 
  GROUP BY node_id 
  order by NODE_ID
 </select>
@@ -76,7 +78,8 @@ max(ACTION_VALUE) as TEMMAX
           DTIME 
            from 
            TURBOSOFT.SENSE 
-           where NODE_ID = #{NODEID} 
+           where NODE_ID = #{NODEID}
+           and DEV_TYPE = 1
            ORDER BY DTIME desc) 
 
     </select>
@@ -124,34 +127,118 @@ SEQNO,
 
 
 <select id="selectchartymd" parameterType="Map" resultType="String">
-  select to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd')  from TURBOSOFT.SENSE where node_id = '201610260009' GROUP BY to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd') HAVING min(ACTION_VALUE)&gt; = 0 and max(ACTION_VALUE) &gt;  0ORDER BY to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd') asc
+	select 
+		to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd')  
+	from 
+		TURBOSOFT.SENSE 
+	where 
+		node_id = #{nodeId} 
+	GROUP BY 
+		to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd') 
+	HAVING 
+		min(ACTION_VALUE) &gt;= 0 and max(ACTION_VALUE) &gt; 0
+	ORDER BY 
+		to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd') asc
 </select>
 
 <select id="selectupdown" parameterType="Map" resultType="String">
-select   '['||min(ACTION_VALUE)||','||max(ACTION_VALUE)||']'  from TURBOSOFT.SENSE where node_id = '201610260009' GROUP BY to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd') HAVING min(ACTION_VALUE)&gt;  = 0 and max(ACTION_VALUE)&gt;  0 ORDER BY to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd') asc</select>
+	select   
+		'['||min(ACTION_VALUE)||','||max(ACTION_VALUE)||']'  
+	from 
+		TURBOSOFT.SENSE 
+	where 
+		node_id = #{nodeId} 
+	GROUP BY 
+		to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd') 
+	HAVING 
+		min(ACTION_VALUE) &gt;= 0 and max(ACTION_VALUE) &gt; 0 
+	ORDER BY 
+		to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd') asc
+</select>
 
 
 <select id="selectchartavg" parameterType="Map" resultType="String">
- select ROUND(AVG(ACTION_VALUE),3) from TURBOSOFT.SENSE where node_id = '201610260008' and ACTION_VALUE &gt;=1 GROUP BY to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd') ORDER BY to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd') asc
+	select 
+		ROUND(AVG(ACTION_VALUE),3) 
+	from 
+		TURBOSOFT.SENSE 
+	where 
+		node_id = #{nodeId} 
+	and 
+		ACTION_VALUE &gt;=1 
+	GROUP BY 
+		to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd') 
+	ORDER BY 
+		to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd') asc
 </select>
 
 <select id="selectchartcentr" parameterType="Map" resultType="String">
- select  ROUND(MEDIAN(ACTION_VALUE),3) from TURBOSOFT.SENSE where node_id = '201610260008' and ACTION_VALUE &gt;=1 GROUP BY to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd') ORDER BY to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd') asc
+	select  
+		ROUND(MEDIAN(ACTION_VALUE),3) 
+	from 
+		TURBOSOFT.SENSE 
+	where 
+		node_id = #{nodeId} 
+	and 
+		ACTION_VALUE &gt;=1 
+	GROUP BY 
+		to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd') 
+	ORDER BY 
+		to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd') asc
 </select>
+
+<!-- 데이터 있는 날짜 -->
 <select id="selectStablechartymd" parameterType="Map" resultType="String">
-select  to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd')  from TURBOSOFT.SENSE_ENV  GROUP BY node_id,to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd') ORDER BY to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd') asc
+	select  DISTINCT to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd')  
+	from TURBOSOFT.SENSE_ENV
+	where DTIME &gt; '17/10/13'
+	and NODE_ID = #{nodeId}  
+	GROUP BY node_id,to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd') 
+	ORDER BY to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd') asc
 </select>
 
+<!-- 축사별 온도평균 목록 -->
 <select id="selectStablechartavg" parameterType="Map" resultType="String">
-select  ROUND(AVG(TEMP),3) from TURBOSOFT.SENSE_ENV  GROUP BY node_id,to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd') ORDER BY to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd') asc
+	select 
+		ROUND(AVG(TEMP),3) 
+	from 
+		TURBOSOFT.SENSE_ENV  
+	where 
+		DTIME &gt; '17/10/13'
+	and 
+		NODE_ID = #{nodeId} 
+	GROUP BY 
+		node_id,to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd') 
+	ORDER BY 
+		to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd') asc
 </select>
 
+<!-- 축사별 이산화탄소 평균값 목록 -->
 <select id="selectStablechartavg2" parameterType="Map" resultType="String">
- select ROUND(AVG(CO2),3) from TURBOSOFT.SENSE_ENV  GROUP BY node_id,to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd') ORDER BY to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd') asc
+	select 
+		ROUND(AVG(CO2),3) 
+	from 
+		TURBOSOFT.SENSE_ENV 
+	where 
+		DTIME &gt; '17/10/13' 
+	and 
+		NODE_ID = #{nodeId}
+	
 </select>
 
+<!-- 축사별 HUM 평균 목록 -->
 <select id="selectStablechartavg3" parameterType="Map" resultType="String">
-select  ROUND(AVG(HUM),3) from TURBOSOFT.SENSE_ENV  GROUP BY node_id,to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd') ORDER BY to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd') asc
+	select  
+		ROUND(AVG(HUM),3) 
+	from TURBOSOFT.SENSE_ENV 
+	where 
+		DTIME &gt; '17/10/13' 
+	and 
+		NODE_ID = #{nodeId}
+	GROUP BY 
+		node_id,to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd') 
+	ORDER BY 
+		to_char(to_date(DTIME,'yyyy-mm-dd'),'yy.mm.dd') asc
 </select>
 
 <!-- 9축값 가져오기 -->
@@ -159,10 +246,88 @@ select  ROUND(AVG(HUM),3) from TURBOSOFT.SENSE_ENV  GROUP BY node_id,to_char(to_
 	SELECT
 		*
 	FROM
-		GIKIMI_T
+		ADMIN.SENSOR_D
 	WHERE
-		G_DATE LIKE '17/09/'||'%'
+		G_DATE LIKE '18/'||'%'
 	ORDER BY G_DATE DESC
 </select>
+
+<!-- 개체목록 -->
+<select id="selectEntityIdList" resultType="Map">
+	SELECT DISTINCT 
+		substr(node_id,11,2) as entityNo 
+	FROM TURBOSOFT.SENSE 
+	WHERE DEV_TYPE = '1' 
+	ORDER BY substr(node_id,11,2) asc
+</select>
+
+<!-- 개체활동량 조회 -->
+<select id="selectEntityActive" parameterType="String" resultType="com.kis.rda.common.domain.SenseActive">
+	SELECT 
+		DTIME as dTime, 
+		ACTION_VALUE as actionValue 
+	FROM 
+		TURBOSOFT.SENSE 
+	WHERE 
+		NODE_ID =#{nodeId} 
+	AND 
+		ACTION_VALUE >=1  ORDER BY DTIME asc
+</select>
+
+<!-- 수집된 날짜 목록 -->
+<select id="selectDateList" parameterType="String" resultType="String">
+	SELECT
+		TO_CHAR(DTIME,'YYYY-MM-DD')
+	FROM
+		TURBOSOFT.SENSE
+	WHERE
+		DEV_TYPE = '1'
+  	AND
+    	NODE_ID = #{nodeId}
+ 	GROUP BY 
+		TO_CHAR(DTIME,'YYYY-MM-DD') 
+	ORDER BY 
+		TO_CHAR(DTIME,'YYYY-MM-DD') ASC
+</select>
+
+<!-- 수집된 날짜 목록2 -->
+<select id="selectDateList2" parameterType="String" resultType="String">
+	SELECT
+		TO_CHAR(DTIME,'YY.MM.DD')
+	FROM
+		TURBOSOFT.SENSE
+	WHERE
+		DEV_TYPE = '1'
+  	AND
+    	NODE_ID = #{nodeId}
+ 	GROUP BY 
+		TO_CHAR(DTIME,'YY.MM.DD')
+	ORDER BY 
+		TO_CHAR(DTIME,'YY.MM.DD') ASC
+</select>
+<!-- 개체 일일활동량 수집카운트 -->
+<select id="selectEntityActiveCount" parameterType="String" resultType="Integer">
+	SELECT
+		COUNT(*)
+	FROM
+		TURBOSOFT.SENSE
+	WHERE
+		DEV_TYPE = '1'
+  	AND
+    	NODE_ID = #{nodeId}
+ 	GROUP BY 
+		TO_CHAR(DTIME,'YYYY-MM-DD') 
+	ORDER BY 
+		TO_CHAR(DTIME,'YYYY-MM-DD') ASC
+</select>
+
+<select id="selectSensorDataByTime" parameterType="Map" resultType="com.kis.rda.farm.domain.Aduino">
+	SELECT *
+	FROM ADMIN.SENSOR_D
+	WHERE G_DATE >= #{start}
+	AND G_DATE &lt;= #{end}
+	ORDER BY G_DATE 
+</select>
+
 
 </mapper>

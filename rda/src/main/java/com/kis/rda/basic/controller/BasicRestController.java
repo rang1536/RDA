@@ -11,14 +11,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;				
 import org.springframework.web.bind.annotation.RequestMethod;				
 import org.springframework.web.bind.annotation.RequestParam;				
-import org.springframework.web.bind.annotation.RestController;				
-				
-				
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.SessionAttributes;
+
 import com.kis.rda.basic.service.BasicService;
+import com.kis.rda.common.domain.User;
 import com.kis.rda.farm.domain.Cbcentity;
 import com.kis.rda.farm.domain.FarmMap;
 import com.kis.rda.farm.service.FarmService;				
-				
+		
+@SessionAttributes({"loginCheck","userName"})
 @RestController				
 public class BasicRestController {				
 				
@@ -27,6 +29,23 @@ public class BasicRestController {
 	
 	@Autowired
 	private FarmService farmService;
+	
+	@Autowired
+	private BasicService basicService;
+	
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public Map<String, Object> loginCtrl(Model model, User user){
+		System.out.println("아이디, 비번 확인 : "+user);
+		Map<String, Object> result = basicService.loginServ(user);
+		
+		if(result.get("check").equals("success")){
+			user = new User();
+			user = (User) result.get("user");
+			model.addAttribute("loginCheck", "login");
+			model.addAttribute("userName", user.getUserName());
+		};
+		return result;
+	}
 	
 	@RequestMapping(value = "/ajax/temperList", method = RequestMethod.POST)				
 		public Map<String,Object> ajaxtemperList(Model model,				
@@ -47,19 +66,16 @@ public class BasicRestController {
 	
 	
 	@RequestMapping(value = "/ajax/basicEntityList", method = RequestMethod.POST)			
-		public Map<String,Object> ajaxbasicEntityList(Model model,			
+	public Map<String,Object> ajaxbasicEntityList(Model model,
 			@RequestParam(value="pageNum", defaultValue="1") int pageNum,		
 			@RequestParam(value="searchOption", defaultValue="none") String searchOption,		
 			@RequestParam(value="searchValue", defaultValue="none") String entity_id,String searchValue,Cbcentity  entityDetail,String sensedevtipe) {		
-			  System.out.println("목장birEntityListDetail"+ entity_id);	
-		 
-		 Map<String, Object> map =temperService.ajaxbasicEntityList(sensedevtipe );			
- 
-		  			
+		System.out.println("목장birEntityListDetail"+ entity_id);	
+	 
+		Map<String, Object> map =temperService.ajaxbasicEntityList(sensedevtipe );			
+	
 		model.addAttribute("entityEntityList", map.get("entityList"));			
-	 	
-					
-					
+ 			
 		return map;			
 	}	
 

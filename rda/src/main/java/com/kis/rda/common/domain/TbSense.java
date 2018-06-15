@@ -8,6 +8,7 @@ public class TbSense {
 	private	String	ACTIONVALUE	;
 	private	String	DEVTYPE	;
 	private	String	DTIME	;
+	
 	public String getCU_ID() {
 		return CU_ID;
 	}
@@ -39,5 +40,11 @@ public class TbSense {
 	public void setDTIME(String dTIME) {
 		DTIME = dTIME;
 	}
+	@Override
+	public String toString() {
+		return "TbSense [CU_ID=" + CU_ID + ", NODEID=" + NODEID + ", ACTIONVALUE=" + ACTIONVALUE + ", DEVTYPE="
+				+ DEVTYPE + ", DTIME=" + DTIME + "]";
+	}
  
+	
 }
